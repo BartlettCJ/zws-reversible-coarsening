@@ -36,6 +36,24 @@
 \titleformat{\subsection}{\sffamily\large\bfseries\color{slateblue}}{\thesubsection}{0.5em}{}
 \titleformat{\subsubsection}{\sffamily\bfseries\color{slateblue}}{\thesubsubsection}{0.5em}{}
 \titlespacing*{\section}{0pt}{18pt plus 4pt minus 2pt}{8pt plus 2pt}
+% Contents list: article.cls reserves 1.5em for the section number, too narrow for
+% two-digit labels such as "10." (the number ran into the title). Same code, 2.4em.
+% (No \makeatletter here: inside a package "@" is already a letter, and a stray
+% \makeatother would break every later "@" command in this file.)
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{2.4em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
 \titlespacing*{\subsection}{0pt}{14pt plus 3pt minus 2pt}{6pt plus 2pt}
 
 % ---- running head and page number (preamble.tex) ----

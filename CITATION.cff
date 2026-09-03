@@ -6,13 +6,13 @@ authors:
   - family-names: Bartlett
     given-names: Chris
     orcid: https://orcid.org/0009-0001-3323-0131
-version: 0.2.6
-date-released: 2026-09-03
+version: "1.27"
+date-released: 2026-09-04
 doi: 10.5281/zenodo.22270456
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22270456
-    description: Zenodo archive of the companion paper and evidence release (v0.2.4 deposit)
+    description: Zenodo archive of the companion paper and evidence release
   - type: doi
     value: 10.5281/zenodo.21966374
     description: Zero Without Stasis, the paper this study accompanies

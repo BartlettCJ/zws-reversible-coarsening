@@ -3,14 +3,14 @@
 \usepackage{zws_companion_style}
 \usepackage{longtable}
 \usepackage[section]{placeins}
-\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v0.2.6: Eshkol citation, house typesetting and archived-release DOI},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
+\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.27, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
 \graphicspath{{figures/}}
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand{\zwsrunninghead}{Supplementary Information}
 
 \begin{document}
 \zwstitleblock{Supplementary Information}{Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Supplement to the companion paper, version 0.2.6, 3 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Supplement to the companion paper, version 1.27, 4 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
 Companion to \emph{Zero Without Stasis} v1.278, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
@@ -34,18 +34,18 @@ The four cell states are empty ($0$), positive excitation ($+$), negative excita
 Q(x)&=N_{+}(x)-N_{-}(x),\\
 M(x)&=N_{+}(x)+N_{-}(x)+N_{\mathrm b}(x).
 \end{align}
-$Q$ is a signed additive charge. $M$ counts non-empty cells and is called occupancy or material in the software. The selected rule conserves $Q$ in every local block update but not $M$. All principal worlds were initialized in the global $Q=0$ sector. The phrase ``$Q=0$ sector'' must not be read as ``the rule conserves the value zero only'', ``$Q$ and $M$ both vanish'', or ``the world is empty''.
+$Q$ is a signed additive charge. $M$ counts non-empty cells and is called occupancy or material in the software. The selected rule conserves $Q$ in every local block update but not $M$. All principal worlds were initialised in the global $Q=0$ sector. The phrase ``$Q=0$ sector'' must not be read as ``the rule conserves the value zero only'', ``$Q$ and $M$ both vanish'', or ``the world is empty''.
 
 \subsection{Block code and phase schedule}
 On a periodic $H\times W$ lattice with even dimensions, alternating $2\times2$ Margolus partitions cover the lattice. Each four-cell block is packed in base four to an integer in $[0,255]$. A permutation $f$ of those 256 codes supplies the forward update; $f^{-1}$ supplies the inverse. The checkerboard phase is part of the dynamical state. Exact reversal applies the inverse table while stepping phases in reverse order.
 
-The frozen table is stored in \path{extensions/reversible_null_phase/rules/winner_d1fe99.json}. SHA-256 of the raw 256 unsigned-byte table, not the JSON serialization, is
+\begingroup\sloppy The frozen table is stored in \path{extensions/reversible_null_phase/rules/}\allowbreak\mbox{\path{winner_d1fe99.json}}. SHA-256 of the raw 256 unsigned-byte table, not the JSON serialization, is\par\endgroup
 \begin{center}
 \code{d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c}.
 \end{center}
 The rule is a permutation; all 256 outputs are unique. Exhaustive enumeration verifies $Q(f(b))=Q(b)$ for every block state $b$. The same enumeration finds block states for which $M(f(b))\ne M(b)$.
 
-The block code uses base-four order top-left, top-right, bottom-left, bottom-right,
+The block code uses the digits $0$ (empty), $1$ ($+$), $2$ ($-$) and $3$ ($\mathrm b$) in base-four order top-left, top-right, bottom-left, bottom-right,
 \begin{equation}
 c=s_{\mathrm{TL}}+4s_{\mathrm{TR}}+16s_{\mathrm{BL}}+64s_{\mathrm{BR}}.
 \end{equation}
@@ -78,6 +78,7 @@ A sigmoid gate penalized insufficient activity and reaction, and failure of char
 
 \subsection{Evidence matrix}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}@{}}
+\caption{Evidence matrix: the frozen object, principal output and warranted inference of each stage.}\label{tab:evidence-matrix}\\
 \toprule
 Stage & Frozen object & Principal output & Valid inference \\
 \midrule
@@ -88,10 +89,10 @@ Stage & Frozen object & Principal output & Valid inference \\
 \endhead
 Discovery & small reactive-rotation search & selected winner from 14 unique candidates / 16 replicate evaluations & provenance only; selected behaviour \\
 Confirmation & winner, large torus, inverse schedule & $4096^2$, 65,536 forward phases, zero mismatches after inversion & exact implementation-level coexistence of reversal and structure \\
-Repeat runs & winner, four localized-patch seeds & transient scale peak 72.66--136.11$\times$ & reproducible large finite-time transient \\
-Composition & frozen state summaries & occupancy 0.572989; normalized entropy 0.946343 & local state diversity survives macrostructure \\
+Repeat runs & winner, four localised-patch seeds & transient scale peak 72.66--136.11$\times$ & reproducible large finite-time transient \\
+Composition & frozen state summaries & occupancy 0.572989; normalised entropy 0.946343 & local state diversity survives macrostructure \\
 Density & seven initial occupancies & event fraction and survival shift strongly with density & finite-time density dependence \\
-Morphology & event-centred windows & 67 distributed, 24 unresolved, 0 localized & no support for simple localized-front story \\
+Morphology & event-centred windows & 67 distributed, 24 unresolved, 0 localised & no support for simple localised-front story \\
 Prepared geometry & droplet, slab and homogeneous controls & 0/48 vs 19/24 events by 262,144 phases & relative-growth counts only; different initial baselines, while shapes persist \\
 Exact-$Q{+}M$ sibling & reactive matched sibling & 0/16 vs winner 10/16 & nearby double-conservation rule does not reproduce regime \\
 Ablations & twelve single-pair removals & 0--7/16 versus winner 10/16 & multiple reaction channels contribute \\
@@ -103,11 +104,11 @@ History erasure v0.3.2 & shuffled branches + old endpoint & classifier triggered
 \section{Exact reversal and composition}
 The large audit used a $4096\times4096$ periodic lattice (16,777,216 cells) with a populated central random patch, not a whole-world homogeneous start. The square patch spans 45\% of each dimension; its target internal proportions are 12\% positive, 12\% negative and 8\% bound-neutral, and the exterior is empty. After 65,536 forward block phases, the run reversed the phase schedule and applied the inverse permutation. The final recovered state was identical to the initial state at every cell. Global signed charge remained $Q=0$. Occupancy $M$ changed during the trajectory, as permitted by the rule.
 
-The four $4096\times4096$ localized-patch confirmation runs supplied the reported final dense-interior median occupancy 0.572989, positive fraction 0.192542, negative fraction 0.192535, and bound-neutral fraction 0.187912. Normalized four-state entropy was 0.946343. Those four localized-patch confirmatory winner runs reached transient domain-scale maxima of 72.66--136.11 times their initial scale (median 98.4459); the final stored scales were 15.77--16.33 times initial (median 16.1118). This nonmonotonicity is why the paper says ``coarsening-like organisation'' rather than monotonic phase ordering.
+The four $4096\times4096$ localised-patch confirmation runs supplied the reported median dense-interior occupancy 0.572989 (dense interior: cells in the high-local-density band, excluding a margin around the dense/sparse interface, evaluated at each run's final stored snapshot), positive fraction 0.192542, negative fraction 0.192535, and bound-neutral fraction 0.187912. Normalised four-state entropy was 0.946343. Those four localised-patch confirmatory winner runs reached transient domain-scale maxima of 72.66--136.11 times their initial scale (median 98.4459); the final stored scales were 15.77--16.33 times initial (median 16.1118). This nonmonotonicity is why the paper says ``coarsening-like organisation'' rather than monotonic phase ordering.
 
 \section{Endpoint definitions and initial-condition provenance}
 \subsection{Distinct initial-condition families}
-The large reversal and the four $4096^2$ growth/composition confirmations use the localized-patch family above. Whole-torus homogeneous-random studies are separate: the principal density map and later first-passage study use $1024^2$ lattices, with smaller $512^2$ comparisons and limited $2048^2$ checks in the recorded campaigns. In the homogeneous density family, an exact inventory with occupied proportions $3/8$ positive, $3/8$ negative and $2/8$ bound-neutral is shuffled over the entire torus. For target occupancy $\rho$ and $N$ sites, the documented rounding is $u=\lfloor\rho N/8+1/2\rfloor$, giving counts $(N-8u,3u,3u,2u)$. These ensemble constructions must not be pooled as the same initial condition.
+The large reversal and the four $4096^2$ growth/composition confirmations use the localised-patch family above. Whole-torus homogeneous-random studies are separate: the principal density map and later first-passage study use $1024^2$ lattices, with smaller $512^2$ comparisons and limited $2048^2$ checks in the recorded campaigns. In the homogeneous density family, an exact inventory with occupied proportions $3/8$ positive, $3/8$ negative and $2/8$ bound-neutral is shuffled over the entire torus. For target occupancy $\rho$ and $N$ sites, the documented rounding is $u=\lfloor\rho N/8+1/2\rfloor$, giving counts $(N-8u,3u,3u,2u)$ of empty, positive, negative and bound-neutral cells. These ensemble constructions must not be pooled as the same initial condition.
 
 \subsection{The implemented v0.3/v0.3.1 endpoint}
 Let $a_i(t_j)$ be the areas of finite (non-wrapping) empty components returned by the frozen campaign's four-neighbour toroidal component code. The characteristic scale is the equivalent-circle radius of the area-weighted component area,
@@ -121,17 +122,17 @@ Set $D=\max(L_0,1)$ and $r_j=L_j/D$. For a prefix through sample $k$, choose $j^
  C_k=\mathbf{1}[r_{j^*}\geq4\ \wedge\ r_k\geq2\ \wedge\ f_{j^*}\geq0.001
  \ \wedge\ (\forall j\leq k: Q_j=Q_0)].
 \end{equation}
-At least two snapshots are required. The largest-component fraction is evaluated at the \emph{first peak-scale sample}, not necessarily at its own separate maximum. No Fourier, low-$k$, entropy or mutual-information threshold enters $C_k$. Those diagnostics are recorded independently. The paper therefore does not describe the endpoint as a joint spectral-and-geometrical test.
+In words: take the earliest sample at which the scale ratio reaches its running maximum (the $\min\arg\max$); the flag is true when that peak ratio is at least 4, the current ratio is at least 2, the largest finite empty component at the peak sample covers at least 0.1\% of the sites, and $Q$ has never changed. At least two snapshots are required. The largest-component fraction is evaluated at the \emph{first peak-scale sample}, not necessarily at its own separate maximum. No Fourier, low-$k$, entropy or mutual-information threshold enters $C_k$. Those diagnostics are recorded independently. The paper therefore does not describe the endpoint as a joint spectral-and-geometrical test.
 
 For v0.3.1, sampled phases are spaced by 2,048. $T_{\rm hit}$ is the earliest sample with $C_k=1$. $T_{\rm persistent}$ is the earliest start of three consecutive true prefix flags, which can follow an earlier isolated hit. No event time is interpolated between observations; an absent event is right-censored at the trajectory's actual follow-up horizon. The implementation sources are \code{metrics.py:StrongDomainCriterion} and \code{nucleation.py:first\_passage\_from\_flags}, at the computational release identified in the provenance note.
 
 \subsection{Earlier frozen endpoints are not identical}
 The original 2026-08-25 confirmation required final coarse-density dispersion at least 8, at least twofold final empty-domain scale, a positive fitted late-half scale slope and exact charge preservation. Its strict sustained-coarsening result failed at the larger scale; the reproduced transient morphology was reported separately.
 
-The later v0.1 homogeneous-density map used peak/final scale ratios of at least 4/2 and a peak largest finite-empty area of at least $\max(64,16\max(A_0,1))$, where $A_0$ is the initial largest finite-empty area, with $Q=0$ at every saved phase. Its \emph{separate} low-$k$ flag required radial shells $k=1,\ldots,4$ to have peak/final mean-power ratios of at least 4/2 and peak spectral-fraction ratio at least 2. The v0.3 family instead uses the 0.001 lattice-fraction condition above, as explicitly stated in the v0.3.1 preregistration. Thus the earlier approximately 27.5\% estimate is an operational result of that earlier campaign, not a directly interchangeable critical-density estimate. Within each unchanged endpoint, different time horizons can be compared without making this substitution.
+The later v0.1 homogeneous-density map used peak/final scale ratios of at least 4/2 and a peak largest finite-empty area of at least $\max(64,16\max(A_0,1))$, where $A_0$ is the initial largest finite-empty area, with $Q=0$ at every saved phase. Its \emph{separate} low-wavenumber (low-$k$) spectral flag required radial shells $k=1,\ldots,4$ to have peak/final mean-power ratios of at least 4/2 and peak spectral-fraction ratio at least 2. The v0.3 family instead uses the 0.001 lattice-fraction condition above, as explicitly stated in the v0.3.1 preregistration. Thus the earlier approximately 27.5\% estimate is an operational result of that earlier campaign, not a directly interchangeable critical-density estimate. Within each unchanged endpoint, different time horizons can be compared without making this substitution.
 
 \subsection{Different sources for the main image panels}
-The main reversal figure uses localized discovery seed 260824 and an organised intermediate panel at phase 20,480. Its recovered panel displays the phase-zero state whose exact recovery was established by the 65,536-phase inverse audit. The main micro/macro figure instead uses untouched homogeneous $1024^2$ source \code{3cde465f2d2883dd5af4}, initial density 0.20, seed 6203 and phase 311,296. Its nested $64^2$ crop has counts $(1359,899,947,891)$ and normalized single-site entropy 0.987741. This image is distinct from the four localized confirmation runs' dense-interior statistic 0.946343. The v0.3.2 causal-endpoint failure does not invalidate a direct image of the untouched source.
+The main reversal figure uses localised discovery seed 260824 and an organised intermediate panel at phase 20,480. Its recovered panel displays the phase-zero state whose exact recovery was established by the 65,536-phase inverse audit. The main micro/macro figure instead uses untouched homogeneous $1024^2$ source \code{3cde465f2d2883dd5af4}, initial density 0.20, seed 6203 and phase 311,296. Its nested $64^2$ crop has counts $(1359,899,947,891)$ and normalised single-site entropy 0.987741. This image is distinct from the four localised confirmation runs' dense-interior statistic 0.946343. The v0.3.2 causal-endpoint failure does not invalidate a direct image of the untouched source.
 
 \section{Density and first passage}
 \begin{table}[h]
@@ -142,15 +143,15 @@ The main reversal figure uses localized discovery seed 260824 and an organised i
 
 At 0.18, the extended follow-up changed the interpretation of the shorter campaign: events continued to appear late, so a short-horizon fixed threshold could not be retained. Survival curves preserve censoring. The paper does not extrapolate an infinite-time event probability or claim a critical density. Finite-size and area-scaling analyses did not support the simple local-Poisson expectation tested, but the available sizes do not establish an alternative asymptotic law.
 
-Event-centred morphology labels were B/distributed for 67 events, E/unresolved for 24, and A/localized for none. The label is a measured classifier under frozen windows, not an ontological statement about every possible initiation process.
+Event-centred morphology labels were distributed (archival code B) for 67 events, unresolved (code E) for 24, and localised (code A) for none; the preregistered rubric is summarised in the main text, Section~5.3. The label is a measured classifier under frozen windows, not an ontological statement about every possible initiation process.
 
 \section{Arrangement and prepared-shape controls}
 Prepared droplets and slabs retained or enlarged their imposed geometry but produced zero strong-domain endpoint crossings across 48 trials by 262,144 phases. Matched homogeneous starts produced 19 crossings in 24 trials. These are outcomes of a \emph{relative-growth} assay: the denominator is each trajectory's own initial finite-empty-domain scale. A prepared macroscopic shape is not on the same baseline as random soup. Accordingly, 0/48 is not evidence that seeded organisation failed to form or persist, and this contrast alone does not establish a basin barrier, history inhibition or failure of all compact seeds. The direct measurements of retained geometry remain valid, separately from the endpoint counts.
 
-Earlier arrangement comparisons and phase controls are retained in the experiment reports. Their role is to constrain trivial initialization artifacts, not to establish a thermodynamic ensemble.
+Earlier arrangement comparisons and phase controls are retained in the experiment reports. Their role is to constrain trivial initialisation artefacts, not to establish a thermodynamic ensemble.
 
 \section{Double conservation and reaction-pair ablations}
-The exact-$Q{+}M$ sibling is a distinct permutation whose every local block update preserves both signed charge and occupancy. It was chosen as the closest tested reactive sibling rather than as a universal representative of double-conserving automata. Mean reaction density remained 0.01160, close to the winner's 0.01234, so its negative endpoint is not explained by a dead rule. In the focused comparison the winner produced 8/8 strong-domain outcomes and the sibling 0/8. In the pooled balanced profile the winner produced 10/16, the sibling 0/16, and pure rotation 0/16.
+The exact-$Q{+}M$ sibling is a distinct permutation whose every local block update preserves both signed charge and occupancy. It was chosen as the closest tested reactive sibling rather than as a universal representative of double-conserving automata. Mean reaction density remained 0.01160, close to the winner's 0.01234, so its negative endpoint is not explained by a dead rule. In the focused $1024^2$ comparison (8 replicates) the winner produced 8/8 strong-domain outcomes and the sibling 0/8. In the pooled $512^2$ balanced profile (16 replicates) the winner produced 10/16, the sibling 0/16, and pure rotation 0/16.
 
 \begin{table}[h]
 \centering
@@ -165,7 +166,7 @@ The generator screen counted 19 strong-domain rules among 256 independent charge
 
 \section{v0.3.2 classifier failure and correction}
 \subsection{Intended intervention}
-The v0.3.2 campaign branched deterministic trajectories at frozen source states. Global and hierarchical shuffles preserved each single-site state count, hence $Q$, $M$, and single-site entropy, and retained the partition phase. The intervention removed spatial arrangement while leaving the subsequent rule deterministic. Every one of 72 altered-branch intervention audits passed. The topology-fixed run is the only valid raw basis; the earlier topology-bug run is excluded.
+The v0.3.2 campaign branched deterministic trajectories at frozen source states. Two branch points were preregistered for each of the 16 source trajectories: Branch A, the first sampled phase at which occupancy reached $M/N\geq0.35$ while the source was still below the endpoint, and Branch B, 32,768 phases before the source's own first hit. Every eligible A and B state received one primary global shuffle (16 each); every B state also received a $32\times32$ and a $128\times128$ tile permutation, and four B states received a second global shuffle, so there are 20 Branch-B global shuffles in all, 16 of them primary, and 72 altered branches in total. Global and hierarchical shuffles preserved each single-site state count, hence $Q$, $M$, and single-site entropy, and retained the partition phase. The intervention removed spatial arrangement while leaving the subsequent rule deterministic. Every one of 72 altered-branch intervention audits passed. The topology-fixed run is the only valid raw basis; the earlier topology-bug run is excluded.
 
 The intended primary contrast was first passage to the existing strong-domain endpoint after shuffling versus an untouched continuation. This would have been informative only if the endpoint discriminated the organised source geometry from the shuffled geometry.
 
@@ -182,7 +183,7 @@ In all 20 Branch-B global shuffles, mean low-wave-number power fell from 7,246.3
 
 One exact elapsed-zero shuffled state had occupancy 0.409520, histogram (619,163; 145,846; 145,846; 137,721), $Q=0$, low-wave fraction 0.000243482, and nearest-neighbour mutual information approximately $5.57\times10^{-6}$, but nevertheless met the strong-domain endpoint. The finite empty-cluster scale was 157.657 and the largest finite empty component occupied 0.191215 of the lattice. Random high-occupancy geometry can thus create large connected empty components without the organised source's long-wave structure.
 
-\begingroup\sloppy The compact residual-time record also contains a secondary caveat: for source \code{49461bd54e39582ab4fb}, density 0.20, seed 6202, \code{untouched\_R\_hit} is $-28,672$ while \code{untouched\_hit\_observed} is false; its persistent residual is 83,968. A negative residual cannot be read as a valid positive post-intervention first-hit time. These historical fields are preserved, not repaired into a new event time. All 72 altered branches terminated as \code{post\_persistent\_capture\_complete}; maximum elapsed coverage was exactly $R_{\mathrm{persistent}}+16,384$. The campaign ran as designed. The scientific failure is classifier validity for this intervention, not execution completeness.\par\endgroup
+\begingroup\sloppy The compact residual-time record also contains a secondary caveat: for source \code{49461bd54e39582ab4fb}, density 0.20, seed 6202, the historical residual-time field \code{untouched\_R\_hit} is $-28,672$ (a bookkeeping field, not an event time) while \code{untouched\_hit\_observed} is false; its persistent residual is 83,968. A negative residual cannot be read as a valid positive post-intervention first-hit time. These historical fields are preserved, not repaired into a new event time. All 72 altered branches ran to their scheduled end, completing the post-event capture window (status \code{post\_persistent\_capture\_complete}); maximum elapsed coverage was exactly $R_{\mathrm{persistent}}+16,384$. The campaign ran as designed. The scientific failure is classifier validity for this intervention, not execution completeness.\par\endgroup
 
 \subsection{What is withdrawn and what remains usable}
 Withdrawn: claims that the shuffled branches showed immediate recovery of genuine macroscopic organisation; that hidden multiscale precursor memory was thereby necessary; that erasing history inhibited or accelerated the transition; or that the result established a causal spatial-memory mechanism.
@@ -192,13 +193,13 @@ Withdrawn: claims that the shuffled branches showed immediate recovery of genuin
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.95\linewidth,height=0.81\textheight,keepaspectratio]{FIGURE_02_HISTORY_ERASURE_BRANCHES.pdf}
-\caption{\textbf{Historical v0.3.2 branch images, reclassified as diagnostics.} Measured: source, shuffled, and post-shuffle states. Warranted inference: the shuffle visibly destroys large-scale organisation while preserving inventory. Limitation: the old endpoint can label the fine-grained shuffled geometry as already strong-domain; this figure is not evidence of causal memory or recovery speed.}
+\caption{\textbf{Historical v0.3.2 branch images, reclassified as diagnostics.} Measured: source, shuffled, and post-shuffle states. Warranted inference: the shuffle visibly destroys large-scale organisation while preserving inventory. Limitation: the old endpoint can label the fine-grained shuffled geometry as already strong-domain; this figure is not evidence of causal memory or recovery speed. Panel labels give the requested offsets; the altered continuations were captured at their terminal phases (for example the $\rho_0=0.20$ global shuffle at phase 294,912, 16,384 phases after the source state), as described in Section~10.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.95\linewidth]{FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE.pdf}
-\caption{\textbf{Historical fixed-occupancy intervention figure, diagnostic use only.} Measured: identical single-site inventory under changed arrangement. Warranted inference: composition alone does not preserve the source images' measured organisation. Limitation: first passage to the confounded endpoint cannot compare causal history.}
+\caption{\textbf{Historical fixed-occupancy intervention figure, diagnostic use only.} Measured: identical single-site inventory at the branch point under changed arrangement. Warranted inference: composition alone does not preserve the source images' measured organisation. Limitation: first passage to the confounded endpoint cannot compare causal history. The shuffled panel labelled $+32{,}768$ was captured at phase 223,232, that is 18,432 phases after the branch point at phase 204,800; the untouched panel is at the requested offset (phase 237,568).}
 \end{figure}
 
 \begin{figure}[p]
@@ -210,7 +211,7 @@ Withdrawn: claims that the shuffled branches showed immediate recovery of genuin
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.95\linewidth]{FIGURE_05_MULTISCALE_MEMORY.pdf}
-\caption{\textbf{Historical hierarchical-shuffle figure, diagnostic use only.} Measured: scale-dependent arrangement perturbations and post-intervention observables. Warranted inference: the stored series can describe structural recovery by direct metrics. Limitation: it cannot support the withdrawn history-inhibition headline through the old first-passage classifier.}
+\caption{\textbf{Historical hierarchical-shuffle figure, diagnostic use only.} Measured: scale-dependent arrangement perturbations and post-intervention observables. Warranted inference: the stored series can describe structural recovery by direct metrics. Limitation: it cannot support the withdrawn history-inhibition headline through the old first-passage classifier. Block entropy is the Shannon entropy of the block-pattern distribution at each block size; categorical mutual information by offset measures the statistical dependence between cell states a given distance apart; the retained low-$k$ precursor is the fraction of the source's long-wavelength spectral power that survives the intervention. A mutual-information axis tick reading $-1.2\times10^{-30}$ is floating-point round-off of zero.}
 \end{figure}
 
 \begin{figure}[p]
@@ -220,7 +221,7 @@ Withdrawn: claims that the shuffled branches showed immediate recovery of genuin
 \end{figure}
 
 \section{Prior-art positioning}
-Reversible block automata and conservative logic are foundational precedents \citep{FredkinToffoli1982,Margolus1984,ToffoliMargolus1987}. Lattice gases provide exact local collision and transport frameworks \citep{HPP1973,FrischHasslacherPomeau1986,RothmanZaleski1994,BoonEtAl1996}, and reversible lattice-gas work directly addresses macroscopic irreversibility under microscopically reversible dynamics \citep{Broadwell2001}. Q2R models provide reversible conservative statistical dynamics \citep{Takesue1987,UrbinaRica2016,Urbina2020}; reversible aggregation provides an especially close visual and mechanistic neighbour \citep{DSouzaMargolus1999}. Reversible number-conserving automata and partitioned constructions further narrow the architectural context \citep{BoccaraFuks2002,MoritaImai2001}. Two-species reversible automata with vacancies, reactions and multiple local charges are close modern neighbours \citep{MedenjakPopkovProsen2019,KlobasProsen2022}; reactive lattice-gas waves and Turing patterns provide a nonreversible pattern-forming comparison \citep{KapralLawniczakMasiar1991}. The full query log, DOI audit, comparison matrix, v0.2.3 correction audit, and bounded stopping rule are in \code{paper/prior\_art}.
+Reversible block automata and conservative logic are foundational precedents \citep{FredkinToffoli1982,Margolus1984,ToffoliMargolus1987}. Lattice gases provide exact local collision and transport frameworks \citep{HPP1973,FrischHasslacherPomeau1986,RothmanZaleski1994,BoonEtAl1996}, and reversible lattice-gas work directly addresses macroscopic irreversibility under microscopically reversible dynamics \citep{Broadwell2001}. Q2R models provide reversible conservative statistical dynamics \citep{Takesue1987,UrbinaRica2016,Urbina2020}; reversible aggregation provides an especially close visual and mechanistic neighbour \citep{DSouzaMargolus1999}. Reversible number-conserving automata and partitioned constructions further narrow the architectural context \citep{BoccaraFuks2002,MoritaImai2001}. Two-species reversible automata with vacancies, reactions and multiple local charges are close modern neighbours \citep{MedenjakPopkovProsen2019,KlobasProsen2022}; reactive lattice-gas waves and Turing patterns provide a nonreversible pattern-forming comparison \citep{KapralLawniczakMasiar1991}. The prior-art review, DOI audit and comparison matrix are in \code{paper/prior\_art}; the full query log and the v0.2.3 correction audit are retained by the author.
 
 The residual contribution is the combination, not any isolated ingredient: an exact four-state signed invariant with variable occupancy; delayed distributed coarsening-like organisation; exact large-lattice reversal; density and waiting-time characterisation; and a hierarchy of geometry, double-conservation, and reaction controls. The review does not claim exhaustive priority.
 
@@ -231,7 +232,7 @@ Compact source tables, reports, figures, figure manifests, rule files, environme
 
 The historical v0.3.2 source report, completion record, manifests, figures, and raw results are not overwritten. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.
 
-The v0.2.1 methods and provenance corrections, v0.2.2 disclosure changes, and v0.2.3 worked-rule and literature-audit additions are retained in this v0.2.6 revision. No new scientific simulation or change to numerical results was made in these publication passes. Version 0.2.4 replaces the superseded opening composite with direct embedding of the four hash-verified archived source-panel PNGs; the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}; version 0.2.5 typesets the paper in the house style of \emph{Zero Without Stasis} and prints that DOI, changing presentation and metadata only; version 0.2.6 adds the citation of Eshkol, the language of the independent parity oracle~\citep{Tsotchke2026Eshkol}.
+This Supplement accompanies version 1.27 of the companion paper, the publication version. Earlier draft revisions (0.2.1 to 0.2.7) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
 
 \footnotesize
 \bibliographystyle{unsrtnat}
