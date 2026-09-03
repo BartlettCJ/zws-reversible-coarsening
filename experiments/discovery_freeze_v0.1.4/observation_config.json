@@ -1,0 +1,19 @@
+{
+  "bound_fraction": 0.08,
+  "checkpoint_every": 2048,
+  "crop_size": 512,
+  "device": "cuda",
+  "event_after": 128,
+  "event_before": 256,
+  "event_count": 20,
+  "event_min_separation": 1024,
+  "height": 4096,
+  "localized": true,
+  "positive_fraction": 0.12,
+  "sample_every": 16,
+  "schema": "zwslab-sparse-observation-v1",
+  "seed": 260824,
+  "steps": 65536,
+  "tile_size": 256,
+  "width": 4096
+}

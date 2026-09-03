@@ -1,0 +1,5 @@
+comparison,classification,n,rmst_delay,ci90_low,ci90_high,ci95_low,ci95_high
+Branch A primary global,SPATIAL-HISTORY INHIBITION,16,-92544.0,-120960.0,-66048.0,-126976.0,-61184.0
+Branch B primary global,SPATIAL-HISTORY INHIBITION,16,-30336.0,-32000.0,-28032.0,-32128.0,-27520.0
+Branch B tile 32,,16,-13568.0,-22144.0,-4352.0,-23552.0,-2560.0
+Branch B tile 128,,16,384.0,-16000.0,20608.0,-18048.0,25088.0

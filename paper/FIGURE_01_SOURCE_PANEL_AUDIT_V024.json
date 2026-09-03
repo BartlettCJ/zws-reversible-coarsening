@@ -1,0 +1,75 @@
+{
+  "schema": "zws-figure1-direct-source-panels-v1",
+  "version": "0.2.4",
+  "source_layout_manifest": "paper/FIGURE_01_LAYOUT_V022.json",
+  "source_layout_manifest_sha256": "4c74cb7d81a0cf51ed52711bfbb4320e9e88d6eb3c62988acd7c517f30ee9765",
+  "panels": [
+    {
+      "panel": "A",
+      "path": "figure_assets/hero_v024/panel_A.png",
+      "sha256": "2f3d2b8a8bb297589eda26e34f8515c5090fbf467c6e282bbd9df5b1ebf2385f",
+      "source_task": "observe_4096_discovery",
+      "seed": 260824,
+      "phase": 0,
+      "state_hash": "6d5f84b2c42bb13f2eaa89b610b7deb0f45df283eb3d164a6794b1913569a414",
+      "lattice_crop": {
+        "height": 4096,
+        "width": 4096,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "panel": "B",
+      "path": "figure_assets/hero_v024/panel_B.png",
+      "sha256": "c9c6f69a71025c002feb6d82840e6c572ceb2c86fab7e16a5bbbd178d836591c",
+      "source_task": "observe_4096_discovery",
+      "seed": 260824,
+      "phase": 20480,
+      "state_hash": "3479757d2ff12a41fa169d29a91569936347a4dbe93f786b2376fe76a394297f",
+      "lattice_crop": {
+        "height": 4096,
+        "width": 4096,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "panel": "C",
+      "path": "figure_assets/hero_v024/panel_C.png",
+      "sha256": "d7748357dc2aa2160ef61291dc2e2c5eeaae297a7eb90aa1552861402a140f40",
+      "source_task": "observe_4096_discovery",
+      "seed": 260824,
+      "phase": 20480,
+      "state_hash": "3479757d2ff12a41fa169d29a91569936347a4dbe93f786b2376fe76a394297f",
+      "lattice_crop": {
+        "height": 512,
+        "width": 512,
+        "x": 2048,
+        "y": 2048
+      }
+    },
+    {
+      "panel": "D",
+      "path": "figure_assets/hero_v024/panel_D.png",
+      "sha256": "44d75ebe28b13b206823502ff4abe7d29cca309b656ac6539bbae6f77ee40fdc",
+      "source_task": "observe_4096_discovery",
+      "seed": 260824,
+      "phase": 0,
+      "state_hash": "6d5f84b2c42bb13f2eaa89b610b7deb0f45df283eb3d164a6794b1913569a414",
+      "lattice_crop": {
+        "height": 4096,
+        "width": 4096,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "embedding": "four copied-and-hash-verified source panel PNGs in paper/figure_assets/hero_v024, placed directly by pdfLaTeX in a 2x2 minipage layout",
+  "matplotlib_composite_used": false,
+  "flattened_bad_pdf_used": false,
+  "new_simulation": false,
+  "new_frame_selection": false,
+  "scientific_content_changed": false,
+  "reason": "The superseded Matplotlib PDF composite was rendered by some engines as diagonal strips, and v0.2.3 flattened that faulty PDF rendering. Direct source-panel embedding removes that transform/decoder path."
+}

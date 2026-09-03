@@ -1,0 +1,38 @@
+# Sensible first scientific run for a Ryzen 9 3900X, 64 GB RAM, and RTX 5060 Ti.
+# The doctor command will reveal whether the card is the 8 GB or 16 GB variant.
+run:
+  name: workstation
+  output_root: results
+  seed: 260824
+  device: auto
+  deterministic: true
+search:
+  population: 96
+  generations: 60
+  elites: 12
+  random_injection: 8
+  mutation_swaps: [1, 2, 4, 8, 16]
+  novelty_weight: 0.08
+  novelty_k: 8
+  replicates: 2
+  save_top: 8
+  checkpoint_every: 10
+evaluation:
+  height: 96
+  width: 96
+  steps: 160
+  burn_in: 40
+  sample_every: 4
+  positive_fraction: 0.12
+  bound_fraction: 0.08
+  localized: false
+analysis:
+  holdout_replicates: 8
+  steps: 512
+  cycle_height: 4
+  cycle_width: 4
+  cycle_max_ticks: 200000
+  window_points: 8
+  coarse_blocks: [2, 4]
+  gif_frames: 160
+  gif_stride: 2

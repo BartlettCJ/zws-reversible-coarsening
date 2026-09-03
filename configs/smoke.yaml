@@ -1,0 +1,36 @@
+run:
+  name: smoke
+  output_root: results
+  seed: 260824
+  device: cpu
+  deterministic: true
+search:
+  population: 8
+  generations: 2
+  elites: 2
+  random_injection: 1
+  mutation_swaps: [1, 2, 4]
+  novelty_weight: 0.05
+  novelty_k: 3
+  replicates: 1
+  save_top: 3
+  checkpoint_every: 1
+evaluation:
+  height: 16
+  width: 16
+  steps: 20
+  burn_in: 4
+  sample_every: 2
+  positive_fraction: 0.12
+  bound_fraction: 0.08
+  localized: false
+analysis:
+  holdout_replicates: 2
+  steps: 32
+  cycle_height: 2
+  cycle_width: 2
+  cycle_max_ticks: 5000
+  window_points: 4
+  coarse_blocks: [2, 4]
+  gif_frames: 32
+  gif_stride: 1

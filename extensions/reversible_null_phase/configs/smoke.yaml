@@ -1,0 +1,74 @@
+schema: zws-reversible-null-phase-study-v1
+name: smoke
+rule_path: ../rules/winner_d1fe99.json
+device: auto
+output_root: results/reversible_null_phase_smoke
+low_k_max: 6
+criterion:
+  min_peak_scale_ratio: 1.2
+  min_final_scale_ratio: 1.0
+  min_peak_largest_finite_empty_fraction: 0.0001
+  initial_scale_floor: 1.0
+resource:
+  enabled: false
+stages:
+  precursor_smoke:
+    enabled: true
+    sizes: [32]
+    densities: [0.12, 0.28]
+    seeds: [101, 102]
+    steps: 64
+    sample_every: 8
+    topology_every: 16
+    checkpoint_every: 32
+    batch_size: 2
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 8
+    early_fit_end: 48
+    shells: [[1, 2], [2, 4], [4, 8]]
+  onset_smoke:
+    enabled: true
+    sizes: [32]
+    densities: [0.26, 0.28]
+    seeds: [201, 202]
+    steps: 64
+    sample_every: 8
+    topology_every: 16
+    checkpoint_every: 32
+    batch_size: 2
+    arrangements: [homogeneous]
+    rule_variants: [winner, rotation]
+    early_fit_start: 8
+    early_fit_end: 48
+    shells: [[1, 2], [2, 4], [4, 8]]
+  hysteresis_smoke:
+    enabled: true
+    sizes: [32]
+    densities: [0.24]
+    seeds: [301]
+    steps: 64
+    sample_every: 8
+    topology_every: 16
+    checkpoint_every: 32
+    batch_size: 3
+    arrangements: [homogeneous, slab, droplet]
+    rule_variants: [winner]
+    early_fit_start: 8
+    early_fit_end: 48
+    shells: [[1, 2], [2, 4], [4, 8]]
+  ablation_smoke:
+    enabled: true
+    sizes: [32]
+    densities: [0.28]
+    seeds: [401]
+    steps: 32
+    sample_every: 8
+    topology_every: 16
+    checkpoint_every: 16
+    batch_size: 4
+    arrangements: [homogeneous]
+    rule_variants: [winner, ablate_00, qm_sibling, rotation]
+    early_fit_start: 8
+    early_fit_end: 24
+    shells: [[1, 2], [2, 4], [4, 8]]

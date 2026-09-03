@@ -1,0 +1,38 @@
+# Use after the workstation run passes. Intended primarily for a 16 GB 5060 Ti.
+# On an 8 GB card, reduce population to 128 or dimensions to 112x112.
+run:
+  name: deep
+  output_root: results
+  seed: 260824
+  device: auto
+  deterministic: true
+search:
+  population: 192
+  generations: 180
+  elites: 24
+  random_injection: 16
+  mutation_swaps: [1, 2, 4, 8, 16, 32]
+  novelty_weight: 0.10
+  novelty_k: 12
+  replicates: 3
+  save_top: 16
+  checkpoint_every: 10
+evaluation:
+  height: 128
+  width: 128
+  steps: 256
+  burn_in: 64
+  sample_every: 4
+  positive_fraction: 0.12
+  bound_fraction: 0.08
+  localized: false
+analysis:
+  holdout_replicates: 16
+  steps: 1536
+  cycle_height: 4
+  cycle_width: 4
+  cycle_max_ticks: 1000000
+  window_points: 12
+  coarse_blocks: [2, 4, 8]
+  gif_frames: 240
+  gif_stride: 4

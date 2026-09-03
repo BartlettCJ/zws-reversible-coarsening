@@ -1,0 +1,114 @@
+% zws_companion_style.sty — house style for the ZWSLab companion paper,
+% reproducing the typesetting of Zero Without Stasis (C:\MathUniPapers\repo\paper:
+% build.ps1 flags + preamble.tex + titleblock.tex + colophon.tex), 2026-09-03.
+%
+% ZWS is built by pandoc + Tectonic: A4, 11pt, 2.6 cm margins, Latin Modern through
+% fontspec/unicode-math, sans slate-coloured headings (titlesec), a small-caps running
+% head with a centred page number (fancyhdr), MidnightBlue links, small bold-label
+% captions, no paragraph indent with 6pt paragraph skip, Okabe-Ito boxed asides
+% (no green: the author is deuteranope), a left-aligned sans title block with a thin
+% slate-blue rule, and a closing plate. Everything here mirrors those settings so that
+% the two papers read as a pair.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{zws_companion_style}[2026/09/03 Zero Without Stasis house style for the companion paper]
+
+% ---- page and fonts (build.ps1: -V papersize=a4 -V fontsize=11pt -V geometry:margin=2.6cm) ----
+\RequirePackage[a4paper,margin=2.6cm]{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\RequirePackage{microtype}
+\RequirePackage{xurl}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs,array}
+\RequirePackage[dvipsnames,svgnames,x11names]{xcolor}
+\definecolor{slatedark}{RGB}{35,50,64}
+\definecolor{slateblue}{RGB}{53,92,125}
+
+% ---- headings (preamble.tex) ----
+\RequirePackage{titlesec}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\titleformat{\section}{\sffamily\Large\bfseries\color{slatedark}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{slateblue}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\color{slateblue}}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{18pt plus 4pt minus 2pt}{8pt plus 2pt}
+\titlespacing*{\subsection}{0pt}{14pt plus 3pt minus 2pt}{6pt plus 2pt}
+
+% ---- running head and page number (preamble.tex) ----
+\RequirePackage{fancyhdr}
+\newcommand{\zwsrunninghead}{}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\footnotesize\scshape\zwsrunninghead}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ---- captions, paragraphs, floats ----
+\RequirePackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=6pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}
+% No stranded single lines: a paragraph may not leave one line alone at the top or bottom of a
+% page (or under a top float). Requested by the author on the v0.2.5 proof ("four words floating").
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\setlength{\@fptop}{0pt}
+\AtBeginDocument{\setkeys{Gin}{keepaspectratio}}
+
+% ---- citations and links (build.ps1: colorlinks, MidnightBlue) ----
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage[colorlinks=true,linkcolor=MidnightBlue,urlcolor=MidnightBlue,citecolor=MidnightBlue]{hyperref}
+\hypersetup{pdflang={en-GB},pdfcreator={Tectonic}}
+
+% ---- boxed asides (preamble.tex speculation boxes; Okabe-Ito, green deliberately absent) ----
+\RequirePackage[most]{tcolorbox}
+\definecolor{specSigned}{HTML}{0072B2}
+\definecolor{specWild}{HTML}{D55E00}
+\newtcolorbox{sigbox}[2][]{enhanced,#1,
+  colback=specSigned!4,colframe=specSigned,boxrule=0.7pt,
+  left=7pt,right=7pt,top=6pt,bottom=6pt,arc=2pt,
+  fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=specSigned,
+  title={#2\hfill\normalfont\scriptsize\textsc{significance}},
+  fontupper=\footnotesize}
+\newtcolorbox{corrbox}[2][]{enhanced,#1,
+  colback=specWild!5,colframe=specWild,boxrule=0.7pt,
+  left=7pt,right=7pt,top=6pt,bottom=6pt,arc=2pt,
+  fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=specWild,
+  title={#2\hfill\normalfont\scriptsize\textsc{withdrawn inference}},
+  fontupper=\footnotesize}
+
+% ---- title block (titleblock.tex) and front notice (speculation_boxes.lua, Pandoc()) ----
+% #1 title, #2 subtitle, #3 meta lines (author / version+DOI / status). ZWS sets its short title at
+% 23/26pt; a document with a long title may lower \zwstitlesize (the companion uses 20/23pt).
+\newcommand{\zwstitlesize}{\fontsize{23}{26}}
+\newcommand{\zwstitleblock}[3]{%
+  \thispagestyle{fancy}%
+  \vspace*{-14pt}%
+  {\raggedright\noindent\sffamily\zwstitlesize\selectfont\bfseries\color{slatedark}#1\par}%
+  \vspace{4pt}{\color{slateblue}\hrule height 0.8pt}\vspace{7pt}%
+  {\raggedright\noindent\sffamily\itshape\fontsize{13}{16}\selectfont\color{slateblue}#2\par}%
+  \vspace{8pt}%
+  {\small\noindent #3\par}%
+  \vspace{4pt}}
+\newenvironment{frontnotice}{\begingroup\small\itshape\setlength{\parskip}{3pt plus 1pt}}{\par\endgroup}
+
+% ---- closing plate (colophon.tex) ----
+% #1 image, #2 image width, #3 motto, #4 description (small grey, may be empty), #5 version line
+\newcommand{\zwscolophon}[5]{%
+  \clearpage\thispagestyle{fancy}%
+  \vspace*{\fill}%
+  \begin{center}\includegraphics[width=#2]{#1}\end{center}%
+  \begin{center}{\small\itshape #3}\end{center}%
+  \begin{center}\parbox{0.86\linewidth}{\centering\footnotesize\textcolor{gray}{#4}}\end{center}%
+  \vspace{\fill}%
+  \begin{center}{\footnotesize\textcolor{gray}{#5}}\end{center}}

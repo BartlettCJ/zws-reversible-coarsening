@@ -1,0 +1,89 @@
+# Native Windows profile for an NVIDIA RTX 3060 12 GB and approximately
+# 64 GB system RAM. Search candidates are deliberately chunked so the worker
+# can checkpoint and yield within one generation when another application
+# needs the GPU or CPU.
+run:
+  name: rtx3060_12gb_windows
+  output_root: results
+  seed: 260824
+  device: auto
+  deterministic: true
+search:
+  population: 128
+  generations: 90
+  elites: 16
+  random_injection: 10
+  mutation_swaps: [1, 2, 4, 8, 16, 24]
+  novelty_weight: 0.09
+  novelty_k: 10
+  replicates: 2
+  save_top: 12
+  checkpoint_every: 10
+resilience:
+  # Eight candidates x two replicates per CUDA batch. This gives responsive
+  # pause/yield boundaries while retaining the original scientific dimensions.
+  candidate_batch: 8
+  checkpoint_every_chunks: 1
+  checkpoint_keep: 6
+  archive_improvements: true
+  archive_novelty_champions: true
+  archive_metric_champions: true
+  max_archived_rules: 96
+  # An explicit pause checkpoints and exits the worker, fully releasing CUDA.
+  manual_pause_mode: exit
+resources:
+  enabled: true
+  # The worker first sleeps and releases cached CUDA allocations. If contention
+  # lasts five minutes it exits with a resumable checkpoint; the managed
+  # supervisor restarts it only after the machine is stably quiet.
+  mode: hibernate
+  gpu_index: 0
+  poll_seconds: 5
+  sample_interval_seconds: 0.75
+  busy_confirm_samples: 1
+  idle_confirm_samples: 3
+  hibernate_after_seconds: 300
+  cpu_busy_percent: 78
+  cpu_resume_percent: 55
+  min_available_ram_gib: 10
+  yield_for_external_gpu_processes: true
+  external_gpu_memory_mib: 1536
+  gpu_driver_allowance_mib: 768
+  yield_for_gpu_utilization: true
+  gpu_busy_utilization_percent: 38
+  gpu_resume_utilization_percent: 18
+  gpu_busy_temperature_c: 83
+  gpu_resume_temperature_c: 76
+  # Set this true to run only after no keyboard/mouse input for 90 seconds.
+  yield_when_user_active: false
+  required_user_idle_seconds: 90
+  release_cuda_cache: true
+  below_normal_priority: true
+  leave_logical_cores: 4
+evaluation:
+  height: 128
+  width: 128
+  steps: 192
+  burn_in: 48
+  sample_every: 4
+  positive_fraction: 0.12
+  bound_fraction: 0.08
+  localized: false
+analysis:
+  holdout_replicates: 12
+  steps: 1024
+  cycle_height: 4
+  cycle_width: 4
+  cycle_max_ticks: 500000
+  window_points: 10
+  coarse_blocks: [2, 4, 8]
+  gif_frames: 200
+  gif_stride: 3
+visualization:
+  save_explorer: true
+  auto_capture_events: 24
+  event_min_separation: 16
+  event_scan_stride: 1
+  capture_padding: 12
+  contact_sheet_columns: 4
+  trajectory_binary: true

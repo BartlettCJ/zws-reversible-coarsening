@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZWSLab Trajectory Explorer</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0f15;--panel:#131a24;--line:#263345;--text:#e7edf5;--muted:#93a4b8;--accent:#e8c85f}
+*{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;overflow:hidden}
+body{display:grid;grid-template-rows:auto 1fr auto}.toolbar{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;padding:.55rem .7rem;background:var(--panel);border-bottom:1px solid var(--line);z-index:5}
+button,select,input{background:#1b2532;color:var(--text);border:1px solid #34465d;border-radius:.4rem;padding:.38rem .55rem;font:inherit}button:hover{background:#263447}button:active{transform:translateY(1px)}button.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+#timeline{min-width:220px;flex:1;padding:0}.small{font-size:.84rem;color:var(--muted)}#viewport{position:relative;overflow:hidden;cursor:grab;touch-action:none;background:radial-gradient(circle at center,#101722,#070a0f 70%)}#viewport.dragging{cursor:grabbing}#canvas{position:absolute;inset:0;width:100%;height:100%}.hud{position:absolute;pointer-events:none;background:rgba(6,9,13,.76);border:1px solid rgba(75,94,118,.65);border-radius:.45rem;padding:.45rem .55rem;font:12px/1.42 ui-monospace,SFMono-Regular,Consolas,monospace;backdrop-filter:blur(5px)}#info{left:.65rem;top:.65rem}#eventInfo{right:.65rem;top:.65rem;max-width:min(430px,45vw);white-space:normal}.footer{display:flex;align-items:center;gap:1rem;padding:.42rem .7rem;background:var(--panel);border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}.legend{display:flex;gap:.75rem;align-items:center}.swatch{display:inline-block;width:.72rem;height:.72rem;border-radius:2px;margin-right:.25rem;vertical-align:-.05rem}.spacer{flex:1}.kbd{border:1px solid #45566b;border-bottom-width:2px;border-radius:4px;padding:0 .25rem;color:#c8d3df;background:#17202b}@media(max-width:900px){.hide-small{display:none}#eventInfo{max-width:60vw}}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button id="play" title="Space">▶</button><button id="prev" title="J or ←">◀</button><button id="next" title="K or →">▶</button>
+  <span id="frameLabel" class="small">0 / 0</span><input id="timeline" type="range" min="0" max="0" value="0" step="1">
+  <label class="small">Speed <select id="speed"><option>.25</option><option>.5</option><option selected>1</option><option>2</option><option>4</option><option>8</option><option>16</option></select>×</label>
+  <select id="eventSelect" title="Jump to automated review candidate"><option value="">Events</option></select>
+  <button id="fit" title="Double-click or F">Fit</button><button id="grid">Grid</button><button id="diff">Changes</button>
+  <button id="fullCapture">Frame PNG</button><button id="viewCapture">Viewport PNG</button><button id="bookmark">Bookmark</button><button id="fullscreen">⛶</button>
+</div>
+<div id="viewport">
+  <canvas id="canvas"></canvas>
+  <div id="info" class="hud"></div><div id="eventInfo" class="hud" hidden></div>
+</div>
+<div class="footer">
+  <div class="legend"><span><i class="swatch" style="background:#0f1218"></i>empty</span><span><i class="swatch" style="background:#ef5250"></i>+1</span><span><i class="swatch" style="background:#4895ef"></i>−1</span><span><i class="swatch" style="background:#ecc85f"></i>bound 0</span></div>
+  <div class="spacer"></div><span class="hide-small">Wheel: zoom · drag: pan · <span class="kbd">F</span> fit · <span class="kbd">G</span> grid · <span class="kbd">D</span> changes · <span class="kbd">E</span> next event</span>
+</div>
+<script>
+(() => {
+'use strict';
+const palette=[[15,18,24],[239,82,80],[72,149,239],[236,200,95]], charges=[0,1,-1,0];
+const viewport=document.getElementById('viewport'), canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d',{alpha:false});
+const frameCanvas=document.createElement('canvas'), fctx=frameCanvas.getContext('2d',{alpha:false});
+const ui={play:$('#play'),prev:$('#prev'),next:$('#next'),timeline:$('#timeline'),label:$('#frameLabel'),speed:$('#speed'),events:$('#eventSelect'),fit:$('#fit'),grid:$('#grid'),diff:$('#diff'),fullCapture:$('#fullCapture'),viewCapture:$('#viewCapture'),bookmark:$('#bookmark'),fullscreen:$('#fullscreen'),info:$('#info'),eventInfo:$('#eventInfo')};
+function $(q){return document.querySelector(q)}
+let meta, data, frame=0, playing=false, fpsBase=20, lastAdvance=0, transform={scale:1,x:0,y:0}, dragging=false, dragStart=null, showGrid=false, showDiff=false, hover=null;
+async function load(){
+  meta=await fetch('trajectory.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.statusText);return r.json()});
+  data=new Uint8Array(await fetch(meta.binary,{cache:'no-store'}).then(r=>r.arrayBuffer()));
+  frameCanvas.width=meta.width;frameCanvas.height=meta.height;ui.timeline.max=meta.frames-1;fpsBase=meta.fps||20;
+  (meta.events||[]).forEach(e=>{const o=document.createElement('option');o.value=e.frame;o.textContent=`E${String(e.event_id).padStart(2,'0')} · t=${e.tick} · ${e.reasons.join(', ')}`;ui.events.appendChild(o)});
+  fit();render();requestAnimationFrame(loop);
+}
+function resize(){const dpr=devicePixelRatio||1,w=viewport.clientWidth,h=viewport.clientHeight;if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);render()}}
+new ResizeObserver(resize).observe(viewport);
+function frameOffset(i){return i*meta.width*meta.height}
+function tickAt(i){return Array.isArray(meta.ticks)?meta.ticks[i]:i}
+function renderFramePixels(){const image=fctx.createImageData(meta.width,meta.height), offset=frameOffset(frame), prev=frameOffset(Math.max(0,frame-1)), contiguous=frame>0&&tickAt(frame)===tickAt(frame-1)+1;for(let i=0;i<meta.width*meta.height;i++){const s=data[offset+i], p=palette[s], j=i*4, changed=showDiff&&contiguous&&s!==data[prev+i];image.data[j]=changed?255:p[0];image.data[j+1]=changed?255:p[1];image.data[j+2]=changed?255:p[2];image.data[j+3]=255}fctx.putImageData(image,0,0)}
+function render(){if(!meta||!data)return;resize();renderFramePixels();const w=viewport.clientWidth,h=viewport.clientHeight;ctx.save();ctx.setTransform(devicePixelRatio||1,0,0,devicePixelRatio||1,0,0);ctx.fillStyle='#080b10';ctx.fillRect(0,0,w,h);ctx.translate(transform.x,transform.y);ctx.scale(transform.scale,transform.scale);ctx.imageSmoothingEnabled=false;ctx.drawImage(frameCanvas,0,0);if(showGrid&&transform.scale>=5){ctx.lineWidth=1/transform.scale;ctx.strokeStyle='rgba(255,255,255,.16)';ctx.beginPath();for(let x=0;x<=meta.width;x++){ctx.moveTo(x,0);ctx.lineTo(x,meta.height)}for(let y=0;y<=meta.height;y++){ctx.moveTo(0,y);ctx.lineTo(meta.width,y)}ctx.stroke()}ctx.restore();
+ ui.timeline.value=frame;ui.label.textContent=`${frame} / ${meta.frames-1} · tick ${tickAt(frame)}`;const event=(meta.events||[]).find(e=>e.frame===frame);ui.eventInfo.hidden=!event;if(event)ui.eventInfo.textContent=`Review candidate E${event.event_id}: ${event.reasons.join(' · ')} | score ${event.score.toFixed(2)}`;
+ const context=meta.context||{},origin=(context.frame_origins||[])[frame];let inspect=`${meta.rule_name||'rule'}\n${meta.width}×${meta.height}${context.sparse_observation?` local clip of ${context.world_width}×${context.world_height}`:''} · zoom ${transform.scale.toFixed(2)}×`;if(hover){const s=data[frameOffset(frame)+hover.y*meta.width+hover.x],gx=origin?(origin[0]+hover.x)%context.world_width:hover.x,gy=origin?(origin[1]+hover.y)%context.world_height:hover.y;inspect+=`\ncell (${gx}, ${gy}) = ${meta.states[s]} · Q=${charges[s]}`}ui.info.textContent=inspect;
+}
+function fit(){const pad=28;transform.scale=Math.max(.05,Math.min((viewport.clientWidth-pad*2)/meta.width,(viewport.clientHeight-pad*2)/meta.height));transform.x=(viewport.clientWidth-meta.width*transform.scale)/2;transform.y=(viewport.clientHeight-meta.height*transform.scale)/2;render()}
+function setFrame(v){frame=Math.max(0,Math.min(meta.frames-1,Math.round(v)));render()}
+function togglePlay(){playing=!playing;ui.play.textContent=playing?'❚❚':'▶';lastAdvance=performance.now()}
+function loop(now){if(playing){const speed=parseFloat(ui.speed.value), interval=1000/(fpsBase*speed);if(now-lastAdvance>=interval){const count=Math.max(1,Math.floor((now-lastAdvance)/interval));setFrame((frame+count)%meta.frames);lastAdvance=now}}requestAnimationFrame(loop)}
+viewport.addEventListener('pointerdown',e=>{dragging=true;viewport.classList.add('dragging');viewport.setPointerCapture(e.pointerId);dragStart={x:e.clientX,y:e.clientY,ox:transform.x,oy:transform.y}});
+viewport.addEventListener('pointermove',e=>{if(dragging){transform.x=dragStart.ox+(e.clientX-dragStart.x);transform.y=dragStart.oy+(e.clientY-dragStart.y);render()}const r=viewport.getBoundingClientRect(),x=Math.floor((e.clientX-r.left-transform.x)/transform.scale),y=Math.floor((e.clientY-r.top-transform.y)/transform.scale);hover=(x>=0&&x<meta.width&&y>=0&&y<meta.height)?{x,y}:null;render()});
+viewport.addEventListener('pointerup',e=>{dragging=false;viewport.classList.remove('dragging');try{viewport.releasePointerCapture(e.pointerId)}catch{}});
+viewport.addEventListener('wheel',e=>{e.preventDefault();const r=viewport.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,wx=(mx-transform.x)/transform.scale,wy=(my-transform.y)/transform.scale,factor=Math.exp(-e.deltaY*.0015),next=Math.max(.05,Math.min(160,transform.scale*factor));transform.x=mx-wx*next;transform.y=my-wy*next;transform.scale=next;render()},{passive:false});
+viewport.addEventListener('dblclick',fit);ui.play.onclick=togglePlay;ui.prev.onclick=()=>setFrame(frame-1);ui.next.onclick=()=>setFrame(frame+1);ui.timeline.oninput=e=>setFrame(+e.target.value);ui.events.onchange=e=>{if(e.target.value!=='')setFrame(+e.target.value)};ui.fit.onclick=fit;ui.grid.onclick=()=>{showGrid=!showGrid;ui.grid.classList.toggle('active',showGrid);render()};ui.diff.onclick=()=>{showDiff=!showDiff;ui.diff.classList.toggle('active',showDiff);render()};
+function downloadCanvas(c,name){c.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},'image/png')}
+ui.fullCapture.onclick=()=>{renderFramePixels();const out=document.createElement('canvas');out.width=meta.width*6;out.height=meta.height*6;const o=out.getContext('2d');o.imageSmoothingEnabled=false;o.drawImage(frameCanvas,0,0,out.width,out.height);downloadCanvas(out,`zws_${safe(meta.rule_name)}_t${String(tickAt(frame)).padStart(6,'0')}.png`)};
+ui.viewCapture.onclick=()=>downloadCanvas(canvas,`zws_view_${safe(meta.rule_name)}_t${String(tickAt(frame)).padStart(6,'0')}.png`);
+ui.bookmark.onclick=()=>{const b={schema:'zws-viewer-bookmark-v1',rule:meta.rule_name,frame,tick:tickAt(frame),zoom:transform.scale,pan:[transform.x,transform.y],hover,created_utc:new Date().toISOString()};const blob=new Blob([JSON.stringify(b,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`bookmark_t${String(tickAt(frame)).padStart(6,'0')}.json`;a.click();localStorage.setItem(`zws:${meta.rule_sha256||meta.rule_name}:${tickAt(frame)}`,JSON.stringify(b));setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ui.fullscreen.onclick=()=>viewport.requestFullscreen?.();function safe(s){return String(s||'rule').replace(/[^a-z0-9_-]+/gi,'_')}
+window.addEventListener('keydown',e=>{if(['INPUT','SELECT'].includes(document.activeElement.tagName))return;if(e.code==='Space'){e.preventDefault();togglePlay()}else if(e.key==='ArrowLeft'||e.key.toLowerCase()==='j')setFrame(frame-1);else if(e.key==='ArrowRight'||e.key.toLowerCase()==='k')setFrame(frame+1);else if(e.key.toLowerCase()==='f')fit();else if(e.key.toLowerCase()==='g')ui.grid.click();else if(e.key.toLowerCase()==='d')ui.diff.click();else if(e.key.toLowerCase()==='e'){const events=meta.events||[],next=events.find(x=>x.frame>frame)||events[0];if(next)setFrame(next.frame)}});
+load().catch(err=>{ui.info.textContent='Failed to load trajectory: '+err+'\nLaunch with: zwslab explore <analysis-directory>';console.error(err)});
+})();
+</script>
+</body>
+</html>

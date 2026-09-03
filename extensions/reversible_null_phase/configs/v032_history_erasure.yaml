@@ -1,0 +1,39 @@
+schema: zws-reversible-null-phase-history-erasure-v1
+name: v032_history_erasure_20260829
+rule_path: ../rules/winner_d1fe99.json
+rule_sha256_uint8: d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c
+device: auto
+output_root: C:/ZWSlab/results/reversible_null_phase_v032_history_erasure_20260829
+lattice_size: 1024
+initial_arrangement: homogeneous
+initial_densities: [0.20, 0.24]
+source_seeds: [6201, 6202, 6203, 6204, 6205, 6206, 6207, 6208]
+source_horizon: 524288
+branch_horizon: 262144
+observation_every: 2048
+topology_every: 2048
+checkpoint_every: 8192
+persistence_followups: 2
+post_persistent_capture: 16384
+fixed_elapsed_phases: [0, 8192, 16384, 32768, 65536, 131072, 262144]
+event_relative_phases: [-16384, -8192, 0, 8192, 16384]
+block_sizes: [2, 4, 8, 16, 32, 64, 128, 256]
+mutual_information_offsets: [1, 2, 4, 8, 16, 32, 64, 128, 256]
+angular_bins: 16
+anisotropy_k_min: 1
+anisotropy_k_max: 32
+branch_a_occupancy_fraction: 0.35
+branch_b_lead_phases: 32768
+branch_b_minimum_hit_phase: 49152
+equivalence_margin_phases: 8192
+bootstrap_replicates: 10000
+bootstrap_confidence_equivalence: 0.90
+bootstrap_confidence_directional: 0.95
+extra_intervention_subset_seeds: [6201, 6202]
+resource:
+  enabled: true
+  max_cpu_percent: 82
+  min_available_ram_gib: 10
+  max_gpu_temperature_c: 83
+  max_external_gpu_memory_mib: 1536
+  sleep_seconds: 30

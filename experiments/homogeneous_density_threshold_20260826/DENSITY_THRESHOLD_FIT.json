@@ -1,0 +1,41 @@
+{
+  "bootstrap": {
+    "intervals_valid": true,
+    "method": "blocked nonparametric bootstrap by seed within stage",
+    "minimum_successful_replicates": 1800,
+    "percentile_intervals": {
+      "occupancy_p25": {
+        "lower_95": 0.26340235763415004,
+        "upper_95": 0.2727699870162039
+      },
+      "occupancy_p50": {
+        "lower_95": 0.2708540067613149,
+        "upper_95": 0.2784203033399801
+      },
+      "occupancy_p75": {
+        "lower_95": 0.277592765019068,
+        "upper_95": 0.2848484533183824
+      },
+      "width_p25_to_p75": {
+        "lower_95": 0.010480740675156638,
+        "upper_95": 0.016284535479733995
+      }
+    },
+    "requested_replicates": 2000,
+    "seed": 484553383,
+    "successful_replicates": 2000
+  },
+  "model": "binomial logistic MAP; density centered 0.20 scaled 0.10",
+  "point_estimate": {
+    "intercept_centered_scaled": -12.398826311316878,
+    "negative_log_posterior": 23.86848099093509,
+    "occupancy_p25": 0.26810208185874823,
+    "occupancy_p50": 0.27472299929128063,
+    "occupancy_p75": 0.28134391672381304,
+    "slope_centered_scaled": 16.593052244844365,
+    "width_p25_to_p75": 0.013241834865064805
+  },
+  "positive_slope_constrained": true,
+  "schema": "zwslab-density-threshold-logistic-fit-v1",
+  "weak_normal_prior_sd": 10.0
+}

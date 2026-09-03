@@ -1,0 +1,109 @@
+schema: zws-reversible-null-phase-study-v1
+name: rtx3060_balanced
+rule_path: ../rules/winner_d1fe99.json
+device: auto
+output_root: results/reversible_null_phase_balanced
+low_k_max: 8
+criterion:
+  min_peak_scale_ratio: 4.0
+  min_final_scale_ratio: 2.0
+  min_peak_largest_finite_empty_fraction: 0.001
+  initial_scale_floor: 1.0
+resource:
+  enabled: true
+  max_cpu_percent: 82
+  min_available_ram_gib: 10
+  max_gpu_temperature_c: 83
+  max_external_gpu_memory_mib: 1536
+  sleep_seconds: 30
+stages:
+  precursor_512:
+    enabled: true
+    sizes: [512]
+    densities: [0.08, 0.10, 0.11, 0.12, 0.13, 0.14, 0.16]
+    seeds: [3101, 3102, 3103, 3104, 3105, 3106, 3107, 3108]
+    steps: 8192
+    sample_every: 64
+    topology_every: 1024
+    checkpoint_every: 2048
+    batch_size: 4
+    arrangements: [homogeneous]
+    rule_variants: [winner, rotation]
+    early_fit_start: 256
+    early_fit_end: 4096
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16], [16, 32]]
+  onset_512:
+    enabled: true
+    sizes: [512]
+    densities: [0.2600, 0.2650, 0.2700, 0.2725, 0.2750, 0.2775, 0.2800, 0.2850, 0.2900]
+    seeds: [3201, 3202, 3203, 3204, 3205, 3206, 3207, 3208, 3209, 3210, 3211, 3212]
+    steps: 65536
+    sample_every: 256
+    topology_every: 1024
+    checkpoint_every: 4096
+    batch_size: 4
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 256
+    early_fit_end: 4096
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16]]
+  onset_1024:
+    enabled: true
+    sizes: [1024]
+    densities: [0.2675, 0.2700, 0.2725, 0.2750, 0.2775, 0.2800, 0.2825]
+    seeds: [3301, 3302, 3303, 3304, 3305, 3306, 3307, 3308]
+    steps: 65536
+    sample_every: 256
+    topology_every: 1024
+    checkpoint_every: 4096
+    batch_size: 2
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 256
+    early_fit_end: 4096
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16]]
+  horizon_1024:
+    enabled: true
+    sizes: [1024]
+    densities: [0.2600, 0.2700, 0.2750, 0.2800]
+    seeds: [3401, 3402, 3403, 3404, 3405, 3406]
+    steps: 131072
+    sample_every: 512
+    topology_every: 2048
+    checkpoint_every: 4096
+    batch_size: 2
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 512
+    early_fit_end: 8192
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16]]
+  hysteresis_1024:
+    enabled: true
+    sizes: [1024]
+    densities: [0.20, 0.24, 0.26, 0.27, 0.275, 0.28]
+    seeds: [3501, 3502, 3503, 3504, 3505, 3506, 3507, 3508]
+    steps: 65536
+    sample_every: 256
+    topology_every: 1024
+    checkpoint_every: 4096
+    batch_size: 2
+    arrangements: [homogeneous, slab, droplet]
+    rule_variants: [winner]
+    early_fit_start: 256
+    early_fit_end: 4096
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16]]
+  ablation_512:
+    enabled: true
+    sizes: [512]
+    densities: [0.28, 0.30]
+    seeds: [3601, 3602, 3603, 3604, 3605, 3606, 3607, 3608]
+    steps: 32768
+    sample_every: 256
+    topology_every: 1024
+    checkpoint_every: 4096
+    batch_size: 4
+    arrangements: [homogeneous]
+    rule_variants: [winner, single_ablations, qm_sibling, rotation]
+    early_fit_start: 256
+    early_fit_end: 4096
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16]]

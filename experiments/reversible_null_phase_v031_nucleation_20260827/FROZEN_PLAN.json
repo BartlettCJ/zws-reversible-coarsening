@@ -1,0 +1,7307 @@
+{
+  "analysis_contract": {
+    "event_time_field": "T_hit",
+    "fixed_readout_phases": [
+      32768,
+      65536,
+      131072,
+      262144
+    ],
+    "maximum_stage2_phase": 524288,
+    "persistence_followups": 2,
+    "persistent_time_field": "T_persistent",
+    "representative_selection": [
+      "earliest",
+      "nearest_median",
+      "latest"
+    ],
+    "right_censoring": true,
+    "stage2_requires_committed_addendum": true
+  },
+  "base_commit": "1c41b98c694c5d58b1c5207635aa3969b6ae66b3",
+  "branch": "followup/v0.3.1-low-density-nucleation-20260827",
+  "config": {
+    "criterion": {
+      "initial_scale_floor": 1.0,
+      "min_final_scale_ratio": 2.0,
+      "min_peak_largest_finite_empty_fraction": 0.001,
+      "min_peak_scale_ratio": 4.0
+    },
+    "device": "auto",
+    "low_k_max": 8.0,
+    "name": "v031_low_density_nucleation_20260827",
+    "nucleation": {
+      "area_stage": "area_scaling_512",
+      "event_crop_fraction": 0.25,
+      "event_window_after": 16384,
+      "event_window_before": 16384,
+      "fixed_readout_phases": [
+        32768,
+        65536,
+        131072,
+        262144
+      ],
+      "homogeneous_comparator_reused_from_primary": true,
+      "observation_every": 2048,
+      "persistence_followups": 2,
+      "positive_control": {
+        "action_if_failed": "stop_and_investigate",
+        "density": 0.26,
+        "minimum_events": 2,
+        "phase": 131072
+      },
+      "primary_stage": "primary_homogeneous_1024",
+      "representative_selection": [
+        "earliest",
+        "nearest_median",
+        "latest"
+      ],
+      "schema": "zws-reversible-null-phase-nucleation-v1",
+      "seeded_stage": "seeded_basin_1024",
+      "stage2": {
+        "event_density_ceiling": 0.24,
+        "lower_density_event_fraction_exclusive_max": 0.25,
+        "maximum_optional_new_seeds": 4,
+        "maximum_phase": 524288,
+        "minimum_events": 2,
+        "require_exact_continuation": true
+      }
+    },
+    "output_root": "results/reversible_null_phase_v031_nucleation_20260827",
+    "resource": {
+      "enabled": true,
+      "max_cpu_percent": 82,
+      "max_external_gpu_memory_mib": 1536,
+      "max_gpu_temperature_c": 83,
+      "min_available_ram_gib": 10,
+      "sleep_seconds": 30
+    },
+    "rule_path": "C:\\ZWSlab\\ZWSLab\\extensions\\reversible_null_phase\\rules\\winner_d1fe99.json",
+    "schema": "zws-reversible-null-phase-study-v1",
+    "stages": {
+      "area_scaling_512": {
+        "arrangements": [
+          "homogeneous"
+        ],
+        "batch_size": 4,
+        "checkpoint_every": 8192,
+        "densities": [
+          0.22,
+          0.24,
+          0.26
+        ],
+        "early_fit_end": 32768,
+        "early_fit_start": 2048,
+        "enabled": true,
+        "rule_variants": [
+          "winner"
+        ],
+        "sample_every": 2048,
+        "seeds": [
+          5101,
+          5102,
+          5103,
+          5104,
+          5105,
+          5106,
+          5107,
+          5108
+        ],
+        "shells": [
+          [
+            1.0,
+            2.0
+          ],
+          [
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            8.0
+          ],
+          [
+            8.0,
+            16.0
+          ],
+          [
+            16.0,
+            32.0
+          ]
+        ],
+        "sizes": [
+          512
+        ],
+        "steps": 262144,
+        "topology_every": 2048
+      },
+      "primary_homogeneous_1024": {
+        "arrangements": [
+          "homogeneous"
+        ],
+        "batch_size": 2,
+        "checkpoint_every": 8192,
+        "densities": [
+          0.16,
+          0.18,
+          0.2,
+          0.22,
+          0.24,
+          0.25,
+          0.26
+        ],
+        "early_fit_end": 32768,
+        "early_fit_start": 2048,
+        "enabled": true,
+        "rule_variants": [
+          "winner"
+        ],
+        "sample_every": 2048,
+        "seeds": [
+          5101,
+          5102,
+          5103,
+          5104,
+          5105,
+          5106,
+          5107,
+          5108,
+          5109,
+          5110,
+          5111,
+          5112
+        ],
+        "shells": [
+          [
+            1.0,
+            2.0
+          ],
+          [
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            8.0
+          ],
+          [
+            8.0,
+            16.0
+          ],
+          [
+            16.0,
+            32.0
+          ]
+        ],
+        "sizes": [
+          1024
+        ],
+        "steps": 262144,
+        "topology_every": 2048
+      },
+      "seeded_basin_1024": {
+        "arrangements": [
+          "droplet",
+          "slab"
+        ],
+        "batch_size": 2,
+        "checkpoint_every": 8192,
+        "densities": [
+          0.2,
+          0.22,
+          0.24,
+          0.26
+        ],
+        "early_fit_end": 32768,
+        "early_fit_start": 2048,
+        "enabled": true,
+        "rule_variants": [
+          "winner"
+        ],
+        "sample_every": 2048,
+        "seeds": [
+          5101,
+          5102,
+          5103,
+          5104,
+          5105,
+          5106
+        ],
+        "shells": [
+          [
+            1.0,
+            2.0
+          ],
+          [
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            8.0
+          ],
+          [
+            8.0,
+            16.0
+          ],
+          [
+            16.0,
+            32.0
+          ]
+        ],
+        "sizes": [
+          1024
+        ],
+        "steps": 262144,
+        "topology_every": 2048
+      }
+    }
+  },
+  "config_path": "C:\\ZWSlab\\ZWSLab\\extensions\\reversible_null_phase\\configs\\v031_nucleation.yaml",
+  "config_sha256": "3c876898f065911d2d632309df4617ef268078129cdd13b92fbf114bb92ce486",
+  "frozen_utc": "2026-08-28T10:35:56.241700+00:00",
+  "schema": "zws-reversible-null-phase-v031-frozen-plan-v1",
+  "stage_task_counts": {
+    "area_scaling_512": 24,
+    "primary_homogeneous_1024": 84,
+    "seeded_basin_1024": 48
+  },
+  "tag_refs": {
+    "discovery-d1fe99b5735d": {
+      "peeled_commit": "74b4243c9518ec6f95b906de1a374bc277a2a5d5",
+      "ref_object": "1712ae575d40db2decc2ca8f0e267a681bee8b66"
+    },
+    "overnight-phase-separation-confirmation-20260825": {
+      "peeled_commit": "970d1f118836d04fb2d5ab64448c418ca05094b2",
+      "ref_object": "eb73e793acff16133e8d5fa58dfa65fda6469364"
+    },
+    "v0.1.4-windows-discovery-freeze": {
+      "peeled_commit": "74b4243c9518ec6f95b906de1a374bc277a2a5d5",
+      "ref_object": "4c17ff8b2408f8ef0d43569029399b4e42013544"
+    }
+  },
+  "task_count": 156,
+  "tasks": [
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a94cdb2152fbc77fd501",
+      "initial_state_sha256": "ef3ad893eaf0de7e3c2995dd73c5d81e8a2cb94a68b87535cbc172b9e14b1d07",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "82ecd05da6cb45b18364",
+      "initial_state_sha256": "766227fdcaf082439f3946b2fc59a5ea167f173ae7ab8c75ab1eba7e213b23b4",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "3ae90035111c135cc44d",
+      "initial_state_sha256": "07b351c22b1aee3216cabe95abedabaa0464babbdfd24c9743d7c234f052cc80",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "db789d05c43f2145d530",
+      "initial_state_sha256": "23642bd555ac87972e968c0bc589a6cbb335958ca8be744efdc25b504f0f7dce",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "8ae90d503bf9e865585e",
+      "initial_state_sha256": "aaced4514596488f46be4577cd65b8d648f0f4150e9cb02de3306e8c0ae4369a",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "97c38be8d44f3f2739e6",
+      "initial_state_sha256": "5142df06171ff3d12fba3d5dff20dd353424ff90d078c49c05986fbe050b83cf",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "19a127a165454ed09c4f",
+      "initial_state_sha256": "88c08a946c8e4d676e851777ac8b394a6f5e5296f8480aa878f5cb19312363f2",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5897d66cb522b18bb19e",
+      "initial_state_sha256": "19626b3dd693669e45ba53a4e47ba56170e3ea1b6d5fa6b38c0d7bc8987d0492",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "8231338de10b4edbeeed",
+      "initial_state_sha256": "aed16ee40be22116405da6d00d3c691829cc4d40ab870d0e8fa042b7faff2905",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "91681f3f77e47b2d47a2",
+      "initial_state_sha256": "2cd0e1d5c21da4c724246b980c74662d54589d4fd933be5a86d096ae8749cf46",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "bccdbc895b0aea65f196",
+      "initial_state_sha256": "b0ca904ac3055b4078ec3861ce4e178e3b77e20d15c1b34dfba708cc6e81b9c7",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.16,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a7566837593b057fd33f",
+      "initial_state_sha256": "b9b81aabb0dad72322d149c6ee54f9eea9eb1aa11f18556cd71b13efff317abe",
+      "inventory": {
+        "bound": 41944,
+        "empty": 880800,
+        "negative": 62916,
+        "positive": 62916
+      },
+      "realized_density": 0.160003662109375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6cb44fd64f458d15fe96",
+      "initial_state_sha256": "eff6fe92dab940f21312aee7612642fb72e32afb9181ad08695860b8d33a529d",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "7efe5fb2e7cecbb56500",
+      "initial_state_sha256": "87351cca7879677372a8ab245c2ca2668ad1c3416d8abf90d029679134ca1772",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "8388b2a2c0a3a7e72605",
+      "initial_state_sha256": "5a1c073f2252e57ddb68aa99493412901bef05ee93531deae0d247f01bd8326f",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "32832a8b971a30b6108e",
+      "initial_state_sha256": "036801512d899477a2ad35bd544dad2749ce1d54d4bd99dfccdaef34421ff341",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "fc6100857be742b7d03f",
+      "initial_state_sha256": "be43a4c726a367c8292812617957474cff4672564173357d3dc62d5a175ac27f",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "bfcbc885b621052ee21c",
+      "initial_state_sha256": "5d10140259ef75d79f62a093cbb86dbe8ebe72cd60c302bdf45c73faff81ced1",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "26c7e09485ca71de80a4",
+      "initial_state_sha256": "6a7be694f85b6f75cb387efadb2bc63e537f9a6add0c5c53a45ad02f3dd314ec",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "66ea544d010f5b0d7a6d",
+      "initial_state_sha256": "ad8c4e55a82af62ed55ca7a7cd66480a5138346a48156374cdc563c04ead2599",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "b960e0a663d533d252f5",
+      "initial_state_sha256": "2ffc4dfa1cb58d85e3495ce4126a1ecabead9301f4773c76a82b846cd118654f",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d8c4b6be329b74c67add",
+      "initial_state_sha256": "30af5cb2c3819721fdfc1cc050f015ff825e7347e7e032e912fa7af68329fd1c",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9ffd5ebb75624debc19e",
+      "initial_state_sha256": "70332462c229dd353d3d30fcf4a909e8c7a6bf17f15cff54d3aa448de385e085",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.18,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d79397e5e72c58cebdce",
+      "initial_state_sha256": "f63fd02937dacd8887d38dee33708a119d238f158c82dd0557a54d509d430262",
+      "inventory": {
+        "bound": 47186,
+        "empty": 859832,
+        "negative": 70779,
+        "positive": 70779
+      },
+      "realized_density": 0.18000030517578125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "e8d9975803d2d4776133",
+      "initial_state_sha256": "f776ff7287d7fd758b22a222801ebb2f06111f531cc8f898252023a478ec7e99",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9e06d320efc219f49d90",
+      "initial_state_sha256": "dbfc70e44a195dfea87e7c5489c31be79d00d844cc4b3930db5f96173d3c9e1d",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "03a37ee4c26741ae015e",
+      "initial_state_sha256": "7dd465d26cb660a7670d6c70505702e216d6f16a9bb0874ea4e540a04d1a01a4",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a26c56c63ab732dd415d",
+      "initial_state_sha256": "0b755967d7b645702581bb735437411ed86f855e52eae7ad4d1d45486942976b",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "df59ea398031dc0c8ba7",
+      "initial_state_sha256": "eae03bed82fdc919900ddb403ea2af9513ab6c7d233205ea56aa38eaa5393a14",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "f08c7be24e0047bf6295",
+      "initial_state_sha256": "a279944b6019d963b1eb08cf76aa2dbbce27108c9dee16a72fac676e744a1578",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "506956062856fa0b2bd7",
+      "initial_state_sha256": "51f7e860d9b01cf35dba0067572f9dda127aef397c9d4c8a3c80039d2644e311",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "eb8efdd8ba3e08852c7c",
+      "initial_state_sha256": "b030fa87223e433cd272919d3c2b3e8de4f50268b1d92447031b2ddfa31520e7",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "fd0cd8d0efeb99342796",
+      "initial_state_sha256": "bb6fad24151436271a73484634aa24c445c6177524cc5c25e35d0389b2fa114b",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9a97c78bea9a664410e9",
+      "initial_state_sha256": "910a4116d5f570080a1f8b7157dc292a6a2227dab83f01bb7825b26455c232f3",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "c51537c244d65d8505a9",
+      "initial_state_sha256": "d5e7ba74bc11c607f06c288f792d8f50fa422dcf25c1f5c02dffe6625a960acc",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "080c49ea306f972502a9",
+      "initial_state_sha256": "ffa123909a762c671156c95331a6d5ea27c61d7b498c05a5f12f42d6fe325c2e",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "57dc174fdbb59b547f9d",
+      "initial_state_sha256": "329fd3fd8912885375294fcdfc9a3131fdd533dd7452cca4314ad5e0d2fc4727",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "59a20095f462996c39cd",
+      "initial_state_sha256": "65c393f870d1efa17b98fbeaaa3c9c4218d663e54f614f357fe7a955448846c0",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "33e439ec80deb7aaa2ef",
+      "initial_state_sha256": "30ad95be0984f1199c6ee979dd2126df1cf1059c50386b06304e2503356e8913",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "c85fc2ba28c79261f255",
+      "initial_state_sha256": "94aff7e2752001ad3285343cd2dda2f509eeb9d76ee4cf9be1c4c58d625a5176",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "811875ae4576e710d017",
+      "initial_state_sha256": "884a1493618dc49b1005dc5842d83e3908b9f44016dd7b6dd9d06254ac376a61",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "57f949d424f96a32d3bf",
+      "initial_state_sha256": "40bbf9a98c6837b0e5572ce5eccf069f8d8b966e92b4ee93b9b87f49801458fc",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "e8c59bb663529263308f",
+      "initial_state_sha256": "bec66a02b13adf780a5fa62112656d363a9a57bf9550951a4414d26631e120ba",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "970bc528851eb7482518",
+      "initial_state_sha256": "eeca8c9a4fb0de341d67231e2e7e4dca4a27855f58a4879d345eb1e623d87673",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "ce7789a7f975b058257d",
+      "initial_state_sha256": "968fc7281493ee97b6c4cab89b4bf0c38112c704a25720e2b86c54d7eee9029e",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9d1815f1d2d05f1d6fd0",
+      "initial_state_sha256": "d60d9adb3f0ccc24803880b9345f14b342697e91a697581dc5b052c9d63b7f83",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "7974063c075894e22e60",
+      "initial_state_sha256": "9311f4953092f173bb09f99b1bec90c2a143dffcede6683b94da47eb2196edf3",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "91dcbf1c6d29fb487a8a",
+      "initial_state_sha256": "4af3b2a1fbb3a454fb3232f7c727468ec51ccc453f86363bc658ae8219b62527",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "db57b8f51220e2644d8b",
+      "initial_state_sha256": "8951c0be6196c8caf02ed95408c5c1280a6c7d3daac17b579d303d3e6538f11a",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "f29b538b5308819d0c37",
+      "initial_state_sha256": "490bf120043d57f948947ad74ae0ee912e0c20982dc6ba74264f838f36c0911e",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "ccaa374e0e59fc0d9de8",
+      "initial_state_sha256": "2d9067b47838dd0e327e3a313988f4ff2f364d05e28fec9c8347635121ff0c47",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "78d075a8e9e747bc62b5",
+      "initial_state_sha256": "4a03de18c16b3fdb41e11624c9f691e3e7a82ac56e9e719f45f9f072914961bb",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "687d9545316f373833a0",
+      "initial_state_sha256": "d81ae3ebc3a7bc080d776ef222ef0cea774b45338fecfe45cfe44e35816d9497",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "b9d04680ed405a7d5a78",
+      "initial_state_sha256": "e909c463169e6490925a283aafb041cb2232622d13111c5681e9945bf52ef17c",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "28fff5ffab5806eabeb8",
+      "initial_state_sha256": "5293c505e2ebc628582c98de04e0650b959be7bba69390b2eff2b9d2d0048b45",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5f46a55ebeafaa4f2c82",
+      "initial_state_sha256": "2d788a7c40d232661d84eecc5e41612cd77831826ae5e380d5c440ed7aa3f686",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "88ee31ff3edb8f6e684c",
+      "initial_state_sha256": "bbfec66c6bd8c1fc8fabb73f03073fd423a3de87345735b8dac617987343218f",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "c6591b2d22bf6566c56e",
+      "initial_state_sha256": "a6bc22b314ff8ba7057d89e063db28589f0815d034cec57bc19d2870784d925e",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "912fa4ffc7e73a547459",
+      "initial_state_sha256": "2a13da68f01928eaea47a921f5fee263ab7ccdcb8ff8a39c20ed32938041bddc",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "b7e01f4b9890bd290555",
+      "initial_state_sha256": "6d1bc287d26db46286dc903757decf00e7180ac1b544b5bdb17c6d42ef259a89",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "0670c7fdb47024d98019",
+      "initial_state_sha256": "ceef49d273cc38a16b13099f195289ca7004bcbd0e920c9b55da05cfd5ecaa42",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a3183bece183fa121056",
+      "initial_state_sha256": "4f636b0122f2d4c2180a6a5457784378959228177efdc9545487cc02575c94d3",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5069f8bee5742ab346be",
+      "initial_state_sha256": "bac883d3b45cca16e04e1ef466272927f99412713971513501c21acfad9e9275",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "40550a0b94d877d4c55e",
+      "initial_state_sha256": "2a98a0b60199c2becab99ecba6174bd0d9a141f9efcf247d9b9c1c12761f5dba",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "74ab20cd05852f3b5219",
+      "initial_state_sha256": "663a907c4792e94bba4b2cbaf0ab18bdc7ac90d035255edff5767d73203c840f",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6e4bc5067037271cf04b",
+      "initial_state_sha256": "68bd44dfa8726d3d86bd2fb95436986487a8618a7311bb0b3fb4449404041f85",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6f1744c3569499ba3796",
+      "initial_state_sha256": "3c555856e39884d391a5839f9548e065c67e930218257947bfa1230b8e682b17",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6cc31cc11b32b58c58c5",
+      "initial_state_sha256": "6bb15f642abd84b8d46f6540992ed1d9c309ab48983a6faec8d755facde95a00",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a619fc388d61ed947d3b",
+      "initial_state_sha256": "d9d427a89fdf951b8d29a17afdb4b472935bf2ecad5f3cb074579e60b99f5fb6",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "b5fd567c85b190af0e44",
+      "initial_state_sha256": "9e0238fe38f064fc9b7a94163c7d9c035c4f124cc9dcee546cdfee1ac87ca273",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "c9a093f8298bdc27f372",
+      "initial_state_sha256": "d8431da733c8d9dc2cf98ec41e22b9ee73c73b5e89f0e3ab554a56052dead75d",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.25,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "356444ad6b4a87ab369a",
+      "initial_state_sha256": "20a8e7efbbfd7b4bf312620ae988fe2df12e4b1d4e4132725fe9cf04d5e39cab",
+      "inventory": {
+        "bound": 65536,
+        "empty": 786432,
+        "negative": 98304,
+        "positive": 98304
+      },
+      "realized_density": 0.25,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "e98b238d26cc7f30c1a8",
+      "initial_state_sha256": "c0b8f58861c50f5bdb4019bf930186a6a80b0a22dd2ce62e9696ab5c993ea174",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5325956a5c51109351b7",
+      "initial_state_sha256": "e008ffa6a7195080d1631ccf3370b64aadfc88fca3831cec8e9b575c604a8da8",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "edfeb829310aa1ee6486",
+      "initial_state_sha256": "51b5f558413a781d8bd7dc6008023df037bd0ddb3152818d5b7726b4ea3340eb",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "43cb2fb7c951f9c43cdf",
+      "initial_state_sha256": "c2e7a3070fcb2376ff05b383fcc8b6e8d8220d5a0c95a90b70e38be00e9944fc",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "01aa8ee66f28395af612",
+      "initial_state_sha256": "72f9def40834ac91e642e3570d1f7ef9c83970cfa840bf26ce7d6e1731fa7302",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "bc74270b73296d21ebc1",
+      "initial_state_sha256": "5e790ce43892b03f21e79168af16a0b147d7df6368d22993d4f0f9dfeb6f656f",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5ff8b8fdd470cb107529",
+      "initial_state_sha256": "e5dc58a6d89dd49a7aa8c4924c3c2e88726101b7bd661365df7420bd1969e858",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a6ee18ebba9629887116",
+      "initial_state_sha256": "7038b572ab842d1792475e48c92a000cc8a9d1bc611f7a91f76c7493f76faa6e",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "cab7122f4e8f82657b47",
+      "initial_state_sha256": "c0ecf95d618ddfb33c3db59b3c3ad16a943f14aba34a276889103c93e2624ef2",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5109,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "b49575285273d2a407c6",
+      "initial_state_sha256": "e5a3f96c86c1507544d31b8110713bb05c9047cc4b9b07a9c2c256c5b5a07061",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5110,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "3f0919c605946a94328a",
+      "initial_state_sha256": "7bd9c50644d7b91238b03de707f43275d09d46379e8e681c109ed6f51ec962d6",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5111,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "feb8a8137668a0cf5d0b",
+      "initial_state_sha256": "9c778a99f480011d807e789801efbfe00b8e461ebeedb8aed7928e60194e6168",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5112,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "primary_homogeneous_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "4d6adf5571369b735dff",
+      "initial_state_sha256": "c8e95d3b34aac7a851730b623defb22a2a3ef12a2111e30ece02a3f272c85320",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "72ca13a823c9af615c2f",
+      "initial_state_sha256": "1cba96514e39230f4042e64e6a2ccb7ffbd317b9a8b07327c645f289eef2a35c",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "26db4b6dacd6efc15346",
+      "initial_state_sha256": "16fed893f764517abb94f13bd5b440e6ae468ae22a794189591978809c536ba7",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "856945f7dbc086fe585a",
+      "initial_state_sha256": "5493cca994ea8db430b4b0c345235e8776988ee3c998cc97776d3dd3ca650e91",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "2f88afab1fc8165adcc9",
+      "initial_state_sha256": "6db8db6e6597f36ae2e80c8606b62bc0ed100a438e22ef4bbbdef5010d5ce6f5",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "77e24959bbb170353b20",
+      "initial_state_sha256": "1384ac8b7329ac76a4e3fedb05c4365c9a7cbc10e2f37a3b953cf6e63bb054f3",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a5e797c9cc37604899d5",
+      "initial_state_sha256": "a7554b7af4d01b0da94b41a60f250434bb72ef04bca7e738d6a63550b9a3f32b",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "0c0f95283c8f179f2a54",
+      "initial_state_sha256": "f0dbaf19ffff04d18a6397731b915b831e6601d1fd9814683fd7ad0aede0b351",
+      "inventory": {
+        "bound": 14418,
+        "empty": 204472,
+        "negative": 21627,
+        "positive": 21627
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "801b033d9e7d07b49ba6",
+      "initial_state_sha256": "1a5ba6f5df497d3fb370ab86572de9579afbfb9ab4565517a7da4fe5ce8990d8",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "cc14b4e253fd1cf97798",
+      "initial_state_sha256": "4560840fe154f35cdb0ee9ae06f644f135a935dac2c9b1f7cb58b3b965251c16",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "cfe5e3a74c60fadf6a6e",
+      "initial_state_sha256": "c22d8f7b427c398f3de503db4ed1da9cad09abecd531076428adb737424a71bb",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "74407c95228bcdf4ffa9",
+      "initial_state_sha256": "5b819cc4ed616aed85388ae2a60b474ddfd8c69d317570c7f669fece7ffef743",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d26e4aaa178bdff19ece",
+      "initial_state_sha256": "94e8dcdf2829c4dd9f06d34ef3688f2a462d35d57b66d786c2f46df1121b1c71",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "7d13184aa1d58cfa6c65",
+      "initial_state_sha256": "68adb0af64371a84f9d8c5f8f3cd11855e4902fb1411875cfd6adb6df7e8baf1",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d93228b2f5e78497d460",
+      "initial_state_sha256": "b451a171da233f9e2cf0acc532209ae1f04f5d076e8de09ac15b6e13d49d10eb",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "601636542c803cfecfb8",
+      "initial_state_sha256": "6564a3756ed4ec193c8d3a291137b52fb84bd2311836804168e273347c3dda17",
+      "inventory": {
+        "bound": 15728,
+        "empty": 199232,
+        "negative": 23592,
+        "positive": 23592
+      },
+      "realized_density": 0.239990234375,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "0144e0df7c5eeb6c78f9",
+      "initial_state_sha256": "4ec8e76f486fe2a1e9d9b27267176b091c07da309457a6c967fa17bdb13919c6",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d9c234b0a67a1bb5ae9c",
+      "initial_state_sha256": "8ea14643de9c91d1f33fa6b626d3561d7c3d90334556cafd8ee38c0d264fc29b",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "332095d80cafae9f0413",
+      "initial_state_sha256": "7fed2b18e423a2d9c9f296d7ffa936f5e14312f558b4b9a8e113665246a95478",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "0f5a3b922496fa8cfa4b",
+      "initial_state_sha256": "9d69589911b5e14162c1047684bca38a3e6ec62e261121f89ca0913aa714ae45",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "92c48a8a69ae7699ba03",
+      "initial_state_sha256": "0a58b6742b2a9c38de445169e544ddf351bff3e062a84ea68650090d9d09d6ea",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "40e186d20c334ac4d391",
+      "initial_state_sha256": "21f69e13f364772de4391ab7f7b59bd071415b51b33e7d17cb13cd5d2bb3a849",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "3d017f0665b81f4f195d",
+      "initial_state_sha256": "3ea456c0ea533e7f5da4aa57ba79768b7d670264b47f3c835ef218cb77a47be0",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5107,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "homogeneous",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "4420f6cd3a17a413e6a9",
+      "initial_state_sha256": "3b732e89c446dc45f7fd42ee6c58a54a7994dc4eab80a9d7ced92adc00523845",
+      "inventory": {
+        "bound": 17040,
+        "empty": 193984,
+        "negative": 25560,
+        "positive": 25560
+      },
+      "realized_density": 0.260009765625,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5108,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 512,
+      "stage": "area_scaling_512",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "f82c3c658d52f9adc20d",
+      "initial_state_sha256": "5944429022863e1d66f6c782c5c37df2305235944974060886dc54eeec1281e6",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5324783c2a97c19bacda",
+      "initial_state_sha256": "ca5263c1c08ffd3d71bb5496984ba60804dafc12b7c25e22c608c6d38c3344f3",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "8c8a7a7431306edd4c36",
+      "initial_state_sha256": "dc6c951491173b241c84b7946fa78d9c5e5fdea6dec7632e3115396496d8623e",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "939dc99b51f550d8709a",
+      "initial_state_sha256": "a3d48025f0756abf7fc7e13cda4f3fcd494bca57d709ff0be7666a44c0667284",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "06ec2a6384017d300586",
+      "initial_state_sha256": "02b35aac471a5a78c2f2fc6e225534a84bc921bbac5dd37012e2b5391c6fa9db",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a32cc56377d95396cab8",
+      "initial_state_sha256": "c96c682b614299636c0696c45e526dc4156bacfdb8ef67012cb01abf55b49e35",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a710902ca8c3389c72c5",
+      "initial_state_sha256": "eaa1fd2140a08880b68176db50c5ed6fe4a0e9af1710ae323c75e26b457a637d",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "33637a42d3d677582d0b",
+      "initial_state_sha256": "be6c861b0a0b8af4504109db7c28601876e6098d5c8c8c5b62a09e903e7bc7fa",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "f6e5783ccd2721ab9574",
+      "initial_state_sha256": "00b797e583f98a71eec6a94f3ea28748acf8b54b2499d9ed6c97864cb9b58042",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9611a7e4de4e02c60429",
+      "initial_state_sha256": "14d1e08b0f1564ab9782ca7e149ae5c079bd72043a58baf77ca51896f8cb224c",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "3b7f4735fcf579d847e4",
+      "initial_state_sha256": "c446abed84868767549f19cc04bbd3b1072b09369645c5f2ab7a5efcaad1c049",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.2,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "13e085fb8a1270c28b6f",
+      "initial_state_sha256": "efe42c265cb77b7728f7169bb6d842f7f448f5552bd5e0272054859a9a8a2083",
+      "inventory": {
+        "bound": 52428,
+        "empty": 838864,
+        "negative": 78642,
+        "positive": 78642
+      },
+      "realized_density": 0.1999969482421875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "a41c05000cfe96977704",
+      "initial_state_sha256": "3d7c218041347a5a21c959917a73efb9945b9fd85c57536d3780bc1352520422",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "91c7c4e792a9e8ac9f06",
+      "initial_state_sha256": "64edb6ef29270380854df5acaeb42b1377f963353d2c1168432cfa156bfd1c62",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "bf6b1e60049263328e0b",
+      "initial_state_sha256": "90c33c4cec78aaed41b42be0fccd73d2f25ea0911c6b6901bfbbf50142131ea5",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "957f3b196787ce7dc090",
+      "initial_state_sha256": "5ef7d69a153fd8577aa361ab3464f900b54092cc6ac93f8880a4b9c5c317947a",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "3a505582948e00bebc02",
+      "initial_state_sha256": "00240bd192a63b83506a2b47b50176ef79123f38d72a35fc37542ba692cbd49b",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "ac432156d628e346ab0c",
+      "initial_state_sha256": "ee79f70e155fe0de4923e848f20e60fa12975f1a9a99e080ccfbf49c0a878572",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "62302ac88d39e4258634",
+      "initial_state_sha256": "a00ad2c5dc801a154221553c6d3906e0e484bfa8cc9b9fc0909e6c6b54e75029",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6f3378185d500d845e62",
+      "initial_state_sha256": "3ced19c6350f90bb930bdde53963ceaea67368b239c6b03e178231824766b517",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "81a2b3e8335e4645431f",
+      "initial_state_sha256": "182573ca61e75c6392d83961fa954fde7f36432497ad00c7f9300a5a11831e73",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5819a97fb5725c6b2d2c",
+      "initial_state_sha256": "5176e09a1f798b3ea16f3669802e927dd2d30550ab24f86f293329cffea30069",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "21480692c4296a953492",
+      "initial_state_sha256": "70caf0be1c6c7f85b5bc18f0e788587a32624e21f5ad2838beb17a34b3c0b314",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.22,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9611113405ccd190270b",
+      "initial_state_sha256": "bdee4f89cd5b07f538920169b48b740bdd19e82b210ab9a880862a6044d468ac",
+      "inventory": {
+        "bound": 57672,
+        "empty": 817888,
+        "negative": 86508,
+        "positive": 86508
+      },
+      "realized_density": 0.220001220703125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5c651066a49dd811beb2",
+      "initial_state_sha256": "f8b70eb7201cf3efc3abda931fffa5825aa4dcd6e67828dece0a8d934744087a",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "eb1257d77ec00b6f0e78",
+      "initial_state_sha256": "214e85968448dd088da3290f0de95e17ebc28469b39e2a43dee7d25f95f6f6ff",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9258e1738fdb0daeda7e",
+      "initial_state_sha256": "33330672fc60c089864b50f90457edf00c910b82783744bff3fe6e706a7dd359",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "420dffb3371a5d8217fb",
+      "initial_state_sha256": "4a7eab82fd4599fad8ae3489e239e0a59aa79920a827c326529ab516b143e722",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "aad78bd8ea51c62df8dc",
+      "initial_state_sha256": "61582e5119a7154696d10b378af4ecc63b3a457758045f8aeadf8c5bc04b282c",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "5ee940b5028c990e6b74",
+      "initial_state_sha256": "f4a4b4585a5df7dace21e8b0c378b00b306f36b0559243693a97fb796ed65d45",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6b67e15bdbe3b04bd7c1",
+      "initial_state_sha256": "e062ae29987d9b645425868d93bc1bc3ea0ed36e1d3501aca08ba4068234cadc",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6b883bb0e100a6b5d8a1",
+      "initial_state_sha256": "4db835637b305a94ca05ee6452ea932b2eb6989f3cba2a90323f3710802b5a92",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "50956f479108a92924a1",
+      "initial_state_sha256": "0a8728e6f902cf4988c382e7dd86f12849422d008c2b0b0cb686bddf2e7a7fa9",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "543b4df69c06d539a454",
+      "initial_state_sha256": "ecd11a5537a5c5034408cb6fd68fa08d055f0f449f1fd3f2f6f96022ca0a592f",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "4b87afda9c8f087ad379",
+      "initial_state_sha256": "befd01155743cfdc980c4b5aea1e1e21e2337d1a332002a1e8e38a84065ee7cc",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.24,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "4095e3664a10d1a3726a",
+      "initial_state_sha256": "16dcac55d1acad77b7e2a503df3dd223fe7efc8fc446784aad0ece5e2e75a4ae",
+      "inventory": {
+        "bound": 62914,
+        "empty": 796920,
+        "negative": 94371,
+        "positive": 94371
+      },
+      "realized_density": 0.23999786376953125,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "d793925f6d4015cdce19",
+      "initial_state_sha256": "ad2bb4c27a5d26ab2c74fb5b5f08d5527e17b10b1789108134a88ba805ae9278",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "649ba4845a3bca25b44d",
+      "initial_state_sha256": "edd3f71490f524694571f2f817ba3fb760dfe75cfe0cbf349fbc9d3923528b9f",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5101,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "6a522fb78ea2e0fd3360",
+      "initial_state_sha256": "816552bb7bbb85e98af2f1d08d1afc2b3dbdf1e32411d7ad31b02b96e3e24b76",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "449f54e21b2f537dc60f",
+      "initial_state_sha256": "b0fc56b8e5e829a7da536ab37f325eb47021af945087edf1880e6b81eae063ac",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5102,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "45dcb0e027e5e1e78b1b",
+      "initial_state_sha256": "e9507311815e3e9425bdb3e3536a46574a8711caee45f8ff558281f9be5e6303",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "439ae5ba4d23d270d4d6",
+      "initial_state_sha256": "c64e8fc75320fa39537b89e5dc20b9faa64ec01a1b3770b140735228119ba4fb",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5103,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "21efcdf1e4139143816e",
+      "initial_state_sha256": "0b32cd8688ffad411ff979dd78b22d321a6d663dbf1c521b767f5badd2f200cd",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "253d392468dec78ceb30",
+      "initial_state_sha256": "8e61e2f1482f76df9804a28a6075911b803163bade69d952238d9807c5479c75",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5104,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "9edfa5dcd3b5275f7b9a",
+      "initial_state_sha256": "b604f31c475f08fa157c23793ab0d979034b80e0e265cb059f9db3a4a4ff3fc1",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "f0d5fd428820233e58b7",
+      "initial_state_sha256": "01bb84b60eaa48ae947b23200cc2f14a53a9dc4097113c54e5993eba1f795f05",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5105,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "droplet",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "4d0b7b35c294d30b6e09",
+      "initial_state_sha256": "230594600b8148d3ee0b17cf92382c89746619aeb18c3d9171ea93c42a34c78f",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    },
+    {
+      "arrangement": "slab",
+      "checkpoint_every": 8192,
+      "density": 0.26,
+      "early_fit_end": 32768,
+      "early_fit_start": 2048,
+      "id": "72c96a5cfc589ce970c3",
+      "initial_state_sha256": "d0bb2a35d948ec4e25305c8bb7053fb4145b2b5d6b180c42344145f4c5e49181",
+      "inventory": {
+        "bound": 68158,
+        "empty": 775944,
+        "negative": 102237,
+        "positive": 102237
+      },
+      "realized_density": 0.26000213623046875,
+      "rule_variant": "winner",
+      "sample_every": 2048,
+      "seed": 5106,
+      "shells": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          16.0,
+          32.0
+        ]
+      ],
+      "size": 1024,
+      "stage": "seeded_basin_1024",
+      "steps": 262144,
+      "topology_every": 2048
+    }
+  ],
+  "winner_raw_uint8_sha256": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c"
+}

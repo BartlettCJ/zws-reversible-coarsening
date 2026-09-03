@@ -1,0 +1,28 @@
+{
+  "distinct_cluster": {
+    "criterion": "at least four of k=2..8 pass cross-standardization Jaccard >= 0.75, winner silhouette >= 0.25, winner-cluster mean silhouette >= 0.20, and winner-cluster size >= 3 under both standardizations",
+    "passing_cluster_counts": [
+      2,
+      3,
+      6,
+      7,
+      8
+    ],
+    "status": "established_by_frozen_stability_rule"
+  },
+  "formal_inference": {
+    "prevalence_label": "moderately_unusual"
+  },
+  "manifest_sha256": "c6ee2b8db19537b951798f6837209ab9daffe74399939da444cac5261d664ae2",
+  "measurement": {
+    "sampled_rule_count": 256,
+    "wilson_95_interval": [
+      0.048026107191811204,
+      0.11300077054584494
+    ],
+    "winner_like_fraction": 0.07421875,
+    "winner_like_rule_count": 19
+  },
+  "schema": "zwslab-prevalence-classification-v1",
+  "trajectory_count": 1064
+}

@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zwslab"
+version = "0.1.4"
+description = "ZWSLab: exact signed-nullity cellular-automata experiments for Zero Without Stasis"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Chris Bartlett"}]
+license = {text = "MIT"}
+dependencies = [
+  "torch>=2.7",
+  "numpy>=1.26",
+  "PyYAML>=6.0",
+  "matplotlib>=3.8",
+  "imageio>=2.34",
+  "pillow>=10.0",
+  "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.6",
+]
+science = [
+  "scipy>=1.13",
+]
+
+[project.scripts]
+zwslab = "zws_nullity_lab.cli:main"
+# Backward-compatible alias retained for existing scripts and run records.
+zws-lab = "zws_nullity_lab.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# Ruff's default rule set changed after this package was authored. Keep the
+# original release baseline explicit so future Ruff upgrades remain stable.
+select = ["E4", "E7", "E9", "F"]
+
+[tool.setuptools.package-data]
+"zws_nullity_lab.web" = ["*.html"]

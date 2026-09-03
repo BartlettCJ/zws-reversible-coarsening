@@ -1,0 +1,2 @@
+# Store every file byte-for-byte; several files are hash-pinned.
+* -text

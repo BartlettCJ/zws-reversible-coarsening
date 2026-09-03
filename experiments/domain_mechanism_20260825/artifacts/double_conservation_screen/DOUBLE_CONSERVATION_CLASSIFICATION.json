@@ -1,0 +1,23 @@
+{
+  "formal_inference": {
+    "classification": "disappears",
+    "survives_comparably_criterion_pass": false
+  },
+  "manifest_sha256": "8095f29b345ae59d48411cc213fa3d7c315ed4ee2c63831fb2ef4b08c7fa8b17",
+  "measurement": {
+    "sibling_median_final_scale_ratio": 1.0274571516121596,
+    "sibling_median_peak_scale_ratio": 1.59449321548488,
+    "sibling_strong_domain_count": 0,
+    "sibling_to_winner_final_median_ratio": 0.06839622527195797,
+    "sibling_to_winner_peak_median_ratio": 0.06079413256862668,
+    "sibling_trajectory_count": 8,
+    "winner_median_final_scale_ratio": 15.022132398780355,
+    "winner_median_peak_scale_ratio": 26.227748437482134
+  },
+  "potentially_richer": {
+    "note": "This optional interpretation flag requires separate morphology-coordinate review and is never inferred from domain scale alone.",
+    "status": "not_classified_by_primary_rule"
+  },
+  "schema": "zwslab-double-conservation-classification-v1",
+  "trajectory_count": 152
+}

@@ -1,0 +1,46 @@
+{
+  "purpose": "closing plate (colophon) of the companion paper, v0.2.5",
+  "source_state_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+  "source_state_file_sha256": "60fd3be85de645f96481621d881f1af954826b37f229970793bd22913c561d7a",
+  "source_state_array_sha256": "fbb14b58977ae72b6f072ffc51adfa084dbb6e5472d7a7761e712acd37a4cb11",
+  "source_task": "3cde465f2d2883dd5af4",
+  "seed": 6203,
+  "initial_occupancy": 0.2,
+  "phase": 311296,
+  "lattice": [
+    1024,
+    1024
+  ],
+  "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+  "window": {
+    "y0": 256,
+    "x0": 256,
+    "height": 512,
+    "width": 512
+  },
+  "render": {
+    "scale": 4,
+    "interpolation": "nearest",
+    "palette": {
+      "empty": "#05070a",
+      "positive": "#f0e442",
+      "negative": "#0072b2",
+      "bound-neutral": "#cc79a7"
+    }
+  },
+  "full_world_counts": {
+    "empty": 616899,
+    "positive": 144724,
+    "negative": 144724,
+    "bound-neutral": 142229,
+    "Q": 0,
+    "M": 431677
+  },
+  "window_counts": {
+    "empty": 153154,
+    "positive": 36717,
+    "negative": 36624,
+    "bound-neutral": 35649
+  },
+  "same_state_as": "FIGURE_06_MICRO_DISORDER_MACRO_ORDER full_world panel (paper Figure 2)"
+}

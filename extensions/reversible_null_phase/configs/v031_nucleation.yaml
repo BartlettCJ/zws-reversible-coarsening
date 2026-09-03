@@ -1,0 +1,89 @@
+schema: zws-reversible-null-phase-study-v1
+name: v031_low_density_nucleation_20260827
+rule_path: ../rules/winner_d1fe99.json
+device: auto
+output_root: results/reversible_null_phase_v031_nucleation_20260827
+low_k_max: 8
+criterion:
+  min_peak_scale_ratio: 4.0
+  min_final_scale_ratio: 2.0
+  min_peak_largest_finite_empty_fraction: 0.001
+  initial_scale_floor: 1.0
+nucleation:
+  schema: zws-reversible-null-phase-nucleation-v1
+  observation_every: 2048
+  persistence_followups: 2
+  fixed_readout_phases: [32768, 65536, 131072, 262144]
+  event_window_before: 16384
+  event_window_after: 16384
+  event_crop_fraction: 0.25
+  primary_stage: primary_homogeneous_1024
+  area_stage: area_scaling_512
+  seeded_stage: seeded_basin_1024
+  homogeneous_comparator_reused_from_primary: true
+  positive_control:
+    density: 0.26
+    phase: 131072
+    minimum_events: 2
+    action_if_failed: stop_and_investigate
+  stage2:
+    maximum_phase: 524288
+    event_density_ceiling: 0.24
+    minimum_events: 2
+    lower_density_event_fraction_exclusive_max: 0.25
+    maximum_optional_new_seeds: 4
+    require_exact_continuation: true
+  representative_selection: [earliest, nearest_median, latest]
+resource:
+  enabled: true
+  max_cpu_percent: 82
+  min_available_ram_gib: 10
+  max_gpu_temperature_c: 83
+  max_external_gpu_memory_mib: 1536
+  sleep_seconds: 30
+stages:
+  primary_homogeneous_1024:
+    enabled: true
+    sizes: [1024]
+    densities: [0.16, 0.18, 0.20, 0.22, 0.24, 0.25, 0.26]
+    seeds: [5101, 5102, 5103, 5104, 5105, 5106, 5107, 5108, 5109, 5110, 5111, 5112]
+    steps: 262144
+    sample_every: 2048
+    topology_every: 2048
+    checkpoint_every: 8192
+    batch_size: 2
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 2048
+    early_fit_end: 32768
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16], [16, 32]]
+  area_scaling_512:
+    enabled: true
+    sizes: [512]
+    densities: [0.22, 0.24, 0.26]
+    seeds: [5101, 5102, 5103, 5104, 5105, 5106, 5107, 5108]
+    steps: 262144
+    sample_every: 2048
+    topology_every: 2048
+    checkpoint_every: 8192
+    batch_size: 4
+    arrangements: [homogeneous]
+    rule_variants: [winner]
+    early_fit_start: 2048
+    early_fit_end: 32768
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16], [16, 32]]
+  seeded_basin_1024:
+    enabled: true
+    sizes: [1024]
+    densities: [0.20, 0.22, 0.24, 0.26]
+    seeds: [5101, 5102, 5103, 5104, 5105, 5106]
+    steps: 262144
+    sample_every: 2048
+    topology_every: 2048
+    checkpoint_every: 8192
+    batch_size: 2
+    arrangements: [droplet, slab]
+    rule_variants: [winner]
+    early_fit_start: 2048
+    early_fit_end: 32768
+    shells: [[1, 2], [2, 4], [4, 8], [8, 16], [16, 32]]

@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton"
+message: "Please cite this companion paper and dataset package."
+type: article
+authors:
+  - family-names: Bartlett
+    given-names: Chris
+    orcid: https://orcid.org/0009-0001-3323-0131
+version: 0.2.5
+date-released: 2026-09-03
+doi: 10.5281/zenodo.22270456
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22270456
+    description: Zenodo archive of the companion paper and evidence release (v0.2.4 deposit)
+  - type: doi
+    value: 10.5281/zenodo.21966374
+    description: Zero Without Stasis, the paper this study accompanies
+license: MIT
+keywords:
+  - reversible cellular automata
+  - Margolus block automata
+  - signed charge conservation
+  - coarsening
+  - first passage
+  - classifier correction
+abstract: >-
+  A fully specified reversible four-state block cellular automaton exactly
+  conserves signed charge while allowing occupancy to change and exhibits
+  delayed, density-dependent, irregular finite-time organisation. The release
+  includes an additive withdrawal of the invalid v0.3.2 history-erasure causal
+  headline after its endpoint failed under shuffled null geometry.
+notes: >-
+  Public code-and-evidence release accompanying the companion paper. The full
+  development repository is retained privately by the author; large trajectories
+  and checkpoints are not distributed.
+repository-code: https://github.com/BartlettCJ/zws-reversible-coarsening
