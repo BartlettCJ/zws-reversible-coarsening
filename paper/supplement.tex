@@ -10,7 +10,7 @@
 
 \begin{document}
 \zwstitleblock{Supplementary Information}{Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Supplement to the companion paper, version 0.2.5, 3 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Supplement to the companion paper, version 0.2.6, 3 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
 Companion to \emph{Zero Without Stasis} v1.278, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
@@ -227,9 +227,11 @@ The residual contribution is the combination, not any isolated ingredient: an ex
 \section{Reproducibility, hashes, and archive policy}
 Compact source tables, reports, figures, figure manifests, rule files, environment records, and SHA-256 sidecars are committed. Large raw trajectories and checkpoints are intentionally excluded from Git and named by external path and hash in the release manifests. Public figures have PDF, PNG, and SVG forms. Manuscript and Supplement PDFs are built from the tracked TeX sources.
 
+\textbf{Independent parity oracle.} The frozen rule and the Margolus update were re-implemented in Eshkol~\citep{Tsotchke2026Eshkol} (version 1.3.4-evolve), a Scheme-based language compiled to native code via LLVM. The Python package generates a self-contained Eshkol program that re-runs the exhaustive 256-entry audit (output range, permutation uniqueness, exact local charge) and replays a $16\times16$ exact-inventory torus (initial occupancy 0.28, seed 303) for 256 steps; the Python simulator's expected final lattice is stored beside the source and every cell is compared. The recorded run reports \code{AUDIT\_OK}, zero mismatched cells, and exact agreement in $Q=0$ and $M=97$. The generated program, the expected lattice and the recorded result ship in the release under \path{extensions/reversible_null_phase/eshkol/}.
+
 The historical v0.3.2 source report, completion record, manifests, figures, and raw results are not overwritten. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.
 
-The v0.2.1 methods and provenance corrections, v0.2.2 disclosure changes, and v0.2.3 worked-rule and literature-audit additions are retained in this v0.2.5 revision. No new scientific simulation or change to numerical results was made in these publication passes. Version 0.2.4 replaces the superseded opening composite with direct embedding of the four hash-verified archived source-panel PNGs; the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}; version 0.2.5 typesets the paper in the house style of \emph{Zero Without Stasis} and prints that DOI, changing presentation and metadata only.
+The v0.2.1 methods and provenance corrections, v0.2.2 disclosure changes, and v0.2.3 worked-rule and literature-audit additions are retained in this v0.2.6 revision. No new scientific simulation or change to numerical results was made in these publication passes. Version 0.2.4 replaces the superseded opening composite with direct embedding of the four hash-verified archived source-panel PNGs; the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}; version 0.2.5 typesets the paper in the house style of \emph{Zero Without Stasis} and prints that DOI, changing presentation and metadata only; version 0.2.6 adds the citation of Eshkol, the language of the independent parity oracle~\citep{Tsotchke2026Eshkol}.
 
 \footnotesize
 \bibliographystyle{unsrtnat}

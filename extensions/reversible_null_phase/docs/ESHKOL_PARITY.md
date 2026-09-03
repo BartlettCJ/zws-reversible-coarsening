@@ -1,5 +1,7 @@
 # Eshkol parity oracle
 
+Eshkol is a Scheme-based language compiled to native code via LLVM, written by tsotchke and released under the MIT licence (https://github.com/tsotchke/eshkol; this project pins release `v1.3.4-evolve`). It is used here unmodified, as an independent compiler and runtime; see `eshkol/README.md` at the repository root for the citation its authors ask for.
+
 The command
 
 ```powershell

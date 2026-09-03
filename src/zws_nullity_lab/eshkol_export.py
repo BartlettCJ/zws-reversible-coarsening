@@ -1,3 +1,11 @@
+"""Export a selected rule as a self-contained exact-integer oracle for Eshkol.
+
+Eshkol (https://github.com/tsotchke/eshkol) is a Scheme-based language compiled to
+native code via LLVM, written by tsotchke and released under the MIT licence.  This
+project pins release v1.3.4-evolve and uses it unmodified as an independent compiler
+and runtime; see eshkol/README.md for the citation its authors ask for.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path

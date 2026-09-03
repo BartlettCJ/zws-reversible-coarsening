@@ -6,7 +6,7 @@ authors:
   - family-names: Bartlett
     given-names: Chris
     orcid: https://orcid.org/0009-0001-3323-0131
-version: 0.2.5
+version: 0.2.6
 date-released: 2026-09-03
 doi: 10.5281/zenodo.22270456
 identifiers:
@@ -31,6 +31,19 @@ abstract: >-
   includes an additive withdrawal of the invalid v0.3.2 history-erasure causal
   headline after its endpoint failed under shuffled null geometry.
 notes: >-
+  Public code-and-evidence release accompanying the companion paper. The full
+  development repository is retained privately by the author; large trajectories
+  and checkpoints are not distributed.
+references:
+  - type: software
+    title: "Eshkol: A Programming Language for Mathematical Computing"
+    authors:
+      - name: tsotchke
+    version: 1.3.4-evolve
+    year: 2026
+    url: https://github.com/tsotchke/eshkol
+        license: MIT
+    notes: >-
   Public code-and-evidence release accompanying the companion paper. The full
   development repository is retained privately by the author; large trajectories
   and checkpoints are not distributed.

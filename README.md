@@ -68,6 +68,27 @@ the independent Eshkol program.
   conversion, because several files are hash-pinned by the tests and the `.sha256`
   sidecars. Clone with any settings and the bytes match.
 
+## Third-party software
+
+The independent parity oracle is written in [Eshkol](https://github.com/tsotchke/eshkol),
+a Scheme-based language with native automatic differentiation, compiled to native code
+via LLVM, by **tsotchke** (MIT licence). This release pins Eshkol `v1.3.4-evolve`
+(`eshkol/ESHKOL_VERSION.txt`) and uses it unmodified; nothing here is part of Eshkol
+and the Eshkol project is not affiliated with this study. The paper cites it as
+`Tsotchke2026Eshkol` (`paper/references.bib`) and `CITATION.cff` lists it under
+`references`. If you use the oracle, cite Eshkol as its authors ask:
+
+```bibtex
+@software{eshkol2026,
+  title = {Eshkol: A Programming Language for Mathematical Computing},
+  author = {tsotchke},
+  version = {1.3.4-evolve},
+  year = {2026},
+  url = {https://github.com/tsotchke/eshkol},
+  note = {Scheme-based language with native automatic differentiation}
+}
+```
+
 ## Licence and citation
 
 Code: MIT (`LICENSE`). Paper, figures and evidence tables: the author retains

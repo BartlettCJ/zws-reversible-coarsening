@@ -1,3 +1,12 @@
+"""Eshkol parity oracle: exhaustive rule audit and cell-for-cell replay in an
+independent compiler and runtime.
+
+Eshkol (https://github.com/tsotchke/eshkol) is a Scheme-based language compiled to
+native code via LLVM, written by tsotchke and released under the MIT licence.  This
+project pins release v1.3.4-evolve and uses it unmodified; see docs/ESHKOL_PARITY.md
+and the root eshkol/README.md for the citation its authors ask for.
+"""
+
 from __future__ import annotations
 
 import json
