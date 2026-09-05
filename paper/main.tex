@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 % Typeset in the house style of Zero Without Stasis; see zws_companion_style.sty for the mapping.
 \usepackage{zws_companion_style}
-\hypersetup{pdftitle={Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion manuscript v1.30, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
+\hypersetup{pdftitle={Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion manuscript v1.34, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
 \graphicspath{{figures/}}
 \definecolor{zwsblue}{HTML}{176B87}
 \newcommand{\Q}{Q}
@@ -12,7 +12,7 @@
 
 \begin{document}
 \zwstitleblock{Delayed Distributed Coarsening in an Exactly\\Reversible Signed-Charge-Conserving\\Block Cellular Automaton}{A computational companion to \emph{Zero Without Stasis}: delayed organisation and waiting-time kinetics under an exact signed balance}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Companion paper, version 1.30, 5 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Companion paper, version 1.34, 6 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
 Companion to \emph{Zero Without Stasis} v1.312, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
@@ -58,6 +58,11 @@ All 256 local cases were exhaustively audited. For every block input, the permut
 
 \subsection{Large exact reversal}
 The audited $4096\times4096$ trajectory began with a random central square spanning 45\% of each lattice dimension, with the rest empty. Within the patch the target state fractions were 12\% positive, 12\% negative and 8\% bound-neutral, with exact positive--negative balance. It was advanced for 65,536 partition phases and then evolved backwards with the exact inverse schedule. The recovered lattice matched its initial state at all 16,777,216 cells. Global $Q$ remained zero throughout; $M$ changed substantially. This is an implementation and coexistence audit, not a claim that reversibility itself is novel.
+
+
+\section{Discovery, selection, and confirmation}
+\subsection{A small, explicitly selective search}
+The winner was search-selected, not sampled blindly. The original discovery run, a small-scale exploratory search (a ``smoke'' run in the software's terms), evaluated 14 unique rules (16~replicate evaluations) in a reactive-rotation construction family. Its declared heuristic rewarded intermediate bands of activity, reaction density, state and block entropy, spatial and temporal mutual information, recurrence, perturbation distance, and patch repetition, with a dynamics gate and a hard charge-preservation gate. Thus subsequent behaviour cannot be described as wholly unselected.
 
 \begin{figure}[p]
 \centering
@@ -111,10 +116,6 @@ The audited $4096\times4096$ trajectory began with a random central square spann
 \caption{\textbf{How one microscopic phase works.} Panel A gives the four cell states and their contributions to signed charge $Q$ and occupancy $M$. Panel B shows the alternating $2\times2$ Margolus partitions. Panels C and D display entries from the actual frozen table, using cell order top-left, top-right, bottom-left, bottom-right: the transport-like entry $1\mapsto4$ follows clockwise block rotation, while the reactive entry $130\mapsto154$ changes $M$ from 2 to 4 by adding one positive and one negative excitation but preserves $Q=-2$. Because the 256-entry table is a permutation, the inverse table maps output 154 exactly back to input 130. These examples explain the mechanism without claiming that either entry alone causes the macroscopic regime. The exact codes, decoded states, invariants, and rule hash are recorded in the figure audit.}
 \label{fig:rule-worked}
 \end{figure}
-
-\section{Discovery, selection, and confirmation}
-\subsection{A small, explicitly selective search}
-The winner was search-selected, not sampled blindly. The original discovery run, a small-scale exploratory search (a ``smoke'' run in the software's terms), evaluated 14 unique rules (16 replicate evaluations) in a reactive-rotation construction family. Its declared heuristic rewarded intermediate bands of activity, reaction density, state and block entropy, spatial and temporal mutual information, recurrence, perturbation distance, and patch repetition, with a dynamics gate and a hard charge-preservation gate. Thus subsequent behaviour cannot be described as wholly unselected.
 
 The discovery score did \emph{not} use the later $4096^2$ reversal result, density first-passage curves, event morphology, arrangement controls, double-conservation sibling, reaction-pair ablations, prevalence screen, or the later classifier diagnostics. Those were frozen and run as follow-up measurements. The exact search provenance and metric weights are retained with the release.
 
@@ -217,7 +218,7 @@ For each fixed torus, the configuration together with the partition phase evolve
 \section{Reproducibility and evidence integrity}
 The release records the raw-uint8 winner hash, exact configurations, seeds, horizons, endpoint definitions, compact CSV summaries, state hashes, figure-source hashes, code version, Windows/CUDA/PyTorch environment, and an independent parity audit. For that audit the frozen rule and the Margolus update were re-implemented in Eshkol, a Scheme-based language compiled to native code~\citep{Tsotchke2026Eshkol}: the generated program re-runs the exhaustive 256-entry audit (output range, bijectivity, exact local charge) and replays a $16\times16$ exact-inventory torus for 256 steps, agreeing with the Python simulator cell for cell and in exact $Q$ and $M$. Full-resolution state arrays, checkpoints and complete trajectories are retained by the author and are not part of the public release; analyses that need them require the retained data or a new run. Figures are supplied in the formats listed in the release manifest, which records the size and SHA-256 digest of every included file. The original historical v0.3.2 records are retained unchanged by the author; where public text copies were sanitised, the release's \code{REDACTIONS.md} records those changes, and the additive erratum and corrected derivative remain distinct from the historical account.
 
-This manuscript is version 1.30, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27 to 1.29) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations without changing the rule, detector, stored results or historical experimental records; no new scientific simulation was run for any of them, and none is run for this version. Figure~\ref{fig:hero} is a presentation-only rearrangement of the same archived image panels, not a new simulation or a new selection of representative states.
+This manuscript is version 1.34, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27 to 1.30) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations without changing the rule, detector, stored results or historical experimental records; no new scientific simulation was run for any of them, and none is run for this version. Figure~\ref{fig:hero} is a presentation-only rearrangement of the same archived image panels, not a new simulation or a new selection of representative states.
 
 \section{Code and data availability}
 A versioned archival deposit accompanies this paper, and a public repository carries a curated copy of it. The release includes the frozen rule tables and controls; forward and inverse simulation code; analysis and figure-generation code; tests and environment specifications; configurations, seeds and preregistration records; compact trajectory summaries and per-run results, including failures and censored runs; the endpoint-correction record; and provenance records for the representative states shown in the figures; the state arrays themselves are retained by the author. These materials should support both independent scrutiny of the reported statistics and regeneration of the experiments without requiring all full-length trajectories to be stored in Git.
@@ -244,5 +245,5 @@ Unlike the parent paper, \emph{Zero Without Stasis}, this companion paper is the
 
 % Closing plate: a 512x512 window of the archived 1024x1024 state behind Figure 2, rendered cell for cell
 % (provenance and hashes in figure_assets/plate_v025/plate_provenance.json).
-\zwscolophon{figure_assets/plate_v025/plate_world_seed6203_phase311296_window512.png}{0.8\linewidth}{Zero, without stasis.}{This world began as randomly scattered material, and at every step its plus and minus cells have cancelled to exactly zero. Yet it has sorted itself into large islands of busy material and empty channels: order at the large scale, made from a mixture that stays highly varied up close, and every step of that history could be run backwards exactly. A $512\times512$ window of the $1024\times1024$ world shown in Figure~\ref{fig:micro-macro} (initial occupancy 0.20, seed 6203, phase 311,296), rendered cell for cell from the archived state: yellow positive, blue negative, pink bound-neutral, black empty. Global $Q=0$; $M=431{,}677$ of 1,048,576 cells.}{Companion paper v1.30, 5 September 2026 $\cdot$ DOI 10.5281/zenodo.22270456}
+\zwscolophon{figure_assets/plate_v025/plate_world_seed6203_phase311296_window512.png}{0.8\linewidth}{Zero, without stasis.}{This world began as randomly scattered material, and at every step its plus and minus cells have cancelled to exactly zero. Yet it has sorted itself into large islands of busy material and empty channels: order at the large scale, made from a mixture that stays highly varied up close, and every step of that history could be run backwards exactly. A $512\times512$ window of the $1024\times1024$ world shown in Figure~\ref{fig:micro-macro} (initial occupancy 0.20, seed 6203, phase 311,296), rendered cell for cell from the archived state: yellow positive, blue negative, pink bound-neutral, black empty. Global $Q=0$; $M=431{,}677$ of 1,048,576 cells.}{Companion paper v1.34, 6 September 2026 $\cdot$ DOI 10.5281/zenodo.22270456}
 \end{document}

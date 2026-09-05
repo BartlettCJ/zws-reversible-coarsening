@@ -271,15 +271,25 @@ def render_history_set(run: Path, experiment: Path, out: Path) -> list[dict]:
     return [rec06, rec07]
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser()
-    p.add_argument("--repo", type=Path, required=True); p.add_argument("--run", type=Path, required=True); p.add_argument("--out", type=Path, required=True)
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--repo", type=Path, required=True, help="repository root (the release folder); supplies the compact CSV tables")
+    p.add_argument("--out", type=Path, required=True, help="output folder for the rendered figures, e.g. paper/figures")
+    p.add_argument("--run", type=Path, default=None,
+                   help="OPTIONAL: the author-retained v0.3.2 run directory (archived state arrays). Without it only the three "
+                        "compact-evidence figures (03, 04, 08) are rendered; the two state-based figures (06, 07) need the arrays.")
+    p.add_argument("--manifest", type=Path, default=None, help="where to write the render manifest (default: <out>/../V129_LIGHT_RENDER_MANIFEST.json)")
     a = p.parse_args()
     repo = a.repo.resolve(); out = a.out.resolve()
     recs = render_v021_set(repo, out)
-    recs += render_history_set(a.run.resolve(), (repo / "experiments" / "reversible_null_phase_v032_history_erasure_20260829").resolve(), out)
-    manifest = {"version": "1.29", "purpose": "light-palette re-render of the five data figures; same data and code paths, colours only",
+    if a.run is not None:
+        recs += render_history_set(a.run.resolve(), (repo / "experiments" / "reversible_null_phase_v032_history_erasure_20260829").resolve(), out)
+        scope = "all five data figures"
+    else:
+        scope = "compact-evidence figures 03, 04 and 08 only (no --run directory given; figures 06 and 07 need the retained state arrays)"
+    manifest = {"version": "1.29", "scope": scope,
+                "purpose": "light-palette re-render of the data figures; same data and code paths, colours only",
                 "derived_from": ["V021_RENDER_MANIFEST.json (figures 03, 04, 08)", "history_figures.figure_06_micro_macro", "history_figures.figure_07_mechanism_ledger"],
                 "rule_sha256": RULE, "new_simulations": False, "rendered_utc": TODAY.isoformat(), "figures": recs}
-    mp = out.parent / "V129_LIGHT_RENDER_MANIFEST.json"
+    mp = a.manifest.resolve() if a.manifest else out.parent / "V129_LIGHT_RENDER_MANIFEST.json"
     mp.write_text(json.dumps(manifest, indent=2, default=str) + "\n", encoding="utf-8")
-    print(mp)
+    print(mp, "|", scope)
