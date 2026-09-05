@@ -67,11 +67,12 @@ the independent Eshkol program.
 * Line endings are stored byte-for-byte: `.gitattributes` disables all end-of-line
   conversion, because several files are hash-pinned by the tests, the release manifest
   and retained checksum records. Clone with any settings and the bytes match.
-* The paper's data figures can be regenerated from this release:
-  `python scripts/render_companion_v129_figures_light.py --repo . --out paper/figures`
-  rebuilds the three table-driven figures (density first passage, controls and ablations,
-  research timeline) from the shipped CSVs. The two state-based figures (micro/macro,
-  mechanism ledger) additionally need the author-retained run directory (`--run`).
+* The paper's code-generated figures can be regenerated from this release:
+  `python scripts/render_companion_v135_figures_print.py --repo . --out paper/figures`
+  rebuilds the six figures that need no state arrays (rule diagram, density first passage,
+  controls and ablations, mechanism ledger, multiscale memory, research timeline) from the
+  shipped rule file and CSV tables. The five state-based figures (micro/macro and the four
+  history-erasure branch figures) additionally need the author-retained run directory (`--run`).
 
 ## Third-party software
 

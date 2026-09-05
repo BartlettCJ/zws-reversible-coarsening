@@ -1,0 +1,2571 @@
+{
+  "version": "1.35",
+  "scope": "all eleven figure files (six table- or text-driven, five from the retained state arrays)",
+  "purpose": "one print typography for every code-generated figure: canvas 12.44 in (twice the 15.8 cm text width), type at twice its printed size, included at scale 0.5; light palette; drawn commentary removed; state-panel headers give each panel's stored phase and offset",
+  "printed_type_sizes_pt": {
+    "figure_title": 9.5,
+    "panel_title": 7.5,
+    "axis_label": 7.0,
+    "tick_and_annotation": 6.5,
+    "state_panel_header": 6.0,
+    "branch_grid_header": 5.5
+  },
+  "derived_from": [
+    "V021_RENDER_MANIFEST.json and V129_LIGHT_RENDER_MANIFEST.json (figures 03, 04, 08)",
+    "scripts/render_companion_v023_figures.py (rule diagram, raster)",
+    "history_figures.figure_02_history_branches, figure_03_fixed_occupancy, figure_04_event_proximal, figure_05_multiscale_memory, figure_06_micro_macro, figure_07_mechanism_ledger (v0.3.2 campaign)"
+  ],
+  "rule_sha256": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+  "new_simulations": false,
+  "rendered_utc": "2026-09-06T00:00:00+00:00",
+  "figures": [
+    {
+      "figure_id": "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS",
+      "source_files": {
+        "extensions/reversible_null_phase/rules/winner_d1fe99.json": "6c2f21f7d08494ebb74c838e19503aae09ef58bddaa051d6d9a09dc36ab20f19"
+      },
+      "outputs": {
+        "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.pdf": "2575c78679cb3fd1333514ed74d546be9ded677e5425d918d693f0b79d1a9efe",
+        "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.svg": "d27c3c5caa5bafdae8f15e5b8978fa46c56db389fcac2a8d4096bed6b3e9a055",
+        "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.png": "af6dbda0804fc13bd570abac9f6588102ec2d27c552afa7459a4340013e87067"
+      },
+      "canvas_inches": [
+        12.38,
+        8.622
+      ],
+      "new_simulation": false,
+      "worked_rule": {
+        "state_order": "top-left, top-right, bottom-left, bottom-right",
+        "block_code": "s_TL + 4*s_TR + 16*s_BL + 64*s_BR",
+        "rule_raw_uint8_sha256": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+        "examples": [
+          {
+            "input_code": 1,
+            "output_code": 4,
+            "input_states_tl_tr_bl_br": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "output_states_tl_tr_bl_br": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "input_Q_M": [
+              1,
+              1
+            ],
+            "output_Q_M": [
+              1,
+              1
+            ]
+          },
+          {
+            "input_code": 130,
+            "output_code": 154,
+            "input_states_tl_tr_bl_br": [
+              2,
+              0,
+              0,
+              2
+            ],
+            "output_states_tl_tr_bl_br": [
+              2,
+              2,
+              1,
+              2
+            ],
+            "input_Q_M": [
+              -2,
+              2
+            ],
+            "output_Q_M": [
+              -2,
+              4
+            ]
+          }
+        ],
+        "derived_from": "scripts/render_companion_v023_figures.py (raster, v0.2.3)"
+      }
+    },
+    {
+      "figure_id": "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE",
+      "source_files": {
+        "experiments/reversible_null_phase_v031_nucleation_20260827/SURVIVAL_SUMMARY.csv": "887e3bed99e0c9eb2962fcabffc49848c1f18a681f9b55aff515de82e94b0f31",
+        "experiments/reversible_null_phase_v031_nucleation_20260827/FIRST_PASSAGE_RESULTS.csv": "ec049f7e2b88030bbcdb19b680a2d72da5ecf735f922ab324c5917470f651e64"
+      },
+      "outputs": {
+        "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.pdf": "e0a869669c9e02490fdec3ef8391f59010b8e0db1714bead2e809c920647ede0",
+        "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.svg": "de1b9c18fc3d3a30b324bd980f687c50f95a9a12b31b65658db7d990cab9ba31",
+        "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.png": "3eccf7e095df20085d33e66db4185a222cddec53e3a66b446093fcffe5605125"
+      },
+      "canvas_inches": [
+        11.965,
+        7.589
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS",
+      "source_files": {
+        "experiments/domain_mechanism_20260825/artifacts/double_conservation_screen/CONDITION_SUMMARIES.csv": "4f80f4ecb3954eb14056cb36a12e1ef439be8009a7b89902a27efd1696093eed",
+        "experiments/reversible_null_phase_v030_20260827/balanced/report/SUMMARY.csv": "6f45cb6afe74a68abd0b195fcea23d01cf2ef6905ac03bc673800dbd29ce6243"
+      },
+      "outputs": {
+        "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.pdf": "5668ec37bd3b84f33075927ac5525e8057c2514b0500ac81163d62554665f803",
+        "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.svg": "ea0f53d5fd2a5efe0300415c52cd746fb08ae63a33ca3b598e2203ca993cdf65",
+        "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.png": "344c0c6c2a5acb48eb2f670bd6288e8f3dc92be38105388c68b1eaa8493e7db1"
+      },
+      "canvas_inches": [
+        12.001,
+        5.915
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY",
+      "source_files": {},
+      "outputs": {
+        "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.pdf": "dce8a6be6aa3bff6bee113fd83c960e21847e9552e7fde84e49a1e9fb989bc8f",
+        "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.svg": "ed7e334ed5498e62912b638032e70c3fe79069217b3fd5fcf0a500ecb9408ee1",
+        "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.png": "8a7ea5c18630e69a01203aa5d07e6842d2013c12388d8ff5578162ee958fa184"
+      },
+      "canvas_inches": [
+        12.38,
+        7.48
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_07_MECHANISM_LEDGER_V135",
+      "caption": "Model schematic. The winner keeps signed charge Q exactly zero but permits occupancy M to change; the exact-Q+M sibling instead fixes a positive, nonzero occupancy.",
+      "panels": [
+        {
+          "source_task": "model_schematic",
+          "seed": null,
+          "density": null,
+          "branch_point": null,
+          "intervention": "frozen_winner_ledger",
+          "phase": "not_applicable",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "model_schematic_no_state",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\extensions\\reversible_null_phase\\src\\zws_reversible_null_phase\\history_figures.py",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "variable_M_winner",
+          "evidence_type": "MODEL SCHEMATIC"
+        },
+        {
+          "source_task": "model_schematic",
+          "seed": null,
+          "density": null,
+          "branch_point": null,
+          "intervention": "exact_Q_M_sibling_control",
+          "phase": "not_applicable",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "model_schematic_no_state",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\extensions\\reversible_null_phase\\src\\zws_reversible_null_phase\\history_figures.py",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "exact_Q_M_control",
+          "evidence_type": "MODEL SCHEMATIC"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_07_MECHANISM_LEDGER_V135.pdf",
+          "sha256": "17dc863c5b68061f57b5185c7ac34444773323a214497ebf126a6f370cbde28d",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_07_MECHANISM_LEDGER_V135.svg",
+          "sha256": "1ed6a9887c1f81c6b9e6313f62cf8a69a4be749d84f2daaaad6f698d761d1695",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_07_MECHANISM_LEDGER_V135.png",
+          "sha256": "25d13c6ffb9ac0cf68548f200f3bc9386a1b7fc22a7489590c577f753407db3e",
+          "format": "png",
+          "pixels": [
+            4041,
+            1477
+          ]
+        }
+      ],
+      "major_morphology": false,
+      "canvas_inches": [
+        11.888,
+        4.346
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_05_MULTISCALE_MEMORY_V135",
+      "caption": "Immediate retained multiscale organisation and its relation to later residual first-passage time. Solid curves are altered-state measurements; dashed curves are their matched pre-intervention sources.",
+      "panels": [
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:ce0e9cbad3ec6891cd58de8422193a24238264658d150ebf757cd3fdff875ee1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\INTERVENTION_AUDIT.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "block_entropy_by_scale"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:ce0e9cbad3ec6891cd58de8422193a24238264658d150ebf757cd3fdff875ee1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\INTERVENTION_AUDIT.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "mutual_information_by_offset"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:ce0e9cbad3ec6891cd58de8422193a24238264658d150ebf757cd3fdff875ee1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\INTERVENTION_AUDIT.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "retained_low_k"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:7b4a6245bab17c2db5d9c7e6ea9280bc51b14fd58651039deef92df306527816",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\RESIDUAL_FIRST_PASSAGE.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "retained_information_vs_residual",
+          "joined_source": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\INTERVENTION_AUDIT.csv"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_05_MULTISCALE_MEMORY_V135.pdf",
+          "sha256": "ac996efe8fe67d8f84414720fac7c96d70a35b900a8c17216d98563d806da739",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_05_MULTISCALE_MEMORY_V135.svg",
+          "sha256": "06d7f32fc8a8fa81c340354af059895dc672a2349da974e31403cd0941e5d9c4",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_05_MULTISCALE_MEMORY_V135.png",
+          "sha256": "b03e3078f90bda76c5f57b013e52950894f0e9299141eca4bef6ca99bfa5e4f2",
+          "format": "png",
+          "pixels": [
+            4047,
+            2681
+          ]
+        }
+      ],
+      "major_morphology": false,
+      "canvas_inches": [
+        11.907,
+        7.888
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_06_MICRO_DISORDER_MACRO_ORDER_V135",
+      "caption": "A frozen event-centred representative shown at full-world, 256-cell and 64-cell scales, with the local four-state histogram and the coarse occupancy field.",
+      "panels": [
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "source_event",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "full_world"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "source_event",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+          "crop": {
+            "x": 512,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "crop_256",
+          "crop_selection": "frozen aligned maximum occupancy"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "source_event",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+          "crop": {
+            "x": 512,
+            "y": 384,
+            "width": 64,
+            "height": 64
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "crop_64",
+          "crop_selection": "frozen nested aligned maximum occupancy"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "source_event",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+          "crop": {
+            "x": 512,
+            "y": 384,
+            "width": 64,
+            "height": 64
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "local_histogram",
+          "histogram": [
+            1359,
+            899,
+            947,
+            891
+          ],
+          "normalized_entropy": 0.9877410445574992
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "source_event",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\event_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "coarse_density",
+          "coarse_block_size": 32
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_06_MICRO_DISORDER_MACRO_ORDER_V135.pdf",
+          "sha256": "4cc9470a6f747a17c808aced6b2963e01dfc4c57dbc26390ed908dae5d75b4c9",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_06_MICRO_DISORDER_MACRO_ORDER_V135.svg",
+          "sha256": "d344e2d3c7501972ffb217c5302df10f5c95b80a01c3c07d05b6421691ab7ffd",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_06_MICRO_DISORDER_MACRO_ORDER_V135.png",
+          "sha256": "eec8b1d3b49176da628f93443f60ed7353317d0ae1728ae530f30520a977c64e",
+          "format": "png",
+          "pixels": [
+            4055,
+            2940
+          ]
+        }
+      ],
+      "major_morphology": true,
+      "canvas_inches": [
+        11.928,
+        8.649
+      ],
+      "new_simulation": false,
+      "entropy": 0.9877410445574992,
+      "histogram": [
+        1359,
+        899,
+        947,
+        891
+      ],
+      "phase": 311296
+    },
+    {
+      "figure_id": "FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135",
+      "caption": "Exact stored states for the preregistered median-T_hit representative at initial occupancy 0.20. The interventions preserve the complete state inventory and change only arrangement; each panel is labelled with the elapsed offset of the stored state it shows.",
+      "panels": [
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "source_before_untouched",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "fb8d6cdc7b14a8fda6450c0a95f14b6eda2ed6ee248a138ae5219aa129829a1d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\branch_B_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_source"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "fb8d6cdc7b14a8fda6450c0a95f14b6eda2ed6ee248a138ae5219aa129829a1d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_000000_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_032768_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_column_2",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 344064,
+          "elapsed": 65536,
+          "requested_elapsed": 65536,
+          "state_hash": "35a875ea0fe7a65669d773760b85e8b81e045fd74ff7b6f91c43009545154c4a",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_065536_phase_344064.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_column_3",
+          "actual_elapsed": 65536
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 409600,
+          "elapsed": 131072,
+          "requested_elapsed": 131072,
+          "state_hash": "16226f732e0c0872ea298bdfd59b1a526ea96621b4b8e526a4e740116a476847",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_131072_phase_409600.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_column_4",
+          "actual_elapsed": 131072
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "b026fbd94fa490dd165f608bb95357cce0b794e361bd4779b43b1ace41aad9ea",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_untouched_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "source_before_global_shuffle",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "fb8d6cdc7b14a8fda6450c0a95f14b6eda2ed6ee248a138ae5219aa129829a1d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\branch_B_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_source"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "29e9ec2da449b598e0e7afcf4d2e58c0f62cea5a527fa61175a0bda9047dbbfe",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\fixed_elapsed_000000_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 32768,
+          "state_hash": "ca351a932142132737f60c6eb5db47fcb015aae39afeb2e358a46954a251582c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_column_2",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 65536,
+          "state_hash": "ca351a932142132737f60c6eb5db47fcb015aae39afeb2e358a46954a251582c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_column_3",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 131072,
+          "state_hash": "ca351a932142132737f60c6eb5db47fcb015aae39afeb2e358a46954a251582c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_column_4",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "ca351a932142132737f60c6eb5db47fcb015aae39afeb2e358a46954a251582c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_global_shuffle_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "source_before_tile_32",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "fb8d6cdc7b14a8fda6450c0a95f14b6eda2ed6ee248a138ae5219aa129829a1d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\branch_B_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_source"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "2a89512aa21f3b153364ded6aa9823b932216b7de384b949c9b40bc9d7f9c54b",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\fixed_elapsed_000000_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 296960,
+          "elapsed": 18432,
+          "requested_elapsed": 32768,
+          "state_hash": "c79e19e65c0fa778973b4e2f6ce9faa9ce4a5087619dd7f2aac6590947e3ec02",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\event_elapsed_018432_phase_296960.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_column_2",
+          "actual_elapsed": 18432
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 296960,
+          "elapsed": 18432,
+          "requested_elapsed": 65536,
+          "state_hash": "c79e19e65c0fa778973b4e2f6ce9faa9ce4a5087619dd7f2aac6590947e3ec02",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\event_elapsed_018432_phase_296960.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_column_3",
+          "actual_elapsed": 18432
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 296960,
+          "elapsed": 18432,
+          "requested_elapsed": 131072,
+          "state_hash": "c79e19e65c0fa778973b4e2f6ce9faa9ce4a5087619dd7f2aac6590947e3ec02",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\event_elapsed_018432_phase_296960.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_column_4",
+          "actual_elapsed": 18432
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "68b33498cceb4185485c99dd8da81b850b39b9db607676e0e69bfb209e857412",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_32_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "source_before_tile_128",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "fb8d6cdc7b14a8fda6450c0a95f14b6eda2ed6ee248a138ae5219aa129829a1d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\branch_B_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_source"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 278528,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "da760f6d7ee3bfbdb367c645b31d41ce4fba380b9bea1cd5364bf382e69f6c55",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\fixed_elapsed_000000_phase_278528.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 311296,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "8af84e21dc72f6c0a79add8ed9eb56890af6d2a71b6cad5993d0cda0d8966c0d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\event_elapsed_032768_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_column_2",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 317440,
+          "elapsed": 38912,
+          "requested_elapsed": 65536,
+          "state_hash": "a2af840b13f83ace7704866df69f6f6545a69aa06d9fe8591d01ec17717c7bc6",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\event_elapsed_038912_phase_317440.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_column_3",
+          "actual_elapsed": 38912
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 317440,
+          "elapsed": 38912,
+          "requested_elapsed": 131072,
+          "state_hash": "a2af840b13f83ace7704866df69f6f6545a69aa06d9fe8591d01ec17717c7bc6",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\event_elapsed_038912_phase_317440.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_column_4",
+          "actual_elapsed": 38912
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "6ab763cd4e641e023473a4f2c59f0e77016f8ed66133ebf04356df7a0e1aa2e3",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\fixed_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.20_tile_128_column_5",
+          "actual_elapsed": 16384
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135.pdf",
+          "sha256": "d42fed6ad1f15712b8439339d9c316e837f6ae262cc27519d3ec001b8c9b7668",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135.svg",
+          "sha256": "8226f54a79ec884754ce2a50ec0da4b150c4e57f2fe8799f27f07b74dd66d1d5",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135.png",
+          "sha256": "11d58efa069b8300fd12b5992c041f58eccd8c5e9b8bc435b97e15dd8d0a876f",
+          "format": "png",
+          "pixels": [
+            4024,
+            4061
+          ]
+        }
+      ],
+      "major_morphology": true,
+      "canvas_inches": [
+        11.838,
+        11.946
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135",
+      "caption": "Exact stored states for the preregistered median-T_hit representative at initial occupancy 0.24. The interventions preserve the complete state inventory and change only arrangement; each panel is labelled with the elapsed offset of the stored state it shows.",
+      "panels": [
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "source_before_untouched",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "a19c23e7e0efd48788d029eb8d17629b2d8af02f49b0ccec76ed69332dfb52ee",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\a53add2a25fda6e24aea\\states\\branch_B_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_source"
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "a19c23e7e0efd48788d029eb8d17629b2d8af02f49b0ccec76ed69332dfb52ee",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\a53add2a25fda6e24aea\\states\\fixed_elapsed_000000_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 129024,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "be642d4bb5be53c4c1ee0ee12fa3bf271a143f3aa275cad37faed9a9b6298e4a",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\a53add2a25fda6e24aea\\states\\fixed_elapsed_032768_phase_129024.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_column_2",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 161792,
+          "elapsed": 65536,
+          "requested_elapsed": 65536,
+          "state_hash": "4b79508ec6e6af99019e1713a0df3ffec6cf3a7babe2fb678c8de87587892f3f",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\a53add2a25fda6e24aea\\states\\fixed_elapsed_065536_phase_161792.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_column_3",
+          "actual_elapsed": 65536
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 227328,
+          "elapsed": 131072,
+          "requested_elapsed": 131072,
+          "state_hash": "30f23df5242302053d4ed051887a93aeebfcc429e3ad11c8828b253b382b9e94",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\a53add2a25fda6e24aea\\states\\fixed_elapsed_131072_phase_227328.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_column_4",
+          "actual_elapsed": 131072
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "1ee1edd03f6c983dfd73cdda8e37b87825c92b576f4af5939e1c05b58e92d974",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\a53add2a25fda6e24aea\\states\\fixed_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_untouched_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "source_before_global_shuffle",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "a19c23e7e0efd48788d029eb8d17629b2d8af02f49b0ccec76ed69332dfb52ee",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\a53add2a25fda6e24aea\\states\\branch_B_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_source"
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "eeef37afa687e43c5279e5fe5977bc24084e124bfaffc0b4cf8a7a19b59959f7",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\ed5f7a72ad06541c16fa\\states\\fixed_elapsed_000000_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 32768,
+          "state_hash": "ca7cca5876483e84f5729cefa55b3dc16ad43d29417b52689a04bf6d41ecbca7",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\ed5f7a72ad06541c16fa\\states\\event_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_column_2",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 65536,
+          "state_hash": "ca7cca5876483e84f5729cefa55b3dc16ad43d29417b52689a04bf6d41ecbca7",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\ed5f7a72ad06541c16fa\\states\\event_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_column_3",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 131072,
+          "state_hash": "ca7cca5876483e84f5729cefa55b3dc16ad43d29417b52689a04bf6d41ecbca7",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\ed5f7a72ad06541c16fa\\states\\event_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_column_4",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "ca7cca5876483e84f5729cefa55b3dc16ad43d29417b52689a04bf6d41ecbca7",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\ed5f7a72ad06541c16fa\\states\\event_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_global_shuffle_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "source_before_tile_32",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "a19c23e7e0efd48788d029eb8d17629b2d8af02f49b0ccec76ed69332dfb52ee",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\a53add2a25fda6e24aea\\states\\branch_B_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_source"
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "83cbdf2d60ecc89355f56c87134d737db0b5304322f146af35e53b39db47efd0",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\09a0a20cf9287c63f864\\states\\fixed_elapsed_000000_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 116736,
+          "elapsed": 20480,
+          "requested_elapsed": 32768,
+          "state_hash": "bc0589fbee3e1eee6f27537728f2b0a91c0b11c5a2f82b41fec08510991f8a3c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\09a0a20cf9287c63f864\\states\\event_elapsed_020480_phase_116736.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_column_2",
+          "actual_elapsed": 20480
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 116736,
+          "elapsed": 20480,
+          "requested_elapsed": 65536,
+          "state_hash": "bc0589fbee3e1eee6f27537728f2b0a91c0b11c5a2f82b41fec08510991f8a3c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\09a0a20cf9287c63f864\\states\\event_elapsed_020480_phase_116736.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_column_3",
+          "actual_elapsed": 20480
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 116736,
+          "elapsed": 20480,
+          "requested_elapsed": 131072,
+          "state_hash": "bc0589fbee3e1eee6f27537728f2b0a91c0b11c5a2f82b41fec08510991f8a3c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\09a0a20cf9287c63f864\\states\\event_elapsed_020480_phase_116736.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_column_4",
+          "actual_elapsed": 20480
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "f29a45a226632ce1d31c08a20ab9f55a5c9ac44b69d6d8a2ec49de0a024da4d4",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\09a0a20cf9287c63f864\\states\\event_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_32_column_5",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "source_before_tile_128",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "a19c23e7e0efd48788d029eb8d17629b2d8af02f49b0ccec76ed69332dfb52ee",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\a53add2a25fda6e24aea\\states\\branch_B_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_source"
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 96256,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "e6b2a17d337cf6dfd85bc1ebbdc42939e6dacc35f78b624c7e54d30d2aa9ea59",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\fcce22cdf8a0d840f1c6\\states\\fixed_elapsed_000000_phase_096256.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_column_1",
+          "actual_elapsed": 0
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 129024,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "e4874d23347d933630d1c1b264155da58733317cd0380367ba5b61e41e78b0f0",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\fcce22cdf8a0d840f1c6\\states\\event_elapsed_032768_phase_129024.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_column_2",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 139264,
+          "elapsed": 43008,
+          "requested_elapsed": 65536,
+          "state_hash": "0240a4ba2819cbad75c0694416673450448c2d7f92430779b0ada16d6a8e96b1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\fcce22cdf8a0d840f1c6\\states\\final_elapsed_043008_phase_139264.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_column_3",
+          "actual_elapsed": 43008
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 139264,
+          "elapsed": 43008,
+          "requested_elapsed": 131072,
+          "state_hash": "0240a4ba2819cbad75c0694416673450448c2d7f92430779b0ada16d6a8e96b1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\fcce22cdf8a0d840f1c6\\states\\final_elapsed_043008_phase_139264.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_column_4",
+          "actual_elapsed": 43008
+        },
+        {
+          "source_task": "a53add2a25fda6e24aea",
+          "seed": 6202,
+          "density": 0.24,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 112640,
+          "elapsed": 16384,
+          "requested_elapsed": 16384,
+          "state_hash": "0a5615ffedfe866eb1edfcb8347d129cdab7c6600a94402513078c939d0a517e",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\fcce22cdf8a0d840f1c6\\states\\fixed_elapsed_016384_phase_112640.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "density_0.24_tile_128_column_5",
+          "actual_elapsed": 16384
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135.pdf",
+          "sha256": "8c6613890e013a8cfe7eade35b301c7a37b608d4a795aa70b4eb587e9b16842c",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135.svg",
+          "sha256": "d3376c1938370304ee2812b901723386f309d3167d30ffe4de54a66100e1af3e",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135.png",
+          "sha256": "58c82d9b7164310721f2c9c588a92337ef4d3315b2fe75d707b1f64c79a9fec1",
+          "format": "png",
+          "pixels": [
+            4024,
+            4061
+          ]
+        }
+      ],
+      "major_morphology": true,
+      "canvas_inches": [
+        11.838,
+        11.946
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135",
+      "caption": "Branch-A residual first-passage diagnostics at the first sampled occupancy M/N \u2265 0.35, with the state-matched branch point and the two branches at the stored offsets their headers give.",
+      "panels": [
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "A",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:7b4a6245bab17c2db5d9c7e6ea9280bc51b14fd58651039deef92df306527816",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\RESIDUAL_FIRST_PASSAGE.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "branch_A_survival"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "A",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:7b4a6245bab17c2db5d9c7e6ea9280bc51b14fd58651039deef92df306527816",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\RESIDUAL_FIRST_PASSAGE.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "branch_A_paired_lines"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "A",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:7b4a6245bab17c2db5d9c7e6ea9280bc51b14fd58651039deef92df306527816",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\RESIDUAL_FIRST_PASSAGE.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "branch_A_fixed_fractions"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "A",
+          "intervention": "source_before",
+          "phase": 204800,
+          "elapsed": 0,
+          "requested_elapsed": 0,
+          "state_hash": "f7de7835af3edf50a60f728d252419da5476b8ccb32fd1d52abdf8e9cdaeda77",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\sources\\3cde465f2d2883dd5af4\\states\\branch_A_phase_204800.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_source"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "A",
+          "intervention": "untouched",
+          "phase": 237568,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "5a76b553de83a9b015af56c754e9f5e349e25ddf78fd356eb1fe33a033d83603",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_A\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_032768_phase_237568.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_untouched",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "A",
+          "intervention": "global_shuffle",
+          "phase": 223232,
+          "elapsed": 18432,
+          "requested_elapsed": 32768,
+          "state_hash": "c279e54725ad2cddd30357e15e6237f2ab8f3468ea925638f8791301025b95b3",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\7390408274e4b8404416\\states\\event_elapsed_018432_phase_223232.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_global",
+          "actual_elapsed": 18432
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135.pdf",
+          "sha256": "a3db7c8b674b565bd8589ff2b882df401b5c8b1d4c2b5828b56761eaa4e3a7bd",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135.svg",
+          "sha256": "81e16f9f7723bad97a19d026279766ef14506f3810e5f96abbf97da8db600ed7",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135.png",
+          "sha256": "f1d3e8cf50fb6ccb6929b0b505b58889b97058f0043fa2c2f2652372d74fdd94",
+          "format": "png",
+          "pixels": [
+            4089,
+            2720
+          ]
+        }
+      ],
+      "major_morphology": true,
+      "canvas_inches": [
+        12.03,
+        8.001
+      ],
+      "new_simulation": false
+    },
+    {
+      "figure_id": "FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135",
+      "caption": "Branch-B survival and paired delay estimates use an untouched residual fixed at 32,768 phases by preregistration; the state panels give the stored offset each one actually shows.",
+      "panels": [
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:7b4a6245bab17c2db5d9c7e6ea9280bc51b14fd58651039deef92df306527816",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\RESIDUAL_FIRST_PASSAGE.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "branch_B_survival"
+        },
+        {
+          "source_task": "aggregate",
+          "seed": "multiple",
+          "density": "pooled or stratified",
+          "branch_point": "B",
+          "intervention": "aggregate",
+          "phase": "aggregate",
+          "elapsed": null,
+          "requested_elapsed": null,
+          "state_hash": "aggregate:24cb19b38557f609961aca211a0f887b3fa804068fc3c056a4a006df3672339c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/ZWSLab-v024\\experiments\\reversible_null_phase_v032_history_erasure_20260829\\HISTORY_ERASURE_RESULTS.csv",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "branch_B_rmst_delay"
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "untouched",
+          "phase": 311296,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "00d00aeea1e6ceae56e257999cc14a74986835a11f3f25b12ec8f5b05d9f4bc1",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\media_states\\untouched\\branch_B\\3cde465f2d2883dd5af4\\states\\fixed_elapsed_032768_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_untouched",
+          "actual_elapsed": 32768
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "global_shuffle",
+          "phase": 294912,
+          "elapsed": 16384,
+          "requested_elapsed": 32768,
+          "state_hash": "ca351a932142132737f60c6eb5db47fcb015aae39afeb2e358a46954a251582c",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\b61dfee3017380b94bd2\\states\\event_elapsed_016384_phase_294912.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_global_shuffle",
+          "actual_elapsed": 16384
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_32",
+          "phase": 296960,
+          "elapsed": 18432,
+          "requested_elapsed": 32768,
+          "state_hash": "c79e19e65c0fa778973b4e2f6ce9faa9ce4a5087619dd7f2aac6590947e3ec02",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\e2f68efd48571120d3b1\\states\\event_elapsed_018432_phase_296960.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_tile_32",
+          "actual_elapsed": 18432
+        },
+        {
+          "source_task": "3cde465f2d2883dd5af4",
+          "seed": 6203,
+          "density": 0.2,
+          "branch_point": "B",
+          "intervention": "tile_128",
+          "phase": 311296,
+          "elapsed": 32768,
+          "requested_elapsed": 32768,
+          "state_hash": "8af84e21dc72f6c0a79add8ed9eb56890af6d2a71b6cad5993d0cda0d8966c0d",
+          "rule_hash": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+          "source_path": "<local>/results\\reversible_null_phase_v032_history_erasure_20260829_topology_fix_001\\branches\\6d215a85287eb1febca1\\states\\event_elapsed_032768_phase_311296.npz",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1024
+          },
+          "rendering_parameters": {
+            "interpolation": "nearest",
+            "palette": {
+              "empty": "#05070a",
+              "positive": "#f0e442",
+              "negative": "#0072b2",
+              "bound-neutral": "#cc79a7"
+            },
+            "antialias_state_cells": false
+          },
+          "panel": "representative_tile_128",
+          "actual_elapsed": 32768
+        }
+      ],
+      "outputs": [
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135.pdf",
+          "sha256": "adc55006165fa8f2ea5e9ba4e7c9d0715a1e357b2786c082bf0b394b957913a2",
+          "format": "pdf"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135.svg",
+          "sha256": "3bc7813455f8a5f334298de811996e8a0466b58425bb7a72b6272eda0b5581a3",
+          "format": "svg"
+        },
+        {
+          "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135.png",
+          "sha256": "d7e6129da8361c5d4650c5c8eb14027401022604ee49a3f076b3dc2066bd9d01",
+          "format": "png",
+          "pixels": [
+            4089,
+            3052
+          ]
+        }
+      ],
+      "major_morphology": true,
+      "canvas_inches": [
+        12.03,
+        8.978
+      ],
+      "new_simulation": false
+    }
+  ]
+}

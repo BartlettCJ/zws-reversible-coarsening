@@ -92,17 +92,23 @@
 \RequirePackage[most]{tcolorbox}
 \definecolor{specSigned}{HTML}{0072B2}
 \definecolor{specWild}{HTML}{D55E00}
+% 2026-09-05: the KIND is a STAMP, a small white rounded chip in ordinary case on the title bar, as the
+% author asked on 26 August ("maybe in its own box like stamp"). Small caps read as shouting to him.
+% Mirrors ZWS v1.325 preamble.tex (\specstamp); note BOX_TITLE_BARS_from_ZWS_v1.325_2026-09-05.
+\newcommand{\specstamp}[2]{\tcbox[on line,boxsep=1pt,left=3pt,right=3pt,top=0.5pt,bottom=0.5pt,
+  colback=white,colframe=white,boxrule=0pt,arc=2pt,
+  fontupper=\mdseries\scriptsize\sffamily\color{#1}]{#2}}
 \newtcolorbox{sigbox}[2][]{enhanced,#1,
   colback=specSigned!4,colframe=specSigned,boxrule=0.7pt,
   left=7pt,right=7pt,top=6pt,bottom=6pt,arc=2pt,
   fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=specSigned,
-  title={#2\hfill\normalfont\scriptsize\textsc{significance}},
+  title={#2\hfill\specstamp{specSigned}{Significance}},
   fontupper=\footnotesize}
 \newtcolorbox{corrbox}[2][]{enhanced,#1,
   colback=specWild!5,colframe=specWild,boxrule=0.7pt,
   left=7pt,right=7pt,top=6pt,bottom=6pt,arc=2pt,
   fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=specWild,
-  title={#2\hfill\normalfont\scriptsize\textsc{withdrawn inference}},
+  title={#2\hfill\specstamp{specWild}{Withdrawn inference}},
   fontupper=\footnotesize}
 
 % ---- title block (titleblock.tex) and front notice (speculation_boxes.lua, Pandoc()) ----

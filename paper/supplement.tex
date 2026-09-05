@@ -3,14 +3,14 @@
 \usepackage{zws_companion_style}
 \usepackage{longtable}
 \usepackage[section]{placeins}
-\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.34, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
+\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.35, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
 \graphicspath{{figures/}}
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand{\zwsrunninghead}{Supplementary Information}
 
 \begin{document}
 \zwstitleblock{Supplementary Information}{Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Supplement to the companion paper, version 1.34, 6 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Supplement to the companion paper, version 1.35, 6 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
 Companion to \emph{Zero Without Stasis} v1.312, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
@@ -192,32 +192,39 @@ Withdrawn: claims that the shuffled branches showed immediate recovery of genuin
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.95\linewidth,height=0.81\textheight,keepaspectratio]{FIGURE_02_HISTORY_ERASURE_BRANCHES.pdf}
-\caption{\textbf{Historical v0.3.2 branch images, reclassified as diagnostics.} Measured: source, shuffled, and post-shuffle states. Warranted inference: the shuffle visibly destroys large-scale organisation while preserving inventory. Limitation: the old endpoint can label the fine-grained shuffled geometry as already strong-domain; this figure is not evidence of causal memory or recovery speed. Panel labels give the requested offsets; the altered continuations were captured at their terminal phases (for example the $\rho_0=0.20$ global shuffle at phase 294,912, 16,384 phases after the source state), as described in Section~10.}
+\includegraphics[scale=0.5]{FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135.pdf}
+\caption{\textbf{The same ingredients, rearranged: what the intervention destroyed, and what it did not.} Each row is one branch of the source trajectory at initial occupancy 0.20: an untouched continuation, a global shuffle, and $32\times32$ and $128\times128$ tile permutations. Reading left to right gives the source state immediately before the branch point, the state immediately after the intervention, then later stored states. At elapsed zero every row holds identical empty, positive, negative and bound-neutral counts, and therefore identical $Q$ (zero throughout), $M$ and single-site entropy; only the arrangement differs, and the shuffled panels visibly lose the source's large-scale texture. The column headings are the requested offsets; each panel is labelled with the offset of the stored state it actually shows, so where an altered branch ended before a requested offset the same terminal state repeats across the later columns, and the last column shows every branch at the largest offset all four reached. Here the global shuffle ends 16,384 phases after the source state at phase 278,528. This figure is a diagnostic only. The v0.3.2 causal reading was withdrawn because the old endpoint labels the fine-grained shuffled geometry as already strong-domain, so nothing here measures preserved spatial memory or recovery speed. The source at initial occupancy 0.24 follows on the next page.}
+\end{figure}
+
+\begin{figure}[p]
+\ContinuedFloat
+\centering
+\includegraphics[scale=0.5]{FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135.pdf}
+\caption{\textbf{Continued: the source at initial occupancy 0.24.} Rows, columns and labels as on the previous page. Where a branch's stored states end before a requested offset, its panels give the offset actually reached, and the last column again shows every branch at the largest offset all four reached.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.95\linewidth]{FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE.pdf}
-\caption{\textbf{Historical fixed-occupancy intervention figure, diagnostic use only.} Measured: identical single-site inventory at the branch point under changed arrangement. Warranted inference: composition alone does not preserve the source images' measured organisation. Limitation: first passage to the confounded endpoint cannot compare causal history. The shuffled panel labelled $+32{,}768$ was captured at phase 223,232, that is 18,432 phases after the branch point at phase 204,800; the untouched panel is at the requested offset (phase 237,568).}
+\includegraphics[scale=0.5]{FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135.pdf}
+\caption{\textbf{Branching at a fixed occupancy shows what composition alone fails to carry.} These are the Branch A interventions, taken at the first sample at which occupancy reached $M/N\geq0.35$: an untouched continuation, and a global shuffle that leaves every single-site count, and so $Q$, $M$ and single-site entropy, exactly as it found them. The three upper plots give residual first-passage survival for the two arms, the paired residual times joined to their common progenitor, and the fraction that has crossed the endpoint by fixed elapsed phase; the shuffled arm crosses almost at once. The lower row shows the branch-point state and one panel from each arm, and the source's diagonal texture is plainly gone from the shuffled one, so composition on its own does not carry the measured organisation. The shuffled panel is that branch's terminal stored state, at phase 223,232, that is 18,432 phases after the branch point at phase 204,800, while the untouched panel is at the requested 32,768 phases (phase 237,568); the panel headers give these offsets. The apparent speed-up is the endpoint failing rather than history being erased: this figure is retained as a diagnostic, and the causal comparison it was built for is withdrawn.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.95\linewidth]{FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE.pdf}
-\caption{\textbf{Historical event-proximal branches, diagnostic use only.} Measured: intervention timing and stored trajectories. Warranted inference: the governed branch construction executed reproducibly. Limitation: proximity to the old endpoint does not validate that endpoint under shuffled null geometry. The four state panels are not synchronised at a common elapsed time: the untouched and tile-128 panels are at $+32{,}768$ phases, the global-shuffle panel at $+16{,}384$ and the tile-32 panel at $+18{,}432$ after the source state at phase 278,528; the latter two show terminal stored states despite the historical ``$+32{,}768$'' labels.}
+\includegraphics[scale=0.5]{FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135.pdf}
+\caption{\textbf{Branching just before the untouched run reaches its own first hit.} These are the Branch B interventions, applied 32,768 phases before each source trajectory's first crossing, so the untouched arm hits at the dashed line by construction. The upper left plot gives event-free survival for the global shuffle and for the two tile permutations; the upper right gives each one's paired difference in restricted mean survival time against the untouched arm, positive meaning later, with a 95\% interval and a practical-equivalence band drawn behind. The four state panels below are not at a common elapsed time: the untouched and tile-128 panels are at $+32{,}768$ phases, the global-shuffle panel at $+16{,}384$ and the tile-32 panel at $+18{,}432$ after the source state at phase 278,528, and the latter two are terminal stored states, as their headers say. The branch construction ran as designed and the trajectories are valid records. What is not valid is the contrast they were built for: the endpoint fires on shuffled geometry, so this figure is a diagnostic and its causal reading is withdrawn.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.95\linewidth]{FIGURE_05_MULTISCALE_MEMORY.pdf}
-\caption{\textbf{Historical hierarchical-shuffle figure, diagnostic use only.} Measured: scale-dependent arrangement perturbations and post-intervention observables. Warranted inference: the stored series can describe structural recovery by direct metrics. Limitation: it cannot support the withdrawn history-inhibition headline through the old first-passage classifier. At each block size, block entropy is the mean normalised Shannon entropy of the four cell-state fractions within non-overlapping blocks; it measures local compositional mixing, not the diversity of distinct block patterns; categorical mutual information by offset measures the statistical dependence between cell states a given distance apart; the retained low-$k$ precursor is the fraction of the source's long-wavelength spectral power that survives the intervention. A mutual-information axis tick reading $-1.2\times10^{-30}$ is floating-point round-off of zero.}
+\includegraphics[scale=0.5]{FIGURE_05_MULTISCALE_MEMORY_V135.pdf}
+\caption{\textbf{How much spatial information each intervention leaves behind, scale by scale.} The three interventions are a global shuffle and $32\times32$ and $128\times128$ tile permutations, running from the most destructive to the least. Upper left gives block entropy at each block size, meaning the mean normalised Shannon entropy of the four cell-state fractions within non-overlapping blocks: it measures local compositional mixing, not the diversity of distinct block patterns. Upper right gives categorical mutual information by offset, the statistical dependence between cell states a given distance apart, and lower left gives the retained low-$k$ precursor, the fraction of the source's long-wavelength spectral power that survives the intervention, one point per replicate with the median marked; lower right sets each branch's residual time against the mutual information it retained. Solid curves are the altered states and dashed curves their matched pre-intervention sources, and the lines join measured points rather than tracing fitted laws. These measurements are direct and remain usable as descriptions, but the figure stands as a diagnostic: it cannot rescue the withdrawn history-inhibition claim, which rested on the failed first-passage classifier.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
-\includegraphics[width=0.98\linewidth]{COMPANION_V129_FIGURE_08_CORRECTED_RESEARCH_STORY.pdf}
-\caption{\textbf{Corrected research timeline.} This explanatory ledger distinguishes robust discovery and confirmation from mechanism constraints and ends with the v0.3.2 classifier correction. It is not an additional measurement.}
+\includegraphics[scale=0.5]{COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.pdf}
+\caption{\textbf{The programme as it now stands, with its correction kept in view.} The nine boxes run in the order the work was done: the selective discovery search, the frozen-rule confirmations and the composition result, then the controls, the homogeneous-start ensembles, first passage and the prepared-shape comparison, and last the intervention audit and what survives it. The final box states the current position: the causal history claim is withdrawn, and the reversible domain-forming phenomenon it was built on remains. This is an explanatory summary of studies reported elsewhere in this Supplement, not an additional measurement.}
 \end{figure}
 
 \section{Prior-art positioning}
@@ -232,7 +239,7 @@ The public release contains compact result tables, reports, the figures used by 
 
 \begingroup\sloppy The historical v0.3.2 source report, completion record, manifests, figures, and raw results are retained unchanged by the author; where public text copies were sanitised, the release's \code{REDACTIONS.md} records the changes. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.\par\endgroup
 
-This Supplement accompanies version 1.34 of the companion paper, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27 to 1.30) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
+This Supplement accompanies version 1.35 of the companion paper, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27 to 1.34) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
 
 \footnotesize
 \bibliographystyle{unsrtnat}

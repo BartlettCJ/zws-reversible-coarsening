@@ -22,7 +22,7 @@ The private development repository keeps the original files (checksummed). In th
 | `extensions/reversible_null_phase/src/zws_reversible_null_phase/history_verification.py` | `agent-specific wording neutralised` | 1 |
 | `extensions/reversible_null_phase/tests/test_history_archive.py` | `test fixture path made generic` | 1 |
 | `paper/V032_CLASSIFIER_REVIEW_20260831.md` | `local project path -> <local>/` | 1 |
-| `paper/V129_LIGHT_RENDER_MANIFEST.json` | `local project path -> <local>/` | 14 |
+| `paper/V135_PRINT_RENDER_MANIFEST.json` | `local project path -> <local>/` | 93 |
 | `paper/WITHDRAWN_CLAIM_NOTICE.md` | `reference to a record outside this release removed` | 1 |
 | `paper/figure_assets/plate_v025/plate_provenance.json` | `local project path -> <local>/` | 1 |
 | `paper/prior_art/PRIOR_ART_REVIEW.md` | `reference to a search log outside this release removed` | 1 |
