@@ -65,8 +65,8 @@ the independent Eshkol program.
   not included here. The result tables, summaries and rule files that the paper's
   numbers rest on are included; the omitted records are retained by the author.
 * Line endings are stored byte-for-byte: `.gitattributes` disables all end-of-line
-  conversion, because several files are hash-pinned by the tests and the `.sha256`
-  sidecars. Clone with any settings and the bytes match.
+  conversion, because several files are hash-pinned by the tests, the release manifest
+  and retained checksum records. Clone with any settings and the bytes match.
 
 ## Third-party software
 
@@ -91,7 +91,7 @@ and the Eshkol project is not affiliated with this study. The paper cites it as
 
 ## Licence and citation
 
-Code (`src/`, `extensions/`, `configs/`, `tests/`, `eshkol/`): MIT, see `LICENSE`.
+Code (`src/`, `extensions/`, `configs/`, `tests/`, `eshkol/`, `scripts/`): MIT, see `LICENSE`.
 Manuscript, supplement, figures and evidence tables: copyright 2026 Chris Bartlett,
 released under CC BY 4.0. Cite the paper via its DOI; `CITATION.cff` carries it as the
 preferred citation and lists the parent paper and Eshkol as references.

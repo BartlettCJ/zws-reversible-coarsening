@@ -3,14 +3,14 @@
 \usepackage{zws_companion_style}
 \usepackage{longtable}
 \usepackage[section]{placeins}
-\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.29, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
+\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.30, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
 \graphicspath{{figures/}}
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand{\zwsrunninghead}{Supplementary Information}
 
 \begin{document}
 \zwstitleblock{Supplementary Information}{Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Supplement to the companion paper, version 1.29, 5 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Supplement to the companion paper, version 1.30, 5 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
 Companion to \emph{Zero Without Stasis} v1.312, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
@@ -205,13 +205,13 @@ Withdrawn: claims that the shuffled branches showed immediate recovery of genuin
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.95\linewidth]{FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE.pdf}
-\caption{\textbf{Historical event-proximal branches, diagnostic use only.} Measured: intervention timing and stored trajectories. Warranted inference: the governed branch construction executed reproducibly. Limitation: proximity to the old endpoint does not validate that endpoint under shuffled null geometry.}
+\caption{\textbf{Historical event-proximal branches, diagnostic use only.} Measured: intervention timing and stored trajectories. Warranted inference: the governed branch construction executed reproducibly. Limitation: proximity to the old endpoint does not validate that endpoint under shuffled null geometry. The four state panels are not synchronised at a common elapsed time: the untouched and tile-128 panels are at $+32{,}768$ phases, the global-shuffle panel at $+16{,}384$ and the tile-32 panel at $+18{,}432$ after the source state at phase 278,528; the latter two show terminal stored states despite the historical ``$+32{,}768$'' labels.}
 \end{figure}
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=0.95\linewidth]{FIGURE_05_MULTISCALE_MEMORY.pdf}
-\caption{\textbf{Historical hierarchical-shuffle figure, diagnostic use only.} Measured: scale-dependent arrangement perturbations and post-intervention observables. Warranted inference: the stored series can describe structural recovery by direct metrics. Limitation: it cannot support the withdrawn history-inhibition headline through the old first-passage classifier. Block entropy is the Shannon entropy of the block-pattern distribution at each block size; categorical mutual information by offset measures the statistical dependence between cell states a given distance apart; the retained low-$k$ precursor is the fraction of the source's long-wavelength spectral power that survives the intervention. A mutual-information axis tick reading $-1.2\times10^{-30}$ is floating-point round-off of zero.}
+\caption{\textbf{Historical hierarchical-shuffle figure, diagnostic use only.} Measured: scale-dependent arrangement perturbations and post-intervention observables. Warranted inference: the stored series can describe structural recovery by direct metrics. Limitation: it cannot support the withdrawn history-inhibition headline through the old first-passage classifier. At each block size, block entropy is the mean normalised Shannon entropy of the four cell-state fractions within non-overlapping blocks; it measures local compositional mixing, not the diversity of distinct block patterns; categorical mutual information by offset measures the statistical dependence between cell states a given distance apart; the retained low-$k$ precursor is the fraction of the source's long-wavelength spectral power that survives the intervention. A mutual-information axis tick reading $-1.2\times10^{-30}$ is floating-point round-off of zero.}
 \end{figure}
 
 \begin{figure}[p]
@@ -232,7 +232,7 @@ The public release contains compact result tables, reports, the figures used by 
 
 \begingroup\sloppy The historical v0.3.2 source report, completion record, manifests, figures, and raw results are retained unchanged by the author; where public text copies were sanitised, the release's \code{REDACTIONS.md} records the changes. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.\par\endgroup
 
-This Supplement accompanies version 1.29 of the companion paper, the publication version. Earlier revisions (0.2.1 to 0.2.7, 1.27 and 1.28) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
+This Supplement accompanies version 1.30 of the companion paper, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27 to 1.29) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
 
 \footnotesize
 \bibliographystyle{unsrtnat}
