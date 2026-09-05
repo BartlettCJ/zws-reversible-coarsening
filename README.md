@@ -91,5 +91,7 @@ and the Eshkol project is not affiliated with this study. The paper cites it as
 
 ## Licence and citation
 
-Code: MIT (`LICENSE`). Paper, figures and evidence tables: the author retains
-copyright; cite the paper via its DOI (see `CITATION.cff`).
+Code (`src/`, `extensions/`, `configs/`, `tests/`, `eshkol/`): MIT, see `LICENSE`.
+Manuscript, supplement, figures and evidence tables: copyright 2026 Chris Bartlett,
+released under CC BY 4.0. Cite the paper via its DOI; `CITATION.cff` carries it as the
+preferred citation and lists the parent paper and Eshkol as references.

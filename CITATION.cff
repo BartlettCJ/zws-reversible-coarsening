@@ -1,21 +1,15 @@
 cff-version: 1.2.0
-title: "Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton"
-message: "Please cite this companion paper and dataset package."
-type: article
+message: "Please cite the companion paper (preferred-citation); cite this release when you use the code or evidence tables."
+type: software
+title: "ZWS reversible coarsening: companion code and evidence release"
 authors:
   - family-names: Bartlett
     given-names: Chris
     orcid: https://orcid.org/0009-0001-3323-0131
-version: "1.27"
+version: "1.28"
 date-released: 2026-09-05
 doi: 10.5281/zenodo.22270456
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.22270456
-    description: Zenodo archive of the companion paper and evidence release
-  - type: doi
-    value: 10.5281/zenodo.21966374
-    description: Zero Without Stasis, the paper this study accompanies
+repository-code: https://github.com/BartlettCJ/zws-reversible-coarsening
 license: MIT
 keywords:
   - reversible cellular automata
@@ -25,16 +19,36 @@ keywords:
   - first passage
   - classifier correction
 abstract: >-
-  A fully specified reversible four-state block cellular automaton exactly
-  conserves signed charge while allowing occupancy to change and exhibits
-  delayed, density-dependent, irregular finite-time organisation. The release
-  includes an additive withdrawal of the invalid v0.3.2 history-erasure causal
-  headline after its endpoint failed under shuffled null geometry.
-notes: >-
-  Public code-and-evidence release accompanying the companion paper. The full
-  development repository is retained privately by the author; large trajectories
-  and checkpoints are not distributed.
+  Code, tests, campaign evidence tables, rule files and paper sources accompanying the
+  companion paper "Delayed Distributed Coarsening in an Exactly Reversible
+  Signed-Charge-Conserving Block Cellular Automaton". The software is MIT-licensed; the
+  manuscript, supplement and figures are released under CC BY 4.0. Large trajectories,
+  checkpoints and full-resolution state arrays are retained by the author and are not
+  part of this release.
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22270456
+    description: Zenodo record of the companion paper and this release
+preferred-citation:
+  type: article
+  title: "Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton"
+  authors:
+    - family-names: Bartlett
+      given-names: Chris
+      orcid: https://orcid.org/0009-0001-3323-0131
+  year: 2026
+  doi: 10.5281/zenodo.22270456
+  notes: "Companion paper to Zero Without Stasis, version 1.28, 5 September 2026. Working paper, not peer reviewed."
 references:
+  - type: article
+    title: "Zero Without Stasis: Structured Nullity, Finitary Occurrent Actualism, Mathematical Intrinsic Occurrence, and Conscious Actuality"
+    authors:
+      - family-names: Bartlett
+        given-names: Chris
+        orcid: https://orcid.org/0009-0001-3323-0131
+    year: 2026
+    doi: 10.5281/zenodo.21966374
+    notes: "The parent paper this study accompanies; version 1.312, 5 September 2026, working paper."
   - type: software
     title: "Eshkol: A Programming Language for Mathematical Computing"
     authors:
@@ -42,9 +56,6 @@ references:
     version: 1.3.4-evolve
     year: 2026
     url: https://github.com/tsotchke/eshkol
-        license: MIT
-    notes: >-
-  Public code-and-evidence release accompanying the companion paper. The full
-  development repository is retained privately by the author; large trajectories
-  and checkpoints are not distributed.
-repository-code: https://github.com/BartlettCJ/zws-reversible-coarsening
+    repository-code: https://github.com/tsotchke/eshkol
+    license: MIT
+    notes: "Language and runtime of the independent exact parity oracle used in this study (exhaustive 256-entry rule audit and cell-for-cell replay)."

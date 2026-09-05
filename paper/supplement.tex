@@ -3,16 +3,16 @@
 \usepackage{zws_companion_style}
 \usepackage{longtable}
 \usepackage[section]{placeins}
-\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.27, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
+\hypersetup{pdftitle={Supplementary Information: Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton},pdfauthor={Chris Bartlett},pdfsubject={Companion supplement v1.28, publication version},pdfkeywords={reversible cellular automata, signed charge, finite-time domain formation}}
 \graphicspath{{figures/}}
 \newcommand{\code}[1]{\texttt{#1}}
 \renewcommand{\zwsrunninghead}{Supplementary Information}
 
 \begin{document}
 \zwstitleblock{Supplementary Information}{Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton}{Chris Bartlett, {\itshape Independent Researcher}. ORCID: \href{https://orcid.org/0009-0001-3323-0131}{0009-0001-3323-0131}\\[1pt]
-Supplement to the companion paper, version 1.27, 5 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
+Supplement to the companion paper, version 1.28, 5 September 2026. DOI: \href{https://doi.org/10.5281/zenodo.22270456}{10.5281/zenodo.22270456}\\[1pt]
 Working paper, not peer reviewed.\\[1pt]
-Companion to \emph{Zero Without Stasis} v1.278, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
+Companion to \emph{Zero Without Stasis} v1.312, DOI: \href{https://doi.org/10.5281/zenodo.21966374}{10.5281/zenodo.21966374}.}
 
 \tableofcontents
 
@@ -104,7 +104,7 @@ History erasure v0.3.2 & shuffled branches + old endpoint & classifier triggered
 \section{Exact reversal and composition}
 The large audit used a $4096\times4096$ periodic lattice (16,777,216 cells) with a populated central random patch, not a whole-world homogeneous start. The square patch spans 45\% of each dimension; its target internal proportions are 12\% positive, 12\% negative and 8\% bound-neutral, and the exterior is empty. After 65,536 forward block phases, the run reversed the phase schedule and applied the inverse permutation. The final recovered state was identical to the initial state at every cell. Global signed charge remained $Q=0$. Occupancy $M$ changed during the trajectory, as permitted by the rule.
 
-The four $4096\times4096$ localised-patch confirmation runs supplied the reported median dense-interior occupancy 0.572989 (dense interior: cells in the high-local-density band, excluding a margin around the dense/sparse interface, evaluated at each run's final stored snapshot), positive fraction 0.192542, negative fraction 0.192535, and bound-neutral fraction 0.187912. Normalised four-state entropy was 0.946343. Those four localised-patch confirmatory winner runs reached transient domain-scale maxima of 72.66--136.11 times their initial scale (median 98.4459); the final stored scales were 15.77--16.33 times initial (median 16.1118). This nonmonotonicity is why the paper says ``coarsening-like organisation'' rather than monotonic phase ordering.
+The four $4096\times4096$ localised-patch confirmation runs supplied the reported median dense-interior occupancy 0.572989 (dense interior: cells in the high-local-density band, excluding a margin around the dense/sparse interface, evaluated at each run's final stored snapshot), positive fraction 0.192542, negative fraction 0.192535, and bound-neutral fraction 0.187912. Normalised four-state entropy was 0.946343. The per-run table behind these medians ships in the release as \path{experiments/domain_mechanism_20260825/artifacts/spatial_reduction/ENVIRONMENT_COMPOSITIONS.csv}: the four \code{stage7b} rows with role group \code{final}, environment \code{dense\_interior}, analysis family \code{density\_robustness}, box width 32 and threshold scheme \code{q20\_q80} reproduce the medians exactly. Those four localised-patch confirmatory winner runs reached transient domain-scale maxima of 72.66--136.11 times their initial scale (median 98.4459); the final stored scales were 15.77--16.33 times initial (median 16.1118). This nonmonotonicity is why the paper says ``coarsening-like organisation'' rather than monotonic phase ordering.
 
 \section{Endpoint definitions and initial-condition provenance}
 \subsection{Distinct initial-condition families}
@@ -143,7 +143,7 @@ The main reversal figure uses localised discovery seed 260824 and an organised i
 
 At 0.18, the extended follow-up changed the interpretation of the shorter campaign: events continued to appear late, so a short-horizon fixed threshold could not be retained. Survival curves preserve censoring. The paper does not extrapolate an infinite-time event probability or claim a critical density. Finite-size and area-scaling analyses did not support the simple local-Poisson expectation tested, but the available sizes do not establish an alternative asymptotic law.
 
-Event-centred morphology labels were distributed (archival code B) for 67 events, unresolved (code E) for 24, and localised (code A) for none; the preregistered rubric is summarised in the main text, Section~5.3. The label is a measured classifier under frozen windows, not an ontological statement about every possible initiation process.
+Event-centred morphology labels were distributed (archival code B) for 67 events, unresolved (code E) for 24, and localised (code A) for none; the preregistered rubric is summarised in the main text, Section~5.3. The 91 labelled events are the 68 first hits of the primary $1024^2$ cohort and the 23 of the $512^2$ area-scaling cohort. The label is a measured classifier under frozen windows, not an ontological statement about every possible initiation process.
 
 \section{Arrangement and prepared-shape controls}
 Prepared droplets and slabs retained or enlarged their imposed geometry but produced zero strong-domain endpoint crossings across 48 trials by 262,144 phases. Matched homogeneous starts produced 19 crossings in 24 trials. These are outcomes of a \emph{relative-growth} assay: the denominator is each trajectory's own initial finite-empty-domain scale. A prepared macroscopic shape is not on the same baseline as random soup. Accordingly, 0/48 is not evidence that seeded organisation failed to form or persist, and this contrast alone does not establish a basin barrier, history inhibition or failure of all compact seeds. The direct measurements of retained geometry remain valid, separately from the endpoint counts.
@@ -151,11 +151,11 @@ Prepared droplets and slabs retained or enlarged their imposed geometry but prod
 Earlier arrangement comparisons and phase controls are retained in the experiment reports. Their role is to constrain trivial initialisation artefacts, not to establish a thermodynamic ensemble.
 
 \section{Double conservation and reaction-pair ablations}
-The exact-$Q{+}M$ sibling is a distinct permutation whose every local block update preserves both signed charge and occupancy. It was chosen as the closest tested reactive sibling rather than as a universal representative of double-conserving automata. Mean reaction density remained 0.01160, close to the winner's 0.01234, so its negative endpoint is not explained by a dead rule. In the focused $1024^2$ comparison (8 replicates) the winner produced 8/8 strong-domain outcomes and the sibling 0/8. In the pooled $512^2$ balanced profile (16 replicates) the winner produced 10/16, the sibling 0/16, and pure rotation 0/16.
+The exact-$Q{+}M$ sibling is a distinct permutation whose every local block update preserves both signed charge and occupancy. It was chosen as the closest tested reactive sibling rather than as a universal representative of double-conserving automata. The median across runs of the mean reaction density was 0.01160, close to the winner's 0.01234, so its negative endpoint is not explained by a dead rule. In the focused $1024^2$ comparison (8 replicates) the winner produced 8/8 strong-domain outcomes and the sibling 0/8. In the pooled $512^2$ balanced profile (16 replicates) the winner produced 10/16 end-of-window strong-domain passes, the sibling 0/16, and pure rotation 0/16. Table~3 counts passes at the end of the observation window, not first passages: in two ablations one run each crossed the endpoint earlier and had fallen back below its final scale-ratio condition by the end of the window.
 
 \begin{table}[h]
 \centering
-\caption{Pooled matched controls and ablations.}
+\caption{Pooled matched controls and ablations: end-of-window strong-domain passes ($512^2$, 16 replicates each).}
 \resizebox{\linewidth}{!}{\input{tables/mechanism_controls.tex}}
 \end{table}
 
@@ -226,13 +226,13 @@ Reversible block automata and conservative logic are foundational precedents \ci
 The residual contribution is the combination, not any isolated ingredient: an exact four-state signed invariant with variable occupancy; delayed distributed coarsening-like organisation; exact large-lattice reversal; density and waiting-time characterisation; and a hierarchy of geometry, double-conservation, and reaction controls. The review does not claim exhaustive priority.
 
 \section{Reproducibility, hashes, and archive policy}
-Compact source tables, reports, figures, figure manifests, rule files, environment records, and SHA-256 sidecars are committed. Large raw trajectories and checkpoints are intentionally excluded from Git and named by external path and hash in the release manifests. Public figures have PDF, PNG, and SVG forms. Manuscript and Supplement PDFs are built from the tracked TeX sources.
+The public release contains compact result tables, reports, the figures used by the paper, rule files and provenance records; its \code{MANIFEST.csv} gives the size and SHA-256 digest of every included file. Large raw trajectories, checkpoints and full-resolution state arrays are retained by the author and are named by hash in the campaign records. Manuscript and Supplement PDFs are built from the tracked TeX sources.
 
 \textbf{Independent parity oracle.} The frozen rule and the Margolus update were re-implemented in Eshkol~\citep{Tsotchke2026Eshkol} (version 1.3.4-evolve), a Scheme-based language compiled to native code via LLVM. The Python package generates a self-contained Eshkol program that re-runs the exhaustive 256-entry audit (output range, permutation uniqueness, exact local charge) and replays a $16\times16$ exact-inventory torus (initial occupancy 0.28, seed 303) for 256 steps; the Python simulator's expected final lattice is stored beside the source and every cell is compared. The recorded run reports \code{AUDIT\_OK}, zero mismatched cells, and exact agreement in $Q=0$ and $M=97$. The generated program, the expected lattice and the recorded result ship in the release under \path{extensions/reversible_null_phase/eshkol/}.
 
-The historical v0.3.2 source report, completion record, manifests, figures, and raw results are not overwritten. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.
+\begingroup\sloppy The historical v0.3.2 source report, completion record, manifests, figures, and raw results are retained unchanged by the author; where public text copies were sanitised, the release's \code{REDACTIONS.md} records the changes. The additive files \code{ERRATUM\_HISTORY\_ERASURE\_CLASSIFIER.md} and \code{corrected\_HISTORY\_ERASURE\_REPORT\_20260831.md} state the current interpretation. The corrected companion archive contains a withdrawal notice at its top level.\par\endgroup
 
-This Supplement accompanies version 1.27 of the companion paper, the publication version. Earlier draft revisions (0.2.1 to 0.2.7) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
+This Supplement accompanies version 1.28 of the companion paper, the publication version. Earlier revisions (0.2.1 to 0.2.7 and 1.27) corrected methods and provenance descriptions, disclosure, figures, typesetting and citations; no new scientific simulation or change to numerical results was made in any of them, and the simulation source and archived evidence remain those of the preserved computational release. The archived release is deposited at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.22270456}{\mbox{10.5281/zenodo.22270456}}.
 
 \footnotesize
 \bibliographystyle{unsrtnat}
