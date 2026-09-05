@@ -6,7 +6,7 @@ authors:
   - family-names: Bartlett
     given-names: Chris
     orcid: https://orcid.org/0009-0001-3323-0131
-version: "1.35"
+version: "1.36"
 date-released: 2026-09-06
 doi: 10.5281/zenodo.22270456
 repository-code: https://github.com/BartlettCJ/zws-reversible-coarsening
@@ -38,7 +38,7 @@ preferred-citation:
       orcid: https://orcid.org/0009-0001-3323-0131
   year: 2026
   doi: 10.5281/zenodo.22270456
-  notes: "Companion paper to Zero Without Stasis, version 1.35, 6 September 2026. Working paper, not peer reviewed."
+  notes: "Companion paper to Zero Without Stasis, version 1.36, 6 September 2026. Working paper, not peer reviewed."
 references:
   - type: article
     title: "Zero Without Stasis: Structured Nullity, Finitary Occurrent Actualism, Mathematical Intrinsic Occurrence, and Conscious Actuality"

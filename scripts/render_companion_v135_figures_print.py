@@ -29,8 +29,16 @@ Outputs (new stems; the earlier renders and their manifests stay in place as pro
   FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135
   FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135
 
-Usage (from the worktree root, with the extension package importable and torch available):
-  python scripts/render_companion_v135_figures_print.py --repo . --out paper/figures [--run <run dir>]
+Usage (from the repository root, with the extension package importable and torch available):
+  python scripts/render_companion_v135_figures_print.py --repo . --out <output folder> [--run <run dir>] [--manifest <path>]
+
+Without --run the six table- and text-driven figures are rendered from the release's rule file and CSV tables, and the
+manifest goes to <output folder>/V135_PRINT_RENDER_MANIFEST_compact.json, so the shipped eleven-figure manifest in
+paper/ is never replaced by a partial one; use a fresh output folder. With --run (the author-retained v0.3.2 run
+directory: REALIZED_BRANCH_PLAN.json, sources/<id>/source_result.json, media_states/ and branches/ state arrays) the five
+state-based figures are rendered too; they also verify, through the campaign's own readers, the experiment folder's
+INTEGRITY_AUDIT.json, REPRESENTATIVE_STATE_INDEX.csv, RESIDUAL_FIRST_PASSAGE.csv, HISTORY_ERASURE_RESULTS.csv,
+INTERVENTION_AUDIT.csv and FROZEN_PLAN.json with their .sha256 sidecars, all of which the release includes.
 """
 from __future__ import annotations
 import argparse, csv, hashlib, json, re, struct, textwrap
@@ -83,6 +91,7 @@ def apply_rc() -> None:
         "text.color": TEXT, "axes.labelcolor": TEXT, "xtick.color": TEXT, "ytick.color": TEXT, "legend.labelcolor": TEXT,
         "axes.edgecolor": MUTED, "axes.facecolor": PANEL, "figure.facecolor": BG, "savefig.facecolor": BG,
         "grid.color": GRID, "grid.linewidth": 0.7, "axes.axisbelow": True,
+        "svg.hashsalt": "zwslab-companion",     # deterministic element ids, so a re-render leaves identical SVGs
     })
 
 
@@ -302,9 +311,13 @@ def render_rule_figure(repo: Path, out: Path) -> dict:
                          "input_Q_M": [q0, m0], "output_Q_M": [q1, m1]})
     stem = "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS"
     outputs, size = save_set(fig, out, stem, "How one reversible block update works")
-    rec = compact_record(stem, [rule_path], repo, outputs, size)
-    rec["worked_rule"] = {"state_order": "top-left, top-right, bottom-left, bottom-right", "block_code": "s_TL + 4*s_TR + 16*s_BL + 64*s_BR",
-                          "rule_raw_uint8_sha256": RULE, "examples": examples, "derived_from": "scripts/render_companion_v023_figures.py (raster, v0.2.3)"}
+    rec = compact_record(stem, [], repo, outputs, size)
+    rec["worked_rule"] = {"rule_file": "extensions/reversible_null_phase/rules/winner_d1fe99.json",
+                          "rule_raw_uint8_sha256": RULE,
+                          "rule_file_digest": "not recorded here: the rule is identified by the raw 256-byte table digest above; the JSON file's "
+                                              "own digest is in the release MANIFEST.csv (its path field is rewritten for release, see REDACTIONS.md)",
+                          "state_order": "top-left, top-right, bottom-left, bottom-right", "block_code": "s_TL + 4*s_TR + 16*s_BL + 64*s_BR",
+                          "examples": examples, "derived_from": "scripts/render_companion_v023_figures.py (raster, v0.2.3)"}
     return rec
 
 
@@ -764,7 +777,9 @@ if __name__ == "__main__":
     p.add_argument("--run", type=Path, default=None,
                    help="OPTIONAL: the author-retained v0.3.2 run directory (archived state arrays). Without it the six figures that need "
                         "no state arrays are rendered (rule diagram, density, controls, timeline, ledger, multiscale).")
-    p.add_argument("--manifest", type=Path, default=None, help="where to write the render manifest (default: <out>/../V135_PRINT_RENDER_MANIFEST.json)")
+    p.add_argument("--manifest", type=Path, default=None,
+                   help="where to write the render manifest (default: <out>/../V135_PRINT_RENDER_MANIFEST.json with --run; without --run, "
+                        "<out>/V135_PRINT_RENDER_MANIFEST_compact.json, so a compact regeneration never replaces the shipped eleven-figure manifest)")
     a = p.parse_args()
     repo = a.repo.resolve(); out = a.out.resolve()
     experiment = (repo / "experiments" / "reversible_null_phase_v032_history_erasure_20260829").resolve()
@@ -791,6 +806,6 @@ if __name__ == "__main__":
                          "history_figures.figure_02_history_branches, figure_03_fixed_occupancy, figure_04_event_proximal, figure_05_multiscale_memory, "
                          "figure_06_micro_macro, figure_07_mechanism_ledger (v0.3.2 campaign)"],
         "rule_sha256": RULE, "new_simulations": False, "rendered_utc": TODAY.isoformat(), "figures": recs}
-    mp = a.manifest.resolve() if a.manifest else out.parent / "V135_PRINT_RENDER_MANIFEST.json"
+    mp = a.manifest.resolve() if a.manifest else (out.parent / "V135_PRINT_RENDER_MANIFEST.json" if a.run is not None else out / "V135_PRINT_RENDER_MANIFEST_compact.json")
     mp.write_text(json.dumps(manifest, indent=2, default=str) + "\n", encoding="utf-8")
     print(mp, "|", scope)

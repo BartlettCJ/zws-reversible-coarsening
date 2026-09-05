@@ -1,0 +1,36 @@
+{
+  "branch_count": 72,
+  "branch_result_plan_hashes": [
+    "f870677eadf3c1e92e3dced167c6cffd45759428aee2197182465e0bfba21978"
+  ],
+  "checks": {
+    "all_branch_Q_exact_zero": true,
+    "all_intervention_Q_M_preserved": true,
+    "all_intervention_audits_valid": true,
+    "all_intervention_histograms_preserved": true,
+    "all_payload_values_finite": true,
+    "all_source_Q_exact_zero": true,
+    "branch_result_count_exact": true,
+    "branch_tasks_match_realized_scientific_core": true,
+    "calibration_inherited": true,
+    "no_missing_result_ids": true,
+    "planned_ids_unique": true,
+    "realized_branch_partition_exact": true,
+    "realized_plan_lineage_valid": true,
+    "result_ids_unique": true,
+    "resume_replay_audit_valid_if_required": true,
+    "source_count_exact": true,
+    "translation_nulls_exact": true,
+    "translation_nulls_present": true,
+    "winner_hash_exact": true
+  },
+  "current_realized_plan_payload_sha256": "f870677eadf3c1e92e3dced167c6cffd45759428aee2197182465e0bfba21978",
+  "ineligible_branch_count": 0,
+  "passed": true,
+  "planned_scientific_trajectory_maximum": 88,
+  "realized_scientific_trajectory_count": 88,
+  "resume_replay_audit_used": false,
+  "schema": "zws-reversible-null-phase-v032-integrity-audit-v1",
+  "source_count": 16,
+  "translation_null_count": 4
+}

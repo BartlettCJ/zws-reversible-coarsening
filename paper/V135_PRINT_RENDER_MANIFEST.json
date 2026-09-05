@@ -21,12 +21,10 @@
   "figures": [
     {
       "figure_id": "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS",
-      "source_files": {
-        "extensions/reversible_null_phase/rules/winner_d1fe99.json": "6c2f21f7d08494ebb74c838e19503aae09ef58bddaa051d6d9a09dc36ab20f19"
-      },
+      "source_files": {},
       "outputs": {
         "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.pdf": "2575c78679cb3fd1333514ed74d546be9ded677e5425d918d693f0b79d1a9efe",
-        "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.svg": "d27c3c5caa5bafdae8f15e5b8978fa46c56db389fcac2a8d4096bed6b3e9a055",
+        "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.svg": "e594fb1e081a4721dac29c55a3edeb16821e77c3f97408d3801fc9157038a80f",
         "COMPANION_V135_FIGURE_02_HOW_THE_RULE_WORKS.png": "af6dbda0804fc13bd570abac9f6588102ec2d27c552afa7459a4340013e87067"
       },
       "canvas_inches": [
@@ -35,9 +33,11 @@
       ],
       "new_simulation": false,
       "worked_rule": {
+        "rule_file": "extensions/reversible_null_phase/rules/winner_d1fe99.json",
+        "rule_raw_uint8_sha256": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
+        "rule_file_digest": "not recorded here: the rule is identified by the raw 256-byte table digest above; the JSON file's own digest is in the release MANIFEST.csv (its path field is rewritten for release, see REDACTIONS.md)",
         "state_order": "top-left, top-right, bottom-left, bottom-right",
         "block_code": "s_TL + 4*s_TR + 16*s_BL + 64*s_BR",
-        "rule_raw_uint8_sha256": "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c",
         "examples": [
           {
             "input_code": 1,
@@ -99,7 +99,7 @@
       },
       "outputs": {
         "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.pdf": "e0a869669c9e02490fdec3ef8391f59010b8e0db1714bead2e809c920647ede0",
-        "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.svg": "de1b9c18fc3d3a30b324bd980f687c50f95a9a12b31b65658db7d990cab9ba31",
+        "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.svg": "b47c996c6c4dac205f9853bee3ac825d220fe8bf29755e4816e983035678295b",
         "COMPANION_V135_FIGURE_03_DENSITY_FIRST_PASSAGE.png": "3eccf7e095df20085d33e66db4185a222cddec53e3a66b446093fcffe5605125"
       },
       "canvas_inches": [
@@ -116,7 +116,7 @@
       },
       "outputs": {
         "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.pdf": "5668ec37bd3b84f33075927ac5525e8057c2514b0500ac81163d62554665f803",
-        "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.svg": "ea0f53d5fd2a5efe0300415c52cd746fb08ae63a33ca3b598e2203ca993cdf65",
+        "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.svg": "84c6dd214373fcd337296cbee86b2383faf777725afd4a1ef425ef1d7cb8a418",
         "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS.png": "344c0c6c2a5acb48eb2f670bd6288e8f3dc92be38105388c68b1eaa8493e7db1"
       },
       "canvas_inches": [
@@ -130,7 +130,7 @@
       "source_files": {},
       "outputs": {
         "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.pdf": "dce8a6be6aa3bff6bee113fd83c960e21847e9552e7fde84e49a1e9fb989bc8f",
-        "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.svg": "ed7e334ed5498e62912b638032e70c3fe79069217b3fd5fcf0a500ecb9408ee1",
+        "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.svg": "acf0b1d66e1aa9cf696ce26360cadc8746f3d1f36df422bcedd58b252942cd03",
         "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY.png": "8a7ea5c18630e69a01203aa5d07e6842d2013c12388d8ff5578162ee958fa184"
       },
       "canvas_inches": [
@@ -214,7 +214,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_07_MECHANISM_LEDGER_V135.svg",
-          "sha256": "1ed6a9887c1f81c6b9e6313f62cf8a69a4be749d84f2daaaad6f698d761d1695",
+          "sha256": "f134babc734ea43a996753ed9b719916e56d279bdf63d0a9f1384f78a162b451",
           "format": "svg"
         },
         {
@@ -368,7 +368,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_05_MULTISCALE_MEMORY_V135.svg",
-          "sha256": "06d7f32fc8a8fa81c340354af059895dc672a2349da974e31403cd0941e5d9c4",
+          "sha256": "b7b2c828d0c1a9a1a78b04d542d0c45677f968f9d9dbe075c747e8aabe96a630",
           "format": "svg"
         },
         {
@@ -561,7 +561,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_06_MICRO_DISORDER_MACRO_ORDER_V135.svg",
-          "sha256": "d344e2d3c7501972ffb217c5302df10f5c95b80a01c3c07d05b6421691ab7ffd",
+          "sha256": "b4464ec5174aec434f91d6bed658ecdf70393a8fc78387db0627d2f9bd266109",
           "format": "svg"
         },
         {
@@ -1342,7 +1342,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02A_HISTORY_ERASURE_BRANCHES_V135.svg",
-          "sha256": "8226f54a79ec884754ce2a50ec0da4b150c4e57f2fe8799f27f07b74dd66d1d5",
+          "sha256": "deb024f1569e61f111a3eb113259c981f348d6311f74d7d5b9a5768c52768200",
           "format": "svg"
         },
         {
@@ -2115,7 +2115,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_02B_HISTORY_ERASURE_BRANCHES_V135.svg",
-          "sha256": "d3376c1938370304ee2812b901723386f309d3167d30ffe4de54a66100e1af3e",
+          "sha256": "5de3734854a15f7d8db21783cc0cbdfaeb7cbdc3fe2caf2d034a310ba24d49ad",
           "format": "svg"
         },
         {
@@ -2330,7 +2330,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_03_FIXED_OCCUPANCY_HISTORY_ERASURE_V135.svg",
-          "sha256": "81e16f9f7723bad97a19d026279766ef14506f3810e5f96abbf97da8db600ed7",
+          "sha256": "c8b05604976866db193969872a6d214ac821dd9f9630ae699dacfada82415d6b",
           "format": "svg"
         },
         {
@@ -2547,7 +2547,7 @@
         },
         {
           "path": "<local>/ZWSLab-v024\\paper\\figures\\FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135.svg",
-          "sha256": "3bc7813455f8a5f334298de811996e8a0466b58425bb7a72b6272eda0b5581a3",
+          "sha256": "6a5565385ad8be0182774a21048169e3ca41dd93be3435e145328204b8d97e33",
           "format": "svg"
         },
         {

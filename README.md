@@ -68,11 +68,19 @@ the independent Eshkol program.
   conversion, because several files are hash-pinned by the tests, the release manifest
   and retained checksum records. Clone with any settings and the bytes match.
 * The paper's code-generated figures can be regenerated from this release:
-  `python scripts/render_companion_v135_figures_print.py --repo . --out paper/figures`
+  `python scripts/render_companion_v135_figures_print.py --repo . --out regenerated_figures`
   rebuilds the six figures that need no state arrays (rule diagram, density first passage,
   controls and ablations, mechanism ledger, multiscale memory, research timeline) from the
-  shipped rule file and CSV tables. The five state-based figures (micro/macro and the four
-  history-erasure branch figures) additionally need the author-retained run directory (`--run`).
+  shipped rule file and CSV tables into a fresh folder, and writes its own manifest
+  (`regenerated_figures/V135_PRINT_RENDER_MANIFEST_compact.json`) rather than replacing the
+  shipped eleven-figure manifest in `paper/`. Regenerated PDFs need not be byte-identical
+  across rendering environments; the shipped figures and their manifest are the record.
+  The five state-based figures (micro/macro and the four history-erasure branch figures)
+  additionally need the author-retained run directory (`--run`: the realised branch plan, the
+  per-source result records and the `media_states/` and `branches/` state arrays). The
+  experiment-side inputs those figures verify (the integrity audit, the representative index,
+  the residual first-passage, history-erasure result and intervention audit tables, the frozen
+  plan, each with its `.sha256` sidecar) are included in this release.
 
 ## Third-party software
 
