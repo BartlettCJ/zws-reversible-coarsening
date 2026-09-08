@@ -2,7 +2,7 @@
 % reproducing the typesetting of Zero Without Stasis (C:\MathUniPapers\repo\paper:
 % build.ps1 flags + preamble.tex + titleblock.tex + colophon.tex), 2026-09-03.
 %
-% ZWS is built by pandoc + Tectonic: A4, 11pt, 2.6 cm margins, Latin Modern through
+% ZWS is built by pandoc + Tectonic: A4, 11pt, 2.6 cm margins, Calibri at fontspec scale 1.06 (since 2026-09-08; Latin Modern before) through
 % fontspec/unicode-math, sans slate-coloured headings (titlesec), a small-caps running
 % head with a centred page number (fancyhdr), MidnightBlue links, small bold-label
 % captions, no paragraph indent with 6pt paragraph skip, Okabe-Ito boxed asides
@@ -10,7 +10,7 @@
 % slate-blue rule, and a closing plate. Everything here mirrors those settings so that
 % the two papers read as a pair.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{zws_companion_style}[2026/09/03 Zero Without Stasis house style for the companion paper]
+\ProvidesPackage{zws_companion_style}[2026/09/08 Zero Without Stasis house style for the companion paper]
 
 % ---- page and fonts (build.ps1: -V papersize=a4 -V fontsize=11pt -V geometry:margin=2.6cm) ----
 \RequirePackage[a4paper,margin=2.6cm]{geometry}
@@ -19,6 +19,13 @@
 \RequirePackage{unicode-math}
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+% ---- typeface (build.ps1 since 2026-09-08: -MainFont Calibri, sansfont = mainfont, -FontScale 1.06; R-2026-09-08-8) ----
+% The parent sets its body and its headings in Calibri, optically scaled by 1.06 because the class offers only 10, 11
+% and 12 pt and Calibri sets small. The parent sets no maths face; the companion carries more mathematics, so the
+% default Latin Modern Math is scaled by the same factor to sit at the text's size.
+\setmainfont[Scale=1.06]{Calibri}
+\setsansfont[Scale=1.06]{Calibri}
+\setmathfont[Scale=1.06]{latinmodern-math.otf}
 \RequirePackage{microtype}
 \RequirePackage{xurl}
 \RequirePackage{graphicx}
@@ -76,6 +83,15 @@
 \widowpenalty=10000
 \clubpenalty=10000
 \displaywidowpenalty=10000
+% 2026-09-08: a heading is never left at the foot of a page (LaTeX allows a break between a section title and the
+% subsection title that follows it, and did so in the supplement after the typeface change): each heading asks for
+% room for itself and a few lines first.
+\RequirePackage{needspace}
+\RequirePackage{etoolbox}
+% Only the section asks (room for its own title, a subsection title and three lines); a guard on the subsection
+% itself forces the break right after the section title, which is the fault being cured. Breaks between a
+% subsection title and its first lines are already forbidden by the class.
+\pretocmd{\section}{\needspace{6\baselineskip}}{}{}
 \renewcommand{\topfraction}{0.9}
 \renewcommand{\bottomfraction}{0.6}
 \renewcommand{\textfraction}{0.08}
