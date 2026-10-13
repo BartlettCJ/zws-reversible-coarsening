@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "Please cite the companion paper (preferred-citation); cite this release when you use the code or evidence tables."
 type: software
-title: "ZWS reversible coarsening: companion code and evidence release"
+title: "Zero Without Stasis: companion code and evidence release"
 authors:
   - family-names: Bartlett
     given-names: Chris
     orcid: https://orcid.org/0009-0001-3323-0131
-version: "1.38"
-date-released: 2026-09-06
+version: "1.49"
+date-released: 2026-10-13
 doi: 10.5281/zenodo.22270456
 repository-code: https://github.com/BartlettCJ/zws-reversible-coarsening
 license: MIT
@@ -17,10 +17,10 @@ keywords:
   - signed charge conservation
   - coarsening
   - first passage
-  - classifier correction
+  - intervention diagnostics
 abstract: >-
   Code, tests, campaign evidence tables, rule files and paper sources accompanying the
-  companion paper "Delayed Distributed Coarsening in an Exactly Reversible
+  companion paper "Zero Without Stasis: Organisational Emergence in an Exactly Reversible
   Signed-Charge-Conserving Block Cellular Automaton". The software is MIT-licensed; the
   manuscript, supplement and figures are released under CC BY 4.0. Large trajectories,
   checkpoints and full-resolution state arrays are retained by the author and are not
@@ -31,24 +31,24 @@ identifiers:
     description: Zenodo record of the companion paper and this release
 preferred-citation:
   type: article
-  title: "Delayed Distributed Coarsening in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton"
+  title: "Zero Without Stasis: Organisational Emergence in an Exactly Reversible Signed-Charge-Conserving Block Cellular Automaton"
   authors:
     - family-names: Bartlett
       given-names: Chris
       orcid: https://orcid.org/0009-0001-3323-0131
   year: 2026
   doi: 10.5281/zenodo.22270456
-  notes: "Companion paper to Zero Without Stasis, version 1.38, 6 September 2026. Working paper, not peer reviewed."
+  notes: "Companion paper to Something is happening: Occurrence Theory, version 1.49, 13 October 2026. Working paper."
 references:
   - type: article
-    title: "Zero Without Stasis: Structured Nullity, Finitary Occurrent Actualism, Mathematical Intrinsic Occurrence, and Conscious Actuality"
+    title: "Something is happening: Occurrence Theory. Finitary Occurrent Actualism, Mathematical Intrinsic Occurrence, Evolutionary Cosmogenesis, and Conscious Actuality"
     authors:
       - family-names: Bartlett
         given-names: Chris
         orcid: https://orcid.org/0009-0001-3323-0131
     year: 2026
-    doi: 10.5281/zenodo.21966374
-    notes: "The parent paper this study accompanies; version 1.346, 5 September 2026, working paper."
+    doi: 10.5281/zenodo.22875288
+    notes: "The parent paper this study accompanies; working paper."
   - type: software
     title: "Eshkol: A Programming Language for Mathematical Computing"
     authors:

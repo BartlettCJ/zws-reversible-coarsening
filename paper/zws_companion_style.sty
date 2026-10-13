@@ -23,11 +23,18 @@
 % The parent sets its body and its headings in Calibri, optically scaled by 1.06 because the class offers only 10, 11
 % and 12 pt and Calibri sets small. The parent sets no maths face; the companion carries more mathematics, so the
 % default Latin Modern Math is scaled by the same factor to sit at the text's size.
-\setmainfont[Scale=1.06]{Calibri}
-\setsansfont[Scale=1.06]{Calibri}
+% WordSpace={1,1,0.5} halves only the shrink of the interword space. When TeX shrinks a justified line hard, the PDF
+% writer positions each word separately and writes no space glyph, so copied text runs words together although the
+% page prints perfectly (found in PROM1 v1.82, 21 September 2026). Font-relative, so it holds at every size.
+\setmainfont[Scale=1.06,WordSpace={1,1,0.5}]{Calibri}
+\setsansfont[Scale=1.06,WordSpace={1,1,0.5}]{Calibri}
 \setmathfont[Scale=1.06]{latinmodern-math.otf}
 \RequirePackage{microtype}
 \RequirePackage{xurl}
+% 2026-10-12, as in the parent's preamble (2026-09-21): no stretch inside web addresses. The url package's default
+% (\Urlmuskip = 0mu plus 1mu) lets TeX justify a reference line by letter-spacing the address; xurl still lets a
+% long address break at any character.
+\Urlmuskip=0mu
 \RequirePackage{graphicx}
 \RequirePackage{booktabs,array}
 \RequirePackage[dvipsnames,svgnames,x11names]{xcolor}
@@ -77,9 +84,20 @@
 \captionsetup{font=small,labelfont=bf,skip=6pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}
 % No stranded single lines: a paragraph may not leave one line alone at the top or bottom of a
 % page (or under a top float). Requested by the author on the v0.2.5 proof ("four words floating").
+% Hyphenation: no stub shorter than four letters, no break inside a name or a hyphenated compound; the name list is
+% derived from the sources by scripts/derive_hyphenation.py (a word capitalised in mid-sentence and never seen in
+% lower case), so it needs no hand maintenance. Regenerate it after adding a name.
+\IfFileExists{hyphenation.tex}{\input{hyphenation}}{}
+% 2026-10-12: justified but never hyphenated, captions and boxes included, as the parent paper has been since its
+% v2.334 (the author's call there, R-2026-10-12-5; PROM1 and the ASI Hopeium essay are set the same way). Banning
+% hyphenation leaves TeX only the word spaces to take up the slack, so the tolerance is raised and the emergency
+% stretch is 4em, the parent's settings (it was 3em here); without them the same lines come out overfull. The
+% derived name list and the minima above now only matter if this is undone.
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\tolerance=9999
+\setlength{\emergencystretch}{4em}
 \widowpenalty=10000
 \clubpenalty=10000
 \displaywidowpenalty=10000
@@ -124,7 +142,7 @@
   colback=specWild!5,colframe=specWild,boxrule=0.7pt,
   left=7pt,right=7pt,top=6pt,bottom=6pt,arc=2pt,
   fonttitle=\bfseries\footnotesize,coltitle=white,colbacktitle=specWild,
-  title={#2\hfill\specstamp{specWild}{Withdrawn inference}},
+  title={#2\hfill\specstamp{specWild}{Negative result}},
   fontupper=\footnotesize}
 
 % ---- title block (titleblock.tex) and front notice (speculation_boxes.lua, Pandoc()) ----
@@ -148,7 +166,7 @@
   \clearpage\thispagestyle{fancy}%
   \vspace*{\fill}%
   \begin{center}\includegraphics[width=#2]{#1}\end{center}%
-  \begin{center}{\small\itshape #3}\end{center}%
+  \if\relax\detokenize{#3}\relax\else\begin{center}{\small\itshape #3}\end{center}\fi%
   \begin{center}\parbox{0.86\linewidth}{\centering\footnotesize\textcolor{gray}{#4}}\end{center}%
   \vspace{\fill}%
   \begin{center}{\footnotesize\textcolor{gray}{#5}}\end{center}}

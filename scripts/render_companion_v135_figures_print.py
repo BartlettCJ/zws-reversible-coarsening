@@ -5,12 +5,12 @@ type at twice the printed size, and the LaTeX sources include each figure at sca
 every figure therefore prints with the same type sizes by construction:
 
   figure title 10 pt bold, panel title 8.5 pt bold, axis label 7.5 pt, tick and annotation 7 pt,
-  state-panel header 6.5 pt; the two 24-panel branch grids use 5.5 pt headers, six columns having
+  state-panel header 6.5 pt; the two 24-panel branch grids use 6.5 pt headers, six columns having
   to share the width.
 
 Palette: the v1.29 light palette (white canvas, slate text, Okabe-Ito accents); state panels keep the
-exact four-state colours because they are pictures of data. Same data, same code paths and the same
-numbers as the earlier renders, and no simulator is run. Commentary drawn inside the earlier figures
+exact four-state colours because they are pictures of data. Same stored data and measurements as the
+earlier renders, and no simulator is run. Commentary drawn inside the earlier figures
 (footers, side notes) is not carried over: a figure carries its picture, its labels and its key, and
 the argument belongs to the text and the caption. State-panel headers give the phase actually stored
 in each panel and its own elapsed offset, so a panel whose nearest stored state lies before the
@@ -66,7 +66,7 @@ RULE = "d1fe99b5735d8e9be032347de2727dc5c52a7848df200ca26f67f28c8c1bc41c"
 # ---- print typography: canvas twice the text width, type twice its printed size, included at scale 0.5
 CANVAS_W = 12.44                                          # inches, 2 x 15.8 cm: the widest a cropped canvas may be
 FIG_W = 12.30                                             # width handed to matplotlib; the tight crop plus its pad stays under CANVAS_W
-F_TITLE, F_PANEL, F_LABEL, F_TICK, F_ANNOT, F_HEADER, F_GRID = 19, 15, 14, 13, 13, 12, 11
+F_TITLE, F_PANEL, F_LABEL, F_TICK, F_ANNOT, F_HEADER, F_GRID = 19, 15, 14, 13, 13, 12, 13
 PNG_DPI = 340                                             # about 4000 px across a cropped canvas, above the 3840 px floor of the v0.3.2 figure code
 PDF_DPI = 300                                             # resolution of the rasterised state panels inside the vector PDFs
 
@@ -77,6 +77,7 @@ WINNER = "#B8A400"; BLUE = "#0072B2"; VERMILION = "#D55E00"; SKY = "#56B4E9"; PI
 STATE_HEX = ("#05070a", "#f0e442", "#0072b2", "#cc79a7")  # pictures of data keep the exact state colours
 STATE_NAMES = ("empty", "positive", "negative", "bound-neutral")
 INTERVENTION = {"untouched": WINNER, "global_shuffle": SKY, "tile_32": PINK, "tile_128": ORANGE}
+SIBLING_NAME = "Exact-Q+M sibling"
 CMAP = ListedColormap(STATE_HEX)
 assert tuple(hf.STATE_HEX) == STATE_HEX and tuple(hf.STATE_NAMES) == STATE_NAMES
 
@@ -207,12 +208,15 @@ def phase_line(phase: int, state: np.ndarray) -> str:
 
 
 def header_lines(name: str, phase: int, state: np.ndarray) -> list[str]:
-    return [name, phase_line(phase, state)]
+    return [name, phase_line(phase, state).replace("M=", "global M=")]
 
 
-def state_legend(fig, *, y: float) -> None:
+def state_legend(fig, *, y: float, blend_note: bool = False) -> None:
     handles = [Patch(facecolor=c, edgecolor="#00000055", label=n) for n, c in zip(STATE_NAMES, STATE_HEX, strict=True)]
     fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, y), ncol=4, frameon=False, fontsize=F_ANNOT)
+    if blend_note:
+        fig.text(.5, y - .018, "at this size the occupied states blend to grey; black is empty",
+                 ha="center", va="top", fontsize=F_ANNOT, color=MUTED)
 
 
 # ---------------------------------------------------------------- Figure 2: how one block update works (vector)
@@ -256,7 +260,7 @@ def render_rule_figure(repo: Path, out: Path) -> dict:
         ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), arrowstyle="-|>", mutation_scale=22, linewidth=2.2, color=color))
 
     ax.text(180, 95, "How one reversible block update works", fontsize=F_TITLE, weight="bold", color=TEXT, va="top")
-    ax.text(180, 232, "Exact entries from the frozen 256-state permutation", fontsize=F_LABEL, color=MUTED, va="top")
+    ax.text(180, 232, "Exact entries from the frozen 256-entry permutation", fontsize=F_LABEL, color=MUTED, va="top")
     for x0, y0, x1, y1 in [(150, 360, 1735, 1260), (1865, 360, 3450, 1260), (150, 1370, 1735, 2350), (1865, 1370, 3450, 2350)]:
         rbox(x0, y0, x1, y1, 40, facecolor=PANEL, edgecolor=EDGE, linewidth=1.0)
 
@@ -277,13 +281,18 @@ def render_rule_figure(repo: Path, out: Path) -> dict:
         for r in range(6):
             for c in range(6):
                 ax.add_patch(Rectangle((x0 + c * cell, y0 + r * cell), cell, cell, facecolor="#ffffff", edgecolor=GRID, linewidth=0.8))
+        # Continuous boundaries cover every cell. Odd-cut edge pieces join on the torus.
         off = 1 if shifted else 0
-        for r in range(off, 6, 2):
-            for c in range(off, 6, 2):
-                if r + 2 <= 6 and c + 2 <= 6:
-                    ax.add_patch(Rectangle((x0 + c * cell + 3, y0 + r * cell + 3), 2 * cell - 6, 2 * cell - 6, facecolor="none", edgecolor=color, linewidth=3))
+        for boundary in range(off, 7, 2):
+            ax.plot([x0 + boundary * cell] * 2, [y0, y0 + 6 * cell], color=color, lw=3)
+            ax.plot([x0, x0 + 6 * cell], [y0 + boundary * cell] * 2, color=color, lw=3)
+        if shifted:
+            for x, y, marker in [(x0 + 12, y0 + 3 * cell, "<"), (x0 + 6 * cell - 12, y0 + 3 * cell, ">"),
+                                 (x0 + 3 * cell, y0 + 12, "^"), (x0 + 3 * cell, y0 + 6 * cell - 12, "v")]:
+                ax.scatter([x], [y], marker=marker, s=28, color=color, zorder=4)
 
     partition(1970, 555, False, BLUE); partition(2755, 555, True, VERMILION)
+    ax.text(2660, 500, "one-cell diagonal shift; edges wrap", ha="center", fontsize=F_ANNOT, color=MUTED, va="top")
     ax.text(1970 + 306, 1195, "phase 0", ha="center", fontsize=F_ANNOT, weight="bold", color=BLUE, va="top")
     ax.text(2755 + 306, 1195, "phase 1", ha="center", fontsize=F_ANNOT, weight="bold", color=VERMILION, va="top")
     arrow(2610, 861, 2725, 861, MUTED)
@@ -305,7 +314,7 @@ def render_rule_figure(repo: Path, out: Path) -> dict:
                 r, c = divmod(i, 2)
                 chip(gx + c * 220 + 5, 1615 + r * 220 + 5, 210, s, 22)
         arrow(left + 610, 1835, left + 870, 1835, accent)
-        ax.text(left + 75, 2110, f"Q: {q0:+d} → {q1:+d}      M: {m0} → {m1}", fontsize=F_LABEL, weight="bold", color=TEXT, va="top")
+        ax.text(left + 75, 2110, f"Q: {q0:+d} → {q1:+d}      M: {m0} → {m1}".replace("-", "−"), fontsize=F_LABEL, weight="bold", color=TEXT, va="top")
         ax.text(left + 75, 2205, note, fontsize=F_ANNOT, color=MUTED, va="top")
         examples.append({"input_code": code_in, "output_code": code_out, "input_states_tl_tr_bl_br": s_in, "output_states_tl_tr_bl_br": s_out,
                          "input_Q_M": [q0, m0], "output_Q_M": [q1, m1]})
@@ -338,12 +347,19 @@ def render_density(repo: Path, out: Path) -> dict:
     medians = []
     for d, c in zip(ds, COLORS):
         sr = sorted([r for r in s if float(r["density"]) == d], key=lambda r: float(r["phase"]))
-        ax.step([float(r["phase"]) / 1000 for r in sr], [float(r["survival"]) for r in sr], where="post", color=c, label=f"{d:.0%}", lw=2.2)
+        ax.step([float(r["phase"]) / 1000 for r in sr], [float(r["survival"]) for r in sr], where="post", color=c, label=f"{d:.0%}", lw=2.2,
+                zorder=10 if d == .16 else 2)
         m = next((float(r["phase"]) for r in sr if float(r["survival"]) <= .5), None); medians.append(m)
-        y = (m if m is not None else 262144) / 1000
-        am.scatter([100 * d], [y], color=c, s=70, marker="o" if m is not None else "^", edgecolor=TEXT, lw=.6, zorder=4)
-        am.annotate(f"{y:.1f}" if m is not None else "not reached", (100 * d, y), xytext=(0 if m is not None else -8, 9), textcoords="offset points",
-                    ha="center" if m is not None else "left", color=TEXT, fontsize=F_ANNOT)
+        if m is not None:
+            y = m / 1000
+            am.scatter([100 * d], [y], color=c, s=70, marker="o", edgecolor=TEXT, lw=.6, zorder=4)
+            am.annotate(f"{y:.1f}", (100 * d, y), xytext=(0, 9), textcoords="offset points",
+                        ha="center", color=TEXT, fontsize=F_ANNOT)
+        elif d == .16:
+            ax.plot([262.144], [1], marker="+", markersize=10, markeredgewidth=2, color=c, zorder=11)
+            ax.text(365, .24, "16%: none crossed\nby 262,144 phases", fontsize=F_ANNOT, color=TEXT, zorder=12)
+            am.text(.04, .13, "16%: median not reached;\nfollow-up 262,144 phases", transform=am.transAxes,
+                    fontsize=F_ANNOT, color=TEXT, va="bottom")
     assert medians == [None, 495616., 321536., 206848., 108544., 83968., 65536.]
     ax.set_title("A   Runs not yet across the frozen endpoint (12 seeds per density)")
     ax.set_xlabel("Elapsed block phases (thousands)"); ax.set_ylabel("Kaplan–Meier survival"); ax.set_ylim(-.02, 1.03)
@@ -378,16 +394,18 @@ def render_controls(repo: Path, out: Path) -> dict:
     assert pooled["winner"] == [10, 16] and pooled["qm_sibling"] == [0, 16] and pooled["rotation"] == [0, 16]
     order = ["winner"] + [f"ablate_{i:02}" for i in range(12)] + ["qm_sibling", "rotation"]
     fig = plt.figure(figsize=(FIG_W,6.6), facecolor=BG)
-    g = fig.add_gridspec(1, 2, left=.07, right=.985, top=.87, bottom=.215, wspace=.26, width_ratios=[1.15, 1.65])
+    g = fig.add_gridspec(1, 2, left=.07, right=.985, top=.87, bottom=.29, wspace=.26, width_ratios=[1.15, 1.65])
     a = fig.add_subplot(g[0, 0]); b = fig.add_subplot(g[0, 1]); style(a); style(b)
     keys = ["winner", "qm_sibling", "rotation"]; x = np.arange(3); cc = [WINNER, SKY, GREEN]
     for offset, field, label, alpha in [(-.18, "median_peak_scale_ratio", "Peak", 1), (.18, "median_final_scale_ratio", "Final", .48)]:
         v = [float(controls[k][field]) for k in keys]
         bars = a.bar(x + offset, v, .33, color=cc, alpha=alpha, label=label)
-        for rect, val in zip(bars, v):
-            a.text(rect.get_x() + rect.get_width() / 2, val * 1.09, f"{val:.2f}×", ha="center", color=TEXT, fontsize=F_GRID)
+        for index, (rect, val) in enumerate(zip(bars, v)):
+            a.annotate(f"{val:.2f}×", (rect.get_x() + rect.get_width() / 2, val),
+                       xytext=(0, 21 if index == 2 and label == "Final" else 4), textcoords="offset points",
+                       ha="center", color=TEXT, fontsize=F_ANNOT)
     a.set_yscale("log"); a.set_ylim(.7, 65)
-    a.set_xticks(x, ["Winner\n(M free)", "Sibling\n(Q and M fixed)", "Rotation"]); a.set_ylabel("Scale relative to each initial state")
+    a.set_xticks(x, ["Winner\n(M free)", SIBLING_NAME.replace(" sibling", "\nsibling"), "Rotation"]); a.set_ylabel("Scale relative to each initial state")
     a.set_title("A   Focused 1024² controls"); a.legend()
     for i, k in enumerate(keys):
         r = controls[k]; a.text(i, 48, f"{r['strong_domain_count']}/{r['trajectory_count']} pass", ha="center", color=TEXT, fontsize=F_ANNOT)
@@ -395,9 +413,10 @@ def render_controls(repo: Path, out: Path) -> dict:
     vals = [pooled[k][0] / pooled[k][1] for k in order]
     b.bar(range(len(order)), vals, color=colors)
     for i, k in enumerate(order):
-        b.text(i, vals[i] + .02, f"{pooled[k][0]}/{pooled[k][1]}", ha="center", va="bottom", color=TEXT, fontsize=F_GRID, rotation=90 if vals[i] == 0 else 0)
+        b.text(i, vals[i] + (.085 if k == "ablate_09" else .02), f"{pooled[k][0]}/{pooled[k][1]}",
+               ha="center", va="bottom", color=TEXT, fontsize=F_ANNOT, rotation=90 if vals[i] == 0 else 0)
     b.set_ylim(0, .84); b.set_ylabel("End-of-window strong-domain pass fraction")
-    b.set_xticks(range(len(order)), ["Winner"] + [f"Pair {i:02}" for i in range(12)] + ["Q+M", "Rotation"], rotation=55, ha="right")
+    b.set_xticks(range(len(order)), ["Winner"] + [f"Pair {i:02}" for i in range(12)] + [SIBLING_NAME, "Rotation"], rotation=90, ha="center")
     b.set_title("B   Single-pair ablations at 512² (pooled)")
     fig.suptitle("Matched controls constrain the mechanism in the tested rule family", y=.975)
     stem = "COMPANION_V135_FIGURE_04_CONTROLS_AND_ABLATIONS"
@@ -410,13 +429,13 @@ def render_story(repo: Path, out: Path) -> dict:
     # the nine step texts of the v0.2.1 figure, unchanged except British spelling (as in v1.29)
     steps = [("Discovery", "Search-selected rule; the large initial demonstration used a localised random patch."),
              ("Confirmation", "Frozen seeds reproduced irregular, nonmonotone large-domain growth."),
-             ("Composition", "Dense regions are mixed excitations; sparse regions are near-vacuum."),
+             ("Composition", "Dense regions are mixed excitations; sparse regions are near-empty."),
              ("Controls", "Pure rotation and the active Q+M sibling did not reproduce the same regime."),
              ("Homogeneous starts", "Separate whole-world random ensembles established density dependence."),
              ("First passage", "A geometrical endpoint was followed through longer observation windows."),
              ("Prepared shapes", "Large shapes persisted; relative-growth counts are not absolute formation tests."),
-             ("Intervention audit", "Shuffling destroyed measured structure while crossing the legacy detector."),
-             ("Current conclusion", "The causal history claim is withdrawn. The observed reversible domain phenomenon remains.")]
+             ("Intervention audit", "Shuffling destroyed measured structure, yet the shuffled states crossed the geometrical endpoint."),
+             ("Intervention result", "Shuffling invalidates the first-passage assay for a causal memory effect. The observed reversible domains remain.")]
     fig, ax = plt.subplots(figsize=(FIG_W,7.4), facecolor=BG)
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
     ax.axis("off"); ax.set_xlim(0, 3); ax.set_ylim(0, 3.12)
@@ -425,7 +444,7 @@ def render_story(repo: Path, out: Path) -> dict:
         ax.add_patch(Rectangle((x0, y0), .92, .80, facecolor=PANEL, edgecolor=COLORS[i % 7], lw=1.8))
         ax.text(x0 + .05, y0 + .70, f"{i + 1}. {title}", color=TEXT, fontsize=F_PANEL, weight="bold", va="top")
         ax.text(x0 + .05, y0 + .50, textwrap.fill(body, 32), color=MUTED, fontsize=F_ANNOT, va="top", linespacing=1.3)
-    ax.text(1.5, 3.07, "A bounded research programme, with its corrections retained", ha="center", va="top", color=TEXT, fontsize=F_TITLE, weight="bold")
+    ax.text(1.5, 3.07, "The evidence, from selection to the shuffling test", ha="center", va="top", color=TEXT, fontsize=F_TITLE, weight="bold")
     stem = "COMPANION_V135_FIGURE_08_CORRECTED_RESEARCH_STORY"
     outputs, size = save_set(fig, out, stem, "Corrected research chronology")
     return compact_record(stem, [], repo, outputs, size)
@@ -441,21 +460,21 @@ def render_ledger(out: Path) -> dict:
     for axis in axes:
         axis.set_facecolor(PANEL); axis.set_xlim(0, 10); axis.set_ylim(1.3, 7); axis.set_aspect("equal"); axis.axis("off")
     left.set_title("Frozen winner: exact Q, variable M", color="#8a7a00", loc="center")
-    left.text(5, 6.3, r"$Q = N_{+} - N_{-} = 0$ exactly", ha="center", va="center", color=TEXT, fontsize=F_PANEL)
+    left.text(5, 6.3, r"global $Q = N_{+} - N_{-} = 0$ exactly", ha="center", va="center", color=TEXT, fontsize=F_PANEL)
     left.text(5, 5.45, r"$M = N_{+} + N_{-} + N_{\mathrm{bound}}$ may change", ha="center", va="center", color=TEXT, fontsize=F_LABEL)
     left.add_patch(FancyArrowPatch((5, 5.0), (5, 4.3), arrowstyle="-|>", mutation_scale=20, color=MUTED, linewidth=1.6))
     for x, color, label in ((3.9, STATE_HEX[1], "+"), (6.1, STATE_HEX[2], "−")):
         left.add_patch(Rectangle((x - .65, 2.85), 1.3, 1.3, facecolor=color, edgecolor=TEXT, linewidth=1.6))
         left.text(x, 3.5, label, ha="center", va="center", color="#101010" if label == "+" else "white", fontsize=F_TITLE, weight="bold")
     left.text(5, 2.35, "Balanced pair creation changes M by +2\nwithout changing Q", ha="center", va="top", color=TEXT, fontsize=F_LABEL, linespacing=1.3)
-    right.set_title("Exact-Q+M sibling control", color=BLUE, loc="center")
-    right.text(5, 6.3, r"$Q = 0$ and $M = M_{\mathrm{initial}} > 0$", ha="center", va="center", color=TEXT, fontsize=F_PANEL)
+    right.set_title(SIBLING_NAME, color=BLUE, loc="center")
+    right.text(5, 6.3, r"global $Q = 0$ and $M = M_{\mathrm{initial}} > 0$", ha="center", va="center", color=TEXT, fontsize=F_PANEL)
     right.text(5, 5.45, "The same number of occupied cells is retained", ha="center", va="center", color=TEXT, fontsize=F_LABEL)
     for i, (color, label) in enumerate(((STATE_HEX[1], "+"), (STATE_HEX[2], "−"), (STATE_HEX[3], "b"))):
         x = 3.2 + i * 1.8
         right.add_patch(Rectangle((x - .6, 2.9), 1.2, 1.2, facecolor=color, edgecolor=TEXT, linewidth=1.6))
         right.text(x, 3.5, label, ha="center", va="center", color="white" if i else "#101010", fontsize=F_PANEL, weight="bold")
-    right.text(5, 2.35, "Rearrangements may occur, but total M is fixed", ha="center", va="top", color=TEXT, fontsize=F_LABEL)
+    right.text(5, 2.35, "Reactions still occur, but total M is fixed", ha="center", va="top", color=TEXT, fontsize=F_LABEL)
     model_source = Path(hf.__file__).resolve()
     panels = [hf.make_panel_record(source_task="model_schematic", seed=None, density=None, branch_point=None, intervention="frozen_winner_ledger",
                                    phase="not_applicable", state_hash="model_schematic_no_state", crop=(0, 0, 0, 0), source_path=model_source,
@@ -491,13 +510,13 @@ def render_multiscale(experiment: Path, out: Path) -> dict:
         axes[0, 1].plot(offsets, [mi_altered[intervention][o] for o in offsets], marker="o", color=color, label=name, lw=2)
         source_offsets = sorted(mi_source.get(intervention, {}))
         axes[0, 1].plot(source_offsets, [mi_source[intervention][o] for o in source_offsets], color=color, linestyle="--", alpha=.5, lw=1.6)
-    axes[0, 0].set(xscale="log", xlabel="block size (cells)", ylabel="normalised block entropy")
+    axes[0, 0].set(xscale="log", xlabel="block side length (cells)", ylabel="normalised block entropy")
     axes[0, 1].set(xscale="log", xlabel="offset (cells)", ylabel="mutual information (nats)")
     key = Line2D([], [], color=MUTED, linestyle="--", label="source before intervention")
     for axis in (axes[0, 0], axes[0, 1]):
         handles, labels = axis.get_legend_handles_labels()
         axis.legend(handles=handles + [key], labels=labels + ["source before intervention"])
-    chart(axes[1, 0], "Immediate retained low-k precursor")
+    chart(axes[1, 0], "Immediate retained low-k power")
     positions, labels = [], []
     for index, intervention in enumerate(("global_shuffle", "tile_32", "tile_128")):
         values = [float(row["altered_low_k_power"]) / max(float(row["source_low_k_power"]), 1e-30) for row in audit if row["intervention"] == intervention]
@@ -516,16 +535,26 @@ def render_multiscale(experiment: Path, out: Path) -> dict:
                 continue
             source_mi = row["source_mutual_information"]; altered_mi = row["altered_mutual_information"]
             offsets = sorted(int(value) for value in source_mi)
-            retained = float(np.mean([
+            if offsets != [2 ** k for k in range(9)]:
+                raise ValueError("retained MI summary requires offsets 1, 2, 4, ..., 256 cells")
+            # Sum before dividing: weak source MI must not give a lag an equal ratio weight.
+            source_total = sum(
+                hf._curve_scalar(source_mi[str(o)] if str(o) in source_mi else source_mi[o])
+                for o in offsets)
+            altered_total = sum(
                 hf._curve_scalar(altered_mi[str(o)] if str(o) in altered_mi else altered_mi[o])
-                / max(hf._curve_scalar(source_mi[str(o)] if str(o) in source_mi else source_mi[o]), 1e-30)
-                for o in offsets]))
+                for o in offsets)
+            if source_total <= 0:
+                raise ValueError("retained MI summary requires positive summed source MI")
+            retained = altered_total / source_total
             time, observed = hf._event_time(residual_lookup[row["task_id"]], altered=True)
             points.append((retained, time, observed))
         if points:
             axes[1, 1].scatter([p[0] for p in points], [p[1] for p in points], marker="o" if all(p[2] for p in points) else "s",
                                color=INTERVENTION[intervention], alpha=.8, s=36, label=intervention.replace("_", " "))
-    axes[1, 1].set(xlabel="mean retained MI ratio", ylabel=r"$R_{\mathrm{hit}}$ or censoring time (phases)")
+    axes[1, 1].set(xlabel="Summed MI: altered / source\n" + r"x/y mean; offsets $2^k$ cells, $k=0,\ldots,8$",
+                   ylabel=r"$R_{\mathrm{hit}}$ or censoring time (phases)")
+    axes[1, 1].margins(x=.1)
     axes[1, 1].yaxis.set_major_formatter(KFMT); axes[1, 1].legend()
     panels = [hf._aggregate_panel(audit_path, panel="block_entropy_by_scale", branch_point="B"),
               hf._aggregate_panel(audit_path, panel="mutual_information_by_offset", branch_point="B"),
@@ -563,6 +592,10 @@ def render_micro_macro(run: Path, experiment: Path, out: Path) -> dict:
     show_state(a0, state, header_lines("Full 1024×1024 world", phase, state))
     show_state(a1, state, header_lines(f"256×256 crop · ({crop256[0]},{crop256[1]})", phase, state), crop=crop256)
     show_state(a2, state, header_lines(f"64×64 crop · ({crop64[0]},{crop64[1]})", phase, state), crop=crop64)
+    for axis, crop, origin in [(a0, crop256, (0, 0)), (a1, crop64, crop256[:2])]:
+        x, y, width, height = crop
+        axis.add_patch(Rectangle((x - origin[0] - .5, y - origin[1] - .5), width, height,
+                                 facecolor="none", edgecolor="white", linewidth=1.1))
     chart(h, "Four-state histogram, 64×64 crop")
     h.bar(STATE_NAMES, histogram, color=STATE_HEX, edgecolor=MUTED, linewidth=.6)
     h.set_ylabel("cells in the 64×64 crop")
@@ -599,7 +632,7 @@ def render_branch_grids(run: Path, experiment: Path, out: Path) -> list[dict]:
         raise RuntimeError("publication stopped because the final integrity audit did not pass")
     realized = hf._realized(run); representatives = hf._representatives(experiment)
     requested = [0, 32768, 65536, 131072, 262144]
-    columns = ["Source", "Immediately after", "+32,768", "+65,536", "+131,072", "Final / common"]
+    columns = ["Source", "Immediately after", "+32,768", "+65,536", "+131,072", "Common +16,384"]
     interventions = ("untouched", "global_shuffle", "tile_32", "tile_128")
     recs = []
     for letter, representative in zip("AB", representatives, strict=True):
@@ -623,7 +656,7 @@ def render_branch_grids(run: Path, experiment: Path, out: Path) -> list[dict]:
         q_source, m_source = q_m(source_state)
         apply_rc()
         fig, axes = plt.subplots(4, 6, figsize=(FIG_W, 12.2), facecolor=BG)
-        fig.subplots_adjust(left=.045, right=.99, top=.865, bottom=.05, hspace=.6, wspace=.08)
+        fig.subplots_adjust(left=.045, right=.99, top=.865, bottom=.185, hspace=.6, wspace=.08)
         fig.suptitle(f"Same ingredients, different spatial history · initial occupancy {density:.2f}", y=.988)
         for ci, title in enumerate(columns):
             axes[0, ci].annotate(title, xy=(.5, 1), xycoords="axes fraction", xytext=(0, 56), textcoords="offset points",
@@ -644,6 +677,14 @@ def render_branch_grids(run: Path, experiment: Path, out: Path) -> list[dict]:
                                                           intervention=intervention, requested_elapsed=target,
                                                           extra={"panel": f"density_{density:.2f}_{intervention}_column_{ci}", "actual_elapsed": actual}))
             axes[ri, 0].set_ylabel(name, color=INTERVENTION[intervention], fontsize=F_ANNOT, weight="bold")
+        # Fixed-coordinate details of existing stored states, with no colour averaging.
+        detail_crop = (512, 512, 32, 32)
+        global_zero, _ = hf._exact_at(records_by["global_shuffle"], 0)
+        for parent, detail, label, x in [(axes[0, 0], source_state, "Source", .20),
+                                         (axes[1, 1], global_zero, "Global shuffle +0", .66)]:
+            parent.add_patch(Rectangle((511.5, 511.5), 32, 32, facecolor="none", edgecolor="white", linewidth=1))
+            inset = fig.add_axes([x, .042, .092, .092])
+            show_state(inset, detail, [label, "32×32 at (x,y)=(512,512)"], crop=detail_crop, header=F_ANNOT)
         state_legend(fig, y=.008)
         stem = f"FIGURE_02{letter}_HISTORY_ERASURE_BRANCHES_V135"
         outputs, size = save_set(fig, out, stem, f"History-erasure branches, initial occupancy {density:.2f}")
@@ -676,7 +717,7 @@ def render_fixed_occupancy(run: Path, experiment: Path, out: Path) -> dict:
     chart(axes[0, 0], "Residual survival")
     hf._step_survival(axes[0, 0], primary, altered=False, label="untouched", color=INTERVENTION["untouched"])
     hf._step_survival(axes[0, 0], primary, altered=True, label="global shuffle", color=INTERVENTION["global_shuffle"])
-    axes[0, 0].set(xlabel="residual phases", ylabel="event-free fraction", ylim=(0, 1.03), xlim=(0, 262144)); axes[0, 0].legend()
+    axes[0, 0].set(xlabel="elapsed phases", ylabel="event-free fraction", ylim=(0, 1.03), xlim=(0, 262144)); axes[0, 0].legend()
     axes[0, 0].xaxis.set_major_formatter(KFMT)
     chart(axes[0, 1], "Paired residual times")
     for row in primary:
@@ -698,7 +739,7 @@ def render_fixed_occupancy(run: Path, experiment: Path, out: Path) -> dict:
     show_state(axes[1, 0], source_state, ["State-matched branch point", "+0", phase_line(source_phase, source_state)])
     show_state(axes[1, 1], untouched_state, ["untouched", f"+{e_u:,}" + ("" if e_u == 32768 else " (req. 32,768)"), phase_line(int(untouched_record["phase"]), untouched_state)])
     show_state(axes[1, 2], shuffled_state, ["global shuffle", f"+{e_g:,}" + ("" if e_g == 32768 else " (req. 32,768)"), phase_line(int(shuffled_record["phase"]), shuffled_state)])
-    state_legend(fig, y=.008)
+    state_legend(fig, y=.026, blend_note=True)
     panels = [hf._aggregate_panel(residual_path, panel="branch_A_survival", branch_point="A"),
               hf._aggregate_panel(residual_path, panel="branch_A_paired_lines", branch_point="A"),
               hf._aggregate_panel(residual_path, panel="branch_A_fixed_fractions", branch_point="A"),
@@ -734,16 +775,17 @@ def render_event_proximal(run: Path, experiment: Path, out: Path) -> dict:
     survival_axis = fig.add_subplot(top[0, 0]); delay_axis = fig.add_subplot(top[0, 1])
     fig.suptitle("Erasing history 32,768 phases before the untouched event", y=.985)
     chart(survival_axis, "Event-proximal survival")
+    event_colors = {**INTERVENTION, "tile_32": GREEN}
     survival_axis.axvline(32768, color=INTERVENTION["untouched"], linestyle="--", label="untouched hit by construction")
     for intervention in ("global_shuffle", "tile_32", "tile_128"):
         selected = [row for row in b_rows if row["intervention"] == intervention]
-        hf._step_survival(survival_axis, selected, altered=True, label=intervention.replace("_", " "), color=INTERVENTION[intervention])
+        hf._step_survival(survival_axis, selected, altered=True, label=intervention.replace("_", " "), color=event_colors[intervention])
     survival_axis.set(xlim=(0, 262144), ylim=(0, 1.03), xlabel="elapsed phases", ylabel="event-free fraction"); survival_axis.legend()
     survival_axis.xaxis.set_major_formatter(KFMT)
-    chart(delay_axis, "Paired RMST delay with 95% interval")
-    delay_axis.axvspan(-8192, 8192, color=WINNER, alpha=.16, label="practical-equivalence band")
+    chart(delay_axis, "Paired RMST delay with 95% interval\nRMST through 262,144 phases")
+    delay_axis.axvspan(-8192, 8192, color=WINNER, alpha=.16, label="practical-equivalence band\n±8,192 phases")
     selected_results = [row for row in results if row["comparison"] in {"Branch B primary global", "Branch B tile 32", "Branch B tile 128"}]
-    colour_of = {"primary global": SKY, "tile 32": PINK, "tile 128": ORANGE}
+    colour_of = {"primary global": SKY, "tile 32": GREEN, "tile 128": ORANGE}
     labels = []
     for index, row in enumerate(selected_results):
         point, low, high = float(row["rmst_delay"]), float(row["ci95_low"]), float(row["ci95_high"])
@@ -762,7 +804,7 @@ def render_event_proximal(run: Path, experiment: Path, out: Path) -> dict:
                                  phase_line(int(record["phase"]), state)])
         panels.append(hf._state_panel_from_record(record, source_task=source_id, seed=seed, density=density, branch_point="B", intervention=intervention,
                                                   requested_elapsed=32768, extra={"panel": f"representative_{intervention}", "actual_elapsed": actual}))
-    state_legend(fig, y=.008)
+    state_legend(fig, y=.026, blend_note=True)
     stem = "FIGURE_04_EVENT_PROXIMAL_HISTORY_ERASURE_V135"
     outputs, size = save_set(fig, out, stem, "Event-proximal history-erasure diagnostics")
     return state_record(stem, panels, "Branch-B survival and paired delay estimates use an untouched residual fixed at 32,768 phases by preregistration; "

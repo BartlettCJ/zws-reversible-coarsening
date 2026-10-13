@@ -4,11 +4,12 @@ Repository: https://github.com/BartlettCJ/zws-reversible-coarsening
 
 Public code-and-evidence release for the working paper
 
-> Chris Bartlett (2026). *Delayed Distributed Coarsening in an Exactly Reversible
-> Signed-Charge-Conserving Block Cellular Automaton.* Companion to *Zero Without Stasis*.
+> Chris Bartlett (2026). *Zero Without Stasis: Organisational Emergence in an Exactly Reversible
+> Signed-Charge-Conserving Block Cellular Automaton.* Companion to *Something is happening:
+> Occurrence Theory*.
 > Zenodo, DOI [10.5281/zenodo.22270456](https://doi.org/10.5281/zenodo.22270456).
 
-The parent paper is *Zero Without Stasis* (DOI [10.5281/zenodo.21966374](https://doi.org/10.5281/zenodo.21966374)).
+The parent paper is *Something is happening: Occurrence Theory* (DOI [10.5281/zenodo.22875288](https://doi.org/10.5281/zenodo.22875288)).
 
 ## What is here
 
